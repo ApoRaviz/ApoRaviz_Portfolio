@@ -1,0 +1,51 @@
+<!-- ใช้ section เพราะ Experience เป็นหมวดหลักของ portfolio -->
+<section id="experience" class="bg-dark py-24" aria-labelledby="experience-title">
+  <div class="mx-auto max-w-5xl px-5 sm:px-8">
+    <header class="reveal text-center">
+      <p class="font-mono text-sm uppercase tracking-[0.25em] text-primary">Career Path</p>
+      <h2 id="experience-title" class="mt-3 font-display text-4xl font-bold text-white sm:text-5xl">
+        <span class="text-primary">Experience</span>
+      </h2>
+      <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-primary shadow-glow"></div>
+    </header>
+
+    <!-- ใช้ div เป็น timeline layout wrapper เพราะตัวเส้นและตำแหน่ง card เป็นงาน visual/layout -->
+    <div class="relative mt-14">
+      <!-- ใช้ div เป็นเส้นตกแต่งของ timeline ไม่มีความหมายเชิงเนื้อหา -->
+      <div class="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-primary to-primary/0 md:left-1/2"></div>
+
+      <div class="space-y-8">
+        @for (item of data.experiences(); track item.period; let i = $index) {
+          <!-- ใช้ article เพราะแต่ละ experience entry เป็นข้อมูลประสบการณ์หนึ่งรายการที่อ่านแยกได้ -->
+        <article
+          class="reveal relative grid gap-6 md:grid-cols-2"
+          [class.reveal-left]="i % 2 === 0"
+          [class.reveal-right]="i % 2 === 1"
+        >
+          <!-- ใช้ div เป็น dot visual marker ของ timeline -->
+          <div class="absolute left-2.5 top-6 h-4 w-4 rounded-full bg-primary shadow-glow md:left-[calc(50%-0.5rem)]"></div>
+
+          @if (i % 2 === 0) {
+            <div class="ml-10 rounded-xl border border-dark-border bg-dark-card p-6 md:col-start-1 md:ml-0">
+              <p class="font-mono text-sm text-primary">{{ item.period }}</p>
+              <h3 class="mt-2 font-display text-xl font-semibold text-white">{{ item.role }}</h3>
+              <p class="mt-1 text-sm text-neutral-500">{{ item.company }}</p>
+              <p class="mt-4 leading-7 text-neutral-400">{{ item.description }}</p>
+            </div>
+            <!-- ใช้ div เป็น spacer เพื่อให้ desktop timeline สลับซ้าย/ขวาโดยไม่ใช้ class binding ซับซ้อน -->
+            <div class="hidden md:col-start-2 md:block"></div>
+          } @else {
+            <div class="hidden md:col-start-1 md:block"></div>
+            <div class="ml-10 rounded-xl border border-dark-border bg-dark-card p-6 md:col-start-2 md:ml-0">
+              <p class="font-mono text-sm text-primary">{{ item.period }}</p>
+              <h3 class="mt-2 font-display text-xl font-semibold text-white">{{ item.role }}</h3>
+              <p class="mt-1 text-sm text-neutral-500">{{ item.company }}</p>
+              <p class="mt-4 leading-7 text-neutral-400">{{ item.description }}</p>
+            </div>
+          }
+        </article>
+      }
+      </div>
+    </div>
+  </div>
+</section>

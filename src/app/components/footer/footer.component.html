@@ -1,0 +1,29 @@
+<!-- ใช้ footer เพราะเป็นส่วนท้ายของทั้งเว็บไซต์ มี copyright, social links, และ back-to-top -->
+<footer class="border-t border-dark-border bg-dark py-8">
+  <!-- ใช้ div เป็น container คุมความกว้างและจัด responsive layout -->
+  <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-5 sm:px-8 md:flex-row">
+    <p class="text-center text-sm text-neutral-500">
+      © 2026 {{ data.profile().name }}. All rights reserved.
+    </p>
+
+    <!-- ใช้ div เป็น social/action row wrapper เพื่อจัด items ให้อยู่ด้วยกัน -->
+    <div class="flex items-center gap-3">
+      @for (item of data.contactInfo(); track item.label) {
+        <!-- ใช้ a เพราะ social/contact item เป็น link ไปปลายทางภายนอกหรือ mailto -->
+        <a class="grid h-10 w-10 place-items-center rounded-full border border-dark-border font-mono text-xs text-neutral-300 transition hover:border-primary hover:text-primary hover:shadow-glow" [href]="item.url" [attr.aria-label]="item.label">
+          {{ item.icon }}
+        </a>
+      }
+
+      <!-- ใช้ button เพราะ back-to-top เป็น action scroll ภายในหน้า ไม่ใช่ URL -->
+      <button
+        type="button"
+        class="grid h-10 w-10 place-items-center rounded-full border border-primary bg-primary/10 text-primary transition hover:shadow-glow"
+        aria-label="Back to top"
+        (click)="theme.scrollToTop()"
+      >
+        ↑
+      </button>
+    </div>
+  </div>
+</footer>

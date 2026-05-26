@@ -1,0 +1,54 @@
+<!-- ใช้ section เพราะ About เป็นหมวดใหญ่ของ portfolio และมี id สำหรับ scroll spy -->
+<section id="about" class="bg-dark py-24" aria-labelledby="about-title">
+  <!-- ใช้ div เป็น container คุม max-width/padding ไม่มีความหมาย semantic เพิ่ม -->
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <!-- ใช้ header เพราะเป็นส่วนหัวของ section มี title และคำอธิบายนำ -->
+    <header class="reveal max-w-3xl">
+      <p class="font-mono text-sm uppercase tracking-[0.25em] text-primary">About</p>
+      <h2 id="about-title" class="mt-3 font-display text-4xl font-bold text-white sm:text-5xl">
+        <span class="text-primary">About</span> Me
+      </h2>
+      <!-- ใช้ div เป็นเส้นตกแต่งใต้หัวข้อ ไม่ใช่เนื้อหาที่ต้องมี semantic -->
+      <div class="mt-4 h-1 w-20 rounded-full bg-primary shadow-glow"></div>
+    </header>
+
+    <!-- ใช้ div เป็น layout grid เพื่อแบ่งเนื้อหา paragraph กับ feature cards -->
+    <div class="mt-12 grid gap-10 lg:grid-cols-[.95fr_1.05fr]">
+      <!-- ใช้ article เพราะข้อความนี้เป็นเนื้อหาแนะนำตัวที่อ่านแยกเป็นชิ้นเดียวได้ -->
+      <article class="reveal space-y-5 text-lg leading-8 text-neutral-300">
+        <p>
+          I'm Tanonchai Promsiri, a full-stack developer focused on practical software that helps teams move faster and see their business clearly.
+        </p>
+        <p>
+          My work blends modern web applications, dashboards, backend APIs, AI automation, LINE OA integrations, CRM workflows, and business process tooling.
+        </p>
+        <p>
+          I care about clean implementation, fast feedback, and systems that stay understandable after the first launch.
+        </p>
+
+        <!-- ใช้ a เพราะ Download Resume เป็น resource/navigation action ที่ควรเปิดหรือดาวน์โหลด URL ได้ -->
+        <a
+          href="#"
+          class="inline-flex rounded-lg border border-primary px-5 py-3 font-semibold text-primary transition hover:bg-primary/10 hover:shadow-glow"
+        >
+          Download Resume
+        </a>
+      </article>
+
+      <!-- ใช้ div เป็น grid wrapper ของ cards เพราะตัว cards ด้านในเป็น article แล้ว -->
+      <div class="grid gap-5 sm:grid-cols-2">
+        @for (feature of data.features(); track feature.title; let i = $index) {
+          <!-- ใช้ article เพราะแต่ละ feature card มีหัวข้อและคำอธิบายที่อ่านแยกได้ -->
+          <article
+            class="reveal rounded-xl border border-dark-border bg-dark-card p-6 transition duration-300 hover:border-primary/50 hover:shadow-glow"
+            [style.--i]="i"
+          >
+            <p class="text-3xl" aria-hidden="true">{{ feature.icon }}</p>
+            <h3 class="mt-4 font-display text-xl font-semibold text-white">{{ feature.title }}</h3>
+            <p class="mt-3 leading-7 text-neutral-400">{{ feature.desc }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </div>
+</section>
