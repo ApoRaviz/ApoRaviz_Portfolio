@@ -169,6 +169,7 @@
   - Panjawattana Plastic Public Company Limited
 - อัปเดต skill groups ให้ตรงกับ resume มากขึ้น เช่น HTML, CSS, JavaScript, Angular, Ionic, C#, .NET Core, SQL Server, SSRS, Crystal Report
 - ปรับ hero background เป็น RPG/HUD style ด้วย grid, radial atmosphere, diagonal energy lines, และ corner frame
+- ปรับ navbar กับ hero ให้เข้ากันมากขึ้น โดยให้ navbar เป็น glass menu สีดำส้ม และ hero เป็นฉาก game lobby / quest map ที่มี scenery layer, silhouette, rune ring, และ HUD grid
 
 ## อัปเดตเอกสารสอน
 

@@ -1,18 +1,16 @@
 <!-- ใช้ nav เพราะ block นี้มีหน้าที่นำทางหลักของเว็บไซต์โดยตรง -->
 <nav
-  class="sticky top-0 z-50 transition-all duration-300"
+  class="sticky top-0 z-50 border-b border-white/10 bg-dark/75 transition-all duration-300 backdrop-blur-xl"
   [class.border-b]="theme.scrolled()"
-  [class.border-dark-border]="theme.scrolled()"
-  [class.border-transparent]="!theme.scrolled()"
-  [class.bg-dark/90]="theme.scrolled()"
-  [class.backdrop-blur-xl]="theme.scrolled()"
+  [class.border-primary/20]="theme.scrolled()"
+  [class.shadow-glow]="theme.scrolled()"
 >
   <!-- ใช้ div เป็น layout wrapper เพื่อจำกัดความกว้างและจัด flex; div ไม่มีความหมาย semantic เพิ่มเติม -->
   <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
     <!-- ใช้ button เพราะคลิกแล้วสั่ง scroll ภายในหน้า ไม่ใช่การเปิด URL ใหม่ -->
     <button
       type="button"
-      class="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.02] px-3 py-2 transition hover:border-primary/50 hover:bg-primary/10"
+      class="flex items-center gap-3 rounded-xl border border-primary/20 bg-black/30 px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,.08)] transition hover:border-primary/50 hover:bg-primary/10"
       aria-label="Scroll to home section"
       (click)="theme.scrollToSection('home')"
     >

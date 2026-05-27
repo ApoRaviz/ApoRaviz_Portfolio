@@ -83,6 +83,19 @@ Hero เดิมมี grid และ glow พื้นฐาน
 - HUD corner frame
 - glass panel หลังข้อความ
 
+รอบปรับ navbar + hero ล่าสุด เราปรับแนวคิดเพิ่มจาก "card บน grid" ให้เป็น:
+
+```text
+game lobby / quest map background
+```
+
+เหตุผล:
+
+- navbar เป็น glass menu สีดำส้ม จึงควรมี hero ที่ใช้ mood เดียวกัน
+- พื้นหลังควรเต็มจอมากขึ้น ไม่ใช่แค่กล่องข้อความลอยบนฉากเรียบ
+- เพิ่ม layer แบบ scenery, silhouette, rune ring และ HUD grid เพื่อให้ profile ดูมีโลกของตัวเอง
+- ยังใช้ CSS layer แทนรูปหนัก เพื่อให้โหลดเร็วและแก้สีง่าย
+
 ตัวอย่าง:
 
 ```html
@@ -100,6 +113,10 @@ Hero เดิมมี grid และ glow พื้นฐาน
 ทำไมใส่ comment อธิบาย?
 
 เพราะ background แบบ layered UI อ่านยากกว่าปกติ ถ้าไม่มี comment จะงงว่าแต่ละ `div` มีไว้ทำอะไร
+
+ทำไมไม่ใช้ `section` กับ layer พื้นหลัง?
+
+เพราะ layer เหล่านี้ไม่ได้เป็นเนื้อหาของหน้า เป็นแค่ภาพประกอบ mood จึงใช้ `div` และซ่อนไว้ด้านหลังด้วย `z-index`
 
 ## ทำไมตรง Hero หลักควรใช้ section
 
@@ -170,4 +187,3 @@ Green = good status
 - อย่าใช้แดงเยอะ เพราะจะแย่ง orange
 - อย่าใช้ฟ้า/ม่วงเยอะ เพราะจะพาเว็บไปทาง cyberpunk
 - อย่าใช้สีเยอะเกิน 4-5 role หลัก
-

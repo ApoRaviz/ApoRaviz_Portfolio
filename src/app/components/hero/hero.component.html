@@ -1,21 +1,35 @@
 <!-- ใช้ section เพราะ Hero เป็นหมวดหลักของหน้าและเป็น target ของ nav link #home -->
 <section
   id="home"
-  class="relative isolate flex min-h-screen items-center overflow-hidden bg-dark pt-20"
+  class="relative isolate flex min-h-screen items-center overflow-hidden bg-dark pt-10"
   aria-labelledby="hero-title"
 >
-  <!-- ใช้ div เป็น base atmosphere layer ของ Hero เพราะเป็นภาพพื้นหลัง ไม่มีความหมายเชิงเนื้อหา -->
+  <!-- ใช้ div เป็น base world layer ของ Hero เพราะเป็นฉากหลังตกแต่ง ไม่ใช่เนื้อหาที่ต้องอ่าน -->
   <div
-    class="absolute inset-0 -z-30 bg-[radial-gradient(circle_at_18%_24%,rgba(255,107,0,.18),transparent_28%),radial-gradient(circle_at_82%_18%,rgba(127,29,29,.22),transparent_24%),linear-gradient(135deg,#070707_0%,#0a0a0a_48%,#120c08_100%)]"
+    class="absolute inset-0 -z-50 bg-[radial-gradient(circle_at_18%_18%,rgba(255,107,0,.25),transparent_30%),radial-gradient(circle_at_82%_20%,rgba(127,29,29,.18),transparent_28%),radial-gradient(circle_at_58%_78%,rgba(34,197,94,.08),transparent_30%),linear-gradient(135deg,#050505_0%,#0a0a0a_42%,#15100b_72%,#090604_100%)]"
+  ></div>
+
+  <!-- ใช้ div เป็น painted scenery layer เพื่อให้ hero ดูเหมือน game lobby/quest map โดยยังไม่ต้องใช้รูปภาพหนัก -->
+  <div
+    class="absolute inset-x-0 bottom-0 -z-40 h-[72%] bg-[linear-gradient(155deg,transparent_0_33%,rgba(255,107,0,.10)_33.4%_34%,transparent_34.4%_100%),linear-gradient(24deg,transparent_0_48%,rgba(255,255,255,.06)_48.4%_49%,transparent_49.4%_100%),linear-gradient(to_top,rgba(0,0,0,.92),transparent_70%)]"
+  ></div>
+
+  <!-- ใช้ div เป็น silhouette ของภูเขา/ป้อมในฉากหลัง เพราะเป็น visual mood ไม่มีความหมาย semantic -->
+  <div
+    class="absolute bottom-0 left-0 -z-30 h-56 w-full bg-[linear-gradient(138deg,transparent_0_13%,rgba(255,255,255,.05)_13.3%_13.9%,transparent_14.2%_100%),linear-gradient(18deg,rgba(0,0,0,.96)_0_45%,transparent_45.4%_100%),linear-gradient(342deg,transparent_0_58%,rgba(0,0,0,.9)_58.4%_100%)] opacity-80"
   ></div>
 
   <!-- ใช้ div เป็น grid layer ให้รู้สึกเหมือน game HUD / map overlay ไม่ใช่เนื้อหาที่ screen reader ต้องอ่าน -->
   <div
-    class="absolute inset-0 -z-20 bg-[linear-gradient(rgba(255,255,255,.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:linear-gradient(to_bottom,black,transparent_92%)]"
+    class="absolute inset-0 -z-20 bg-[linear-gradient(rgba(255,255,255,.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.04)_1px,transparent_1px)] bg-[size:48px_48px] opacity-80 [mask-image:radial-gradient(circle_at_50%_20%,black,transparent_76%)]"
   ></div>
 
+  <!-- ใช้ div เป็น rune/energy ring ตกแต่งเพื่อเชื่อม mood เกมกับ brand สีส้ม -->
+  <div class="absolute right-[-8rem] top-24 -z-10 h-80 w-80 rounded-full border border-primary/20 shadow-[0_0_80px_rgba(255,107,0,.18)] md:right-10 md:h-[28rem] md:w-[28rem]"></div>
+  <div class="absolute right-[-5rem] top-36 -z-10 h-56 w-56 rounded-full border border-red-400/15 md:right-24 md:h-80 md:w-80"></div>
+
   <!-- ใช้ div เป็น diagonal energy lines เพื่อเพิ่มอารมณ์ RPG/action โดยไม่ใช้ภาพหนัก -->
-  <div class="absolute left-[-10%] top-32 -z-10 h-px w-[70%] rotate-[-18deg] bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+  <div class="absolute left-[-10%] top-28 -z-10 h-px w-[70%] rotate-[-18deg] bg-gradient-to-r from-transparent via-primary/60 to-transparent"></div>
   <div class="absolute right-[-12%] top-64 -z-10 h-px w-[65%] rotate-[-18deg] bg-gradient-to-r from-transparent via-red-500/40 to-transparent"></div>
   <div class="absolute bottom-28 left-[8%] -z-10 h-px w-[45%] rotate-[-18deg] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
 
@@ -26,7 +40,7 @@
   <!-- ใช้ div เป็น layout wrapper เพื่อจำกัดความกว้างและจัด grid ของ hero content -->
   <div class="mx-auto grid w-full max-w-7xl items-center gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[1.15fr_.85fr]">
     <!-- ใช้ div เป็นกลุ่ม layout ของข้อความ hero ไม่ใช่ semantic ใหม่ เพราะ section มี heading หลักอยู่แล้ว -->
-    <div class="reveal rounded-2xl border border-white/10 bg-black/25 p-6 backdrop-blur-sm sm:p-8">
+    <div class="reveal rounded-2xl border border-primary/15 bg-black/35 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,.08),0_30px_90px_rgba(0,0,0,.45)] backdrop-blur-md sm:p-8">
       <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-4 py-2 font-mono text-sm text-green-300">
         <span class="h-2.5 w-2.5 rounded-full bg-green-400 shadow-[0_0_16px_rgba(74,222,128,.8)] animate-pulse"></span>
         Ready for the next quest
@@ -76,13 +90,13 @@
     </div>
 
     <!-- ใช้ aside เพราะเป็นส่วนประกอบข้างเคียงของ hero ที่เสริม brand/profile ไม่ใช่ content flow หลัก -->
-    <aside class="reveal rounded-2xl border border-white/10 bg-black/30 p-6 shadow-2xl backdrop-blur">
+    <aside class="reveal rounded-2xl border border-primary/15 bg-black/35 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,.08),0_30px_90px_rgba(0,0,0,.45)] backdrop-blur-md">
       <!-- ใช้ div เป็นกรอบภาพ/logo card เพื่อจัด visual composition -->
-      <div class="grid aspect-[5/2] place-items-center rounded-xl border border-primary/20 bg-dark-card p-8">
+      <div class="grid aspect-[5/2] place-items-center rounded-xl border border-primary/25 bg-[linear-gradient(135deg,rgba(255,107,0,.10),rgba(255,255,255,.03),rgba(0,0,0,.25))] p-8 shadow-[inset_0_0_40px_rgba(255,107,0,.08)]">
         <img class="h-auto w-full max-w-md" [src]="data.profile().logoUrl" alt="ApoRaviz brand logo" />
       </div>
       <!-- ใช้ div เป็น concept panel เพื่อเล่า character direction โดยยังไม่ต้องมีภาพจริง -->
-      <div class="mt-5 rounded-xl border border-red-500/20 bg-red-500/5 p-5">
+      <div class="mt-5 rounded-xl border border-red-500/20 bg-gradient-to-br from-red-500/10 via-black/20 to-primary/10 p-5">
         <p class="font-mono text-xs uppercase tracking-[0.2em] text-red-300">Companion Concept</p>
         <h2 class="mt-2 font-display text-2xl font-semibold text-white">Armored Axe Heroine</h2>
         <p class="mt-3 leading-7 text-neutral-400">
