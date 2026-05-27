@@ -2,9 +2,9 @@
 <section id="services" class="bg-[#0d0d0d] py-24" aria-labelledby="services-title">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <header class="reveal text-center">
-      <p class="font-mono text-sm uppercase tracking-[0.25em] text-primary">What I Build</p>
+      <p class="font-mono text-sm uppercase tracking-[0.25em] text-primary">Can Help With</p>
       <h2 id="services-title" class="mt-3 font-display text-4xl font-bold text-white sm:text-5xl">
-        <span class="text-primary">Services</span>
+        <span class="text-primary">Useful</span> Builds
       </h2>
       <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-primary shadow-glow"></div>
     </header>
@@ -14,7 +14,7 @@
       @for (service of data.services(); track service.title) {
         <!-- ใช้ article เพราะแต่ละ service เป็นรายการบริการที่มีหัวข้อและคำอธิบายครบในตัวเอง -->
         <article class="reveal rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition hover:border-primary/60 hover:shadow-glow">
-          <p class="text-4xl" aria-hidden="true">{{ service.icon }}</p>
+          <p class="inline-flex rounded-lg border border-primary/30 bg-primary/10 px-3 py-1 font-mono text-sm text-primary" aria-hidden="true">{{ service.icon }}</p>
           <h3 class="mt-5 font-display text-xl font-semibold text-white">{{ service.title }}</h3>
           <p class="mt-3 leading-7 text-neutral-400">{{ service.description }}</p>
         </article>

@@ -12,8 +12,8 @@ export default {
         'dark-border': '#1a1a1a',
       },
       fontFamily: {
-        display: ['Space Grotesk', 'sans-serif'],
-        body: ['DM Sans', 'sans-serif'],
+        display: ['Fredoka', 'Space Grotesk', 'sans-serif'],
+        body: ['Nunito', 'DM Sans', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       boxShadow: {

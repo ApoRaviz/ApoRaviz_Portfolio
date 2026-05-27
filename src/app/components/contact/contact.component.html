@@ -2,7 +2,7 @@
 <section id="contact" class="bg-dark py-24" aria-labelledby="contact-title">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <header class="reveal text-center">
-      <p class="font-mono text-sm uppercase tracking-[0.25em] text-primary">Let's Talk</p>
+      <p class="font-mono text-sm uppercase tracking-[0.25em] text-primary">Send A Message</p>
       <h2 id="contact-title" class="mt-3 font-display text-4xl font-bold text-white sm:text-5xl">
         <span class="text-primary">Contact</span> Me
       </h2>
@@ -79,7 +79,7 @@
       <aside class="reveal rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm sm:p-8">
         <h3 class="font-display text-2xl font-semibold text-white">Contact Channels</h3>
         <p class="mt-4 leading-8 text-neutral-400">
-          Have a web app, dashboard, AI automation, or LINE OA idea? Send a message and I will reply with a clear next step.
+          Have a web app, dashboard, bot, LINE OA, or automation idea? Send a message and we can talk through the next step.
         </p>
 
         <!-- ใช้ div เป็น vertical list wrapper ของ contact methods -->
@@ -87,7 +87,7 @@
           @for (item of data.contactInfo(); track item.label) {
             <!-- ใช้ a เพราะแต่ละ item เป็นช่องทางติดต่อที่นำไปยัง URL ได้ -->
             <a class="flex items-center gap-4 rounded-xl border border-dark-border bg-dark-card p-4 transition hover:border-primary/50 hover:text-primary" [href]="item.url">
-              <span class="grid h-10 w-10 place-items-center rounded-lg bg-primary/10 font-mono text-sm text-primary">{{ item.icon }}</span>
+              <span class="grid h-10 w-14 place-items-center rounded-lg bg-primary/10 font-mono text-xs text-primary">{{ item.icon }}</span>
               <span>
                 <span class="block text-sm text-neutral-500">{{ item.label }}</span>
                 <span class="font-medium text-neutral-200">{{ item.value }}</span>
@@ -102,7 +102,7 @@
   @if (sent()) {
     <!-- ใช้ div เป็น toast overlay เพราะเป็น feedback ชั่วคราว ไม่ใช่ section หลัก -->
     <div class="fixed right-5 top-24 z-[60] rounded-xl border border-green-500/30 bg-green-500/10 px-5 py-3 text-green-200 shadow-2xl backdrop-blur">
-      ✅ Message sent successfully!
+      Message sent successfully!
     </div>
   }
 </section>

@@ -2,9 +2,9 @@
 <section id="projects" class="bg-dark py-24" aria-labelledby="projects-title">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <header class="reveal text-center">
-      <p class="font-mono text-sm uppercase tracking-[0.25em] text-primary">Selected Work</p>
+      <p class="font-mono text-sm uppercase tracking-[0.25em] text-primary">Quest Log</p>
       <h2 id="projects-title" class="mt-3 font-display text-4xl font-bold text-white sm:text-5xl">
-        <span class="text-primary">Projects</span>
+        <span class="text-primary">Things</span> I Built
       </h2>
       <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-primary shadow-glow"></div>
     </header>
@@ -16,7 +16,11 @@
         <article class="reveal overflow-hidden rounded-xl border border-dark-border bg-dark-card transition duration-300 hover:scale-[1.02] hover:border-primary/70 hover:shadow-glow">
           <!-- ใช้ div เป็น image placeholder layer เพราะยังไม่มีรูปจริงของแต่ละโปรเจกต์ -->
           <div class="grid aspect-video place-items-center bg-gradient-to-br from-orange-900/40 via-dark-card to-dark">
-            <p class="px-6 text-center font-display text-2xl font-bold text-white">{{ project.title }}</p>
+            <!-- ใช้ div เป็น visual layer ภายในการ์ด เพื่อให้ project ดูเหมือน quest card โดยไม่ต้องมีภาพจริงทุกโปรเจกต์ -->
+            <div class="px-6 text-center">
+              <p class="font-mono text-xs uppercase tracking-[0.25em] text-primary">Quest {{ project.id }}</p>
+              <p class="mt-3 font-display text-2xl font-bold text-white">{{ project.title }}</p>
+            </div>
           </div>
 
           <div class="p-6">

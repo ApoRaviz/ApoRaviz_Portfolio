@@ -19,11 +19,11 @@ export class PortfolioDataService {
   // navLinks ใช้สร้างเมนูและใช้เป็น source เดียวกันสำหรับ scroll spy เพื่อลดข้อมูลซ้ำ
   readonly navLinks = signal<NavLink[]>([
     { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'services', label: 'Services' },
-    { id: 'experience', label: 'Experience' },
+    { id: 'about', label: 'Profile' },
+    { id: 'skills', label: 'Loadout' },
+    { id: 'projects', label: 'Quests' },
+    { id: 'services', label: 'Help' },
+    { id: 'experience', label: 'Journey' },
     { id: 'contact', label: 'Contact' },
   ]);
 
@@ -32,47 +32,48 @@ export class PortfolioDataService {
     name: 'Tanonchai Promsiri',
     initials: 'AP',
     logoUrl: 'aporaviz-logo.png',
-    role: 'Full-Stack Developer & AI Automation Developer',
-    email: 'your@email.com',
+    role: 'Gamer-minded developer who builds useful web tools',
+    email: 'Tanonchai.pr@hotmail.com',
+    phone: '081-436-8601',
     line: '@yourline',
     github: 'github.com/yourname',
     facebook: 'fb.com/yourname',
   });
 
   // roles ใช้กับ typewriter effect ใน Hero แยกออกมาเพื่อเพิ่ม/ลด role ได้โดยไม่แตะ component logic
-  readonly roles = signal(['Full-Stack Developer', 'AI Automation Developer', 'Angular Specialist']);
+  readonly roles = signal(['Web App Builder', 'AI Automation Learner', 'Game-Loving Programmer']);
 
   // features คือการ์ดจุดเด่นใน About section เก็บเป็น data เพื่อให้ template ใช้ @for render ซ้ำได้
   readonly features = signal<FeatureCard[]>([
     {
-      icon: '⚡',
-      title: 'Fast Delivery',
-      desc: 'Ship production-ready code quickly with clear scope and steady communication.',
+      icon: 'FUN',
+      title: 'Easy to Work With',
+      desc: 'I like keeping work simple, friendly, and clear so people around me feel comfortable.',
     },
     {
-      icon: '🧹',
-      title: 'Clean Code',
-      desc: 'Readable, maintainable, and documented implementation that future teams can extend.',
+      icon: 'CODE',
+      title: 'Readable Code',
+      desc: 'I try to write code that I can come back to later without fighting my past self.',
     },
     {
-      icon: '📈',
-      title: 'Scalable System',
-      desc: 'Architecture designed to grow from a small workflow into a business platform.',
+      icon: 'CARE',
+      title: 'Team Mind',
+      desc: 'I care about friends, teammates, and the people who have to use what I build.',
     },
     {
-      icon: '🎯',
-      title: 'Business-Focused',
-      desc: 'Practical solutions that reduce manual work, improve visibility, and support growth.',
+      icon: 'PLAY',
+      title: 'Game Energy',
+      desc: 'Games taught me to enjoy quests, learn patterns, and keep trying after a failed round.',
     },
   ]);
 
   // Skills ใช้ badge เท่านั้น ไม่มี progress bar หรือค่าพลังตามที่ผู้ใช้ต้องการ
   // การเก็บเป็นกลุ่มช่วยให้เพิ่ม skill category ใหม่ได้ง่าย เช่น Mobile, Cloud, DevOps
   readonly skillGroups = signal<SkillGroup[]>([
-    { category: 'Frontend', skills: ['React', 'Next.js', 'Angular', 'TypeScript', 'Tailwind CSS'] },
-    { category: 'Backend', skills: ['Node.js', 'Express', 'NestJS', 'REST API', 'Supabase', 'PostgreSQL'] },
-    { category: 'AI / Automation', skills: ['OpenAI API', 'Claude API', 'n8n', 'Make', 'LINE Bot'] },
-    { category: 'Tools', skills: ['GitHub', 'Vercel', 'Figma', 'Docker', 'Postman'] },
+    { category: 'Frontend', skills: ['HTML', 'CSS', 'JavaScript', 'Angular', 'Ionic', 'Tailwind CSS'] },
+    { category: 'Backend', skills: ['C#', '.NET Core', 'MVC', 'Node.js', 'REST API', 'ASP.NET'] },
+    { category: 'Database / Reports', skills: ['SQL Server', 'MongoDB', 'MySQL', 'SSRS', 'Crystal Report'] },
+    { category: 'Tools / Workflow', skills: ['GitHub', 'GitHub Actions', 'Jira', 'Figma', 'IIS Server', 'PrimeNG'] },
   ]);
 
   // projects เป็นข้อมูลของ project cards ทั้งหมด แยกจาก HTML เพื่อให้แก้ content โดยไม่แก้ layout
@@ -135,72 +136,77 @@ export class PortfolioDataService {
 
   // services ใช้ render service cards ในหน้า Services แต่ละ item มี icon/title/description ครบในตัว
   readonly services = signal<Service[]>([
-    { icon: '🌐', title: 'Website / Landing Page', description: 'Fast, SEO-optimized, conversion-focused sites.' },
-    { icon: '💻', title: 'Web Application', description: 'Full-featured apps with auth, dashboards, and database workflows.' },
-    { icon: '📊', title: 'Dashboard / Admin Panel', description: 'Operational views for data, reporting, and management.' },
-    { icon: '🤖', title: 'AI Chatbot', description: 'GPT-powered bots for customer service and internal support.' },
-    { icon: '💬', title: 'LINE OA Integration', description: 'Official LINE account automation, webhook, and chatbot integration.' },
-    { icon: '⚙️', title: 'Automation Workflow', description: 'n8n and Make flows that remove repetitive business tasks.' },
-    { icon: '🔌', title: 'API Integration', description: 'Connect tools and services through REST APIs, webhooks, and background jobs.' },
+    { icon: 'WEB', title: 'Website / Landing Page', description: 'Simple pages that explain an idea clearly and load fast.' },
+    { icon: 'APP', title: 'Web Application', description: 'Useful app screens with forms, data, auth, and everyday workflows.' },
+    { icon: 'DASH', title: 'Dashboard / Admin Panel', description: 'Small control rooms for checking data, tasks, and daily operations.' },
+    { icon: 'BOT', title: 'AI Chatbot', description: 'Bots that help answer, draft, summarize, or guide simple tasks.' },
+    { icon: 'LINE', title: 'LINE OA Integration', description: 'LINE webhook, chatbot flow, and automation for Thai customer channels.' },
+    { icon: 'AUTO', title: 'Automation Workflow', description: 'n8n and Make flows that remove repetitive steps from the day.' },
+    { icon: 'API', title: 'API Integration', description: 'Connect tools together with REST APIs, webhooks, and background jobs.' },
   ]);
 
   // experiences ใช้ render timeline ถ้าเพิ่มประสบการณ์ใหม่ก็เติม object ใน array นี้ได้เลย
   readonly experiences = signal<Experience[]>([
     {
-      period: '2024–Present',
-      role: 'Freelance Full-Stack Developer',
-      company: 'Independent',
-      description: 'Build production web apps, dashboards, AI tools, and automation systems for business use cases.',
+      period: 'Nov 2023–Present',
+      role: 'Senior Programmer',
+      company: 'Unbox.IT',
+      description:
+        'Working with WMS interfaces, SFTP/API data exchange, Keycloak authentication, WMS platform improvements, and CI/CD pipelines with GitHub Actions and self-hosted runners.',
     },
     {
-      period: '2023–2024',
-      role: 'AI Automation Developer',
-      company: 'Client Projects',
-      description: 'Designed AI-assisted workflows, chatbots, and integrations that reduced manual operations.',
+      period: 'Jun 2023–Nov 2023',
+      role: 'Systems Analyst / Senior Programmer',
+      company: 'Techsoft Holding',
+      description:
+        'Collected user requirements, prepared business and SIT documents, assessed and designed systems, supported UAT, and helped junior developers troubleshoot issues.',
     },
     {
-      period: '2022–2023',
-      role: 'Web Application Developer',
-      company: 'Product Teams',
-      description: 'Developed frontend and backend features for internal systems and customer-facing platforms.',
+      period: '2019–2023',
+      role: 'Senior Programmer',
+      company: 'Yamato Unyu (Thailand) Co., Ltd.',
+      description:
+        'Built and maintained TMS, WMS, back office, management dashboard, reminder, and customer survey web applications for transport and warehouse workflows.',
     },
     {
-      period: '2021–2022',
-      role: 'LINE OA & Chatbot Developer',
-      company: 'Automation Projects',
-      description: 'Implemented LINE OA messaging, webhooks, and chatbot journeys for customer support.',
+      period: '2015–2019',
+      role: 'Programmer',
+      company: 'Panjawattana Plastic Public Company Limited',
+      description:
+        'Supported ERP on Syteline, created warehouse handheld scanning tools with ASP.NET and C#, built Crystal/SSRS reports, and worked with SQL queries and stored procedures.',
     },
   ]);
 
   // testimonials เก็บ social proof ของเว็บ แยก content ออกจาก presentation เหมือน section อื่น ๆ
   readonly testimonials = signal<Testimonial[]>([
     {
-      name: 'Thai SME',
-      position: 'Business Owner',
-      company: 'Retail Operations',
-      review: 'Tanonchai translated our messy manual process into a clean dashboard and automation flow.',
-      avatar: 'TS',
+      name: 'Team Friend',
+      position: 'Someone I built beside',
+      company: 'Shared Quest',
+      review: 'He is easy to talk to, cares about the people around him, and keeps trying until the tool feels useful.',
+      avatar: 'TF',
     },
     {
-      name: 'Tech Startup',
-      position: 'Product Lead',
-      company: 'SaaS Platform',
-      review: 'He understood both product speed and code quality, which made the project move smoothly.',
-      avatar: 'TU',
+      name: 'Project Teammate',
+      position: 'Workflow Partner',
+      company: 'Small Build',
+      review: 'He likes turning confusing steps into something clearer, and he asks questions instead of pretending.',
+      avatar: 'PT',
     },
     {
-      name: 'Law Firm',
-      position: 'Managing Partner',
-      company: 'Legal Services',
-      review: 'The management system gave our team better visibility and saved many hours every week.',
-      avatar: 'LF',
+      name: 'Future Client',
+      position: 'Next Quest Giver',
+      company: 'Open Slot',
+      review: 'This space is ready for a real note from someone I help next.',
+      avatar: 'NQ',
     },
   ]);
 
   // contactInfo ใช้ซ้ำทั้ง Contact section และ Footer เพื่อให้ช่องทางติดต่อไม่ซ้ำหลายที่
   readonly contactInfo = signal<ContactInfo[]>([
-    { icon: '✉', label: 'Email', value: 'your@email.com', url: 'mailto:your@email.com' },
-    { icon: '💬', label: 'LINE', value: '@yourline', url: '#' },
+    { icon: 'MAIL', label: 'Email', value: 'Tanonchai.pr@hotmail.com', url: 'mailto:Tanonchai.pr@hotmail.com' },
+    { icon: 'CALL', label: 'Phone', value: '081-436-8601', url: 'tel:0814368601' },
+    { icon: 'LINE', label: 'LINE', value: '@yourline', url: '#' },
     { icon: 'GH', label: 'GitHub', value: 'github.com/yourname', url: '#' },
     { icon: 'FB', label: 'Facebook', value: 'fb.com/yourname', url: '#' },
   ]);

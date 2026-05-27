@@ -1,9 +1,10 @@
 <!-- ใช้ nav เพราะ block นี้มีหน้าที่นำทางหลักของเว็บไซต์โดยตรง -->
 <nav
-  class="sticky top-0 z-50 border-b transition-all duration-300"
+  class="sticky top-0 z-50 transition-all duration-300"
+  [class.border-b]="theme.scrolled()"
   [class.border-dark-border]="theme.scrolled()"
   [class.border-transparent]="!theme.scrolled()"
-  [class.bg-dark/85]="theme.scrolled()"
+  [class.bg-dark/90]="theme.scrolled()"
   [class.backdrop-blur-xl]="theme.scrolled()"
 >
   <!-- ใช้ div เป็น layout wrapper เพื่อจำกัดความกว้างและจัด flex; div ไม่มีความหมาย semantic เพิ่มเติม -->
@@ -11,16 +12,12 @@
     <!-- ใช้ button เพราะคลิกแล้วสั่ง scroll ภายในหน้า ไม่ใช่การเปิด URL ใหม่ -->
     <button
       type="button"
-      class="flex items-center gap-3"
+      class="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.02] px-3 py-2 transition hover:border-primary/50 hover:bg-primary/10"
       aria-label="Scroll to home section"
       (click)="theme.scrollToSection('home')"
     >
       <!-- ใช้ img เพื่อแสดงโลโก้จริงของแบรนด์ และ alt ช่วยให้ screen reader เข้าใจภาพ -->
       <img class="h-10 w-auto" [src]="data.profile().logoUrl" alt="ApoRaviz logo" />
-      <!-- ใช้ span สำหรับข้อความตกแต่งในปุ่ม ไม่จำเป็นต้องเป็น heading เพราะไม่ใช่หัวข้อเนื้อหา -->
-      <span class="hidden font-display text-sm font-semibold tracking-wide text-white sm:inline">
-        {{ data.profile().name }}
-      </span>
     </button>
 
     <!-- ใช้ div เป็นกลุ่ม layout ของ links บน desktop; ความหมาย navigation อยู่ที่ parent nav แล้ว -->
@@ -29,8 +26,9 @@
         <!-- ใช้ button เพราะทำ smooth scroll และอัปเดต UI state ในหน้าเดียว -->
         <button
           type="button"
-          class="relative font-mono text-sm text-neutral-300 transition hover:text-primary"
+          class="relative rounded-lg px-2 py-1 font-mono text-sm text-neutral-300 transition hover:bg-primary/10 hover:text-primary"
           [class.text-primary]="theme.activeSection() === link.id"
+          [class.bg-primary/10]="theme.activeSection() === link.id"
           (click)="theme.scrollToSection(link.id)"
         >
           {{ link.label }}
@@ -45,7 +43,7 @@
     <!-- ใช้ button สำหรับ hamburger เพราะเป็น action เปิด/ปิด menu ไม่ใช่ navigation link -->
     <button
       type="button"
-      class="grid h-11 w-11 place-items-center rounded-lg border border-dark-border text-white md:hidden"
+      class="grid h-11 w-11 place-items-center rounded-lg border border-dark-border text-white transition hover:border-primary/50 hover:text-primary md:hidden"
       aria-label="Toggle navigation menu"
       (click)="theme.toggleMobileMenu()"
     >

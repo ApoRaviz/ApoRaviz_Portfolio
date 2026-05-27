@@ -72,9 +72,9 @@
 - ชื่อ: `Tanonchai Promsiri`
 - โลโก้: `public/aporaviz-logo.png`
 - Role หลัก:
-  - Full-Stack Developer
-  - AI Automation Developer
-  - Angular Specialist
+  - Web App Builder
+  - AI Automation Learner
+  - Game-Loving Programmer
 - Projects mock data 6 รายการ
 - Services 7 รายการ
 - Experience timeline 4 รายการ
@@ -151,6 +151,47 @@
 - Remote คือ `origin/main`
 - โครง portfolio พร้อมต่อยอดแล้ว
 - มีเอกสาร progress และ teach เพิ่มใน `docs/`
+- เพิ่ม `docs/design-direction.md` สำหรับ direction ใหม่ของเว็บ
+- เริ่ม redesign เว็บไปทาง `Gamer-minded developer profile`
+- เอาชื่อออกจาก navbar ให้เหลือ logo เป็น brand mark
+- เปลี่ยน wording หลักให้เป็นกันเองขึ้น และลดคำที่ดูโอ้อวด เช่น pro/professional/expert
+- เปลี่ยน concept ของ section:
+  - Skills → Loadout
+  - Projects → Quest Log
+  - Services → Useful Builds
+  - Experience → Journey
+  - Testimonials → Party Notes
+- เพิ่มคำอธิบายรอบ redesign ใน `docs/teach.md`
+- ดึงข้อมูลจาก resume มาใส่ใน `Build Journey`
+  - Unbox.IT
+  - Techsoft Holding
+  - Yamato Unyu (Thailand) Co., Ltd.
+  - Panjawattana Plastic Public Company Limited
+- อัปเดต skill groups ให้ตรงกับ resume มากขึ้น เช่น HTML, CSS, JavaScript, Angular, Ionic, C#, .NET Core, SQL Server, SSRS, Crystal Report
+- ปรับ hero background เป็น RPG/HUD style ด้วย grid, radial atmosphere, diagonal energy lines, และ corner frame
+
+## อัปเดตเอกสารสอน
+
+เราแยก `docs/teach.md` จากไฟล์ยาวไฟล์เดียวให้เป็นสารบัญหลัก และสร้าง folder:
+
+```text
+docs/teach/
+```
+
+ไฟล์ย่อยที่เพิ่ม:
+
+- `01-angular-reactive-and-signals.md`: reactive, signal, set, update, computed, effect
+- `02-services-and-dependency-injection.md`: service, inject, dependency injection, browser API guard
+- `03-angular-app-config-and-ssr.md`: app config, router, hydration, SSR, prerender
+- `04-redesign-rpg-profile.md`: เหตุผลของ redesign แนว gamer/RPG profile
+- `05-resume-data-and-hero-background.md`: resume data, Hero background, section/div, color palette
+
+เหตุผลที่แยก:
+
+- อ่านง่ายกว่าไฟล์เดียวที่ยาวมาก
+- กลับมาทบทวนเฉพาะเรื่องได้เร็วขึ้น
+- เพิ่มบทเรียนใหม่ในอนาคตได้เป็นหมวด ๆ
+- `docs/teach.md` กลายเป็นหน้าสารบัญสำหรับเริ่มอ่าน
 
 ## สิ่งที่ควรทำต่อ
 

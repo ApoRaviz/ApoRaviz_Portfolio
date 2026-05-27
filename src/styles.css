@@ -8,8 +8,8 @@
   --color-dark: #0a0a0a;
   --color-dark-card: #111111;
   --color-dark-border: #1a1a1a;
-  --font-display: "Space Grotesk", sans-serif;
-  --font-body: "DM Sans", sans-serif;
+  --font-display: "Fredoka", "Space Grotesk", sans-serif;
+  --font-body: "Nunito", "DM Sans", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
   --shadow-glow: 0 0 20px rgba(255, 107, 0, 0.4);
   --shadow-glow-lg: 0 0 40px rgba(255, 107, 0, 0.3);
@@ -24,7 +24,23 @@ body {
   margin: 0;
   background: #0a0a0a;
   color: #e5e5e5;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Nunito", "DM Sans", sans-serif;
+}
+
+/* ลด motion สำหรับผู้ใช้ที่ตั้งค่า prefers-reduced-motion เพื่อให้เว็บอ่านสบายและไม่เวียนหัว */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* class reveal เป็นระบบ animation กลาง ทุก section ใช้ซ้ำได้ผ่าน IntersectionObserver */
