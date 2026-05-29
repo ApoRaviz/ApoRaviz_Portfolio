@@ -9,6 +9,7 @@
 3. [Angular App Config และ SSR](teach/03-angular-app-config-and-ssr.md)
 4. [Redesign แนว RPG Profile](teach/04-redesign-rpg-profile.md)
 5. [Resume Data, Hero Background และ Color](teach/05-resume-data-and-hero-background.md)
+6. [Browser APIs: IntersectionObserver, SSR และ Test](teach/06-browser-apis-intersection-observer-ssr-test.md)
 
 ## แต่ละไฟล์มีอะไรบ้าง
 
@@ -69,6 +70,18 @@
 - ทำไม background/visual layer ใช้ `div`
 - ดำส้มควรเติมสีอะไรให้เว็บดูมีมิติขึ้น
 
+### 6. Browser APIs: IntersectionObserver, SSR และ Test
+
+อ่านเรื่อง:
+
+- Browser API คืออะไร
+- `IntersectionObserver` ใช้ทำอะไร
+- `entry`, `threshold`, `rootMargin`, `observe`, `disconnect`, `unobserve`
+- ตัวอย่างจาก `observeSections()` และ `observeReveals()`
+- SSR/prerender คืออะไร
+- test environment เช่น jsdom คืออะไร
+- ทำไมต้อง guard ด้วย `isPlatformBrowser()` และ `typeof IntersectionObserver`
+
 ## จำสั้น ๆ
 
 - `signal`: กล่อง state ที่ UI ตามทันเมื่อค่าเปลี่ยน
@@ -81,4 +94,4 @@
 - `isPlatformBrowser`: กัน SSR พังจาก browser API
 - `hydration`: Angular รับช่วง HTML ที่ server สร้างไว้
 - `prerender`: สร้าง HTML static ตอน build
-
+- `IntersectionObserver`: เฝ้าว่า element เข้า viewport หรือยัง

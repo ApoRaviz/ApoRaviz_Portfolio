@@ -187,6 +187,7 @@ docs/teach/
 - `03-angular-app-config-and-ssr.md`: app config, router, hydration, SSR, prerender
 - `04-redesign-rpg-profile.md`: เหตุผลของ redesign แนว gamer/RPG profile
 - `05-resume-data-and-hero-background.md`: resume data, Hero background, section/div, color palette
+- `06-browser-apis-intersection-observer-ssr-test.md`: IntersectionObserver, SSR, test environment และ browser API guard สำหรับมือใหม่
 
 เหตุผลที่แยก:
 
