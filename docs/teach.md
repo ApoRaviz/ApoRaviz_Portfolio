@@ -10,6 +10,7 @@
 4. [Redesign แนว RPG Profile](teach/04-redesign-rpg-profile.md)
 5. [Resume Data, Hero Background และ Color](teach/05-resume-data-and-hero-background.md)
 6. [Browser APIs: IntersectionObserver, SSR และ Test](teach/06-browser-apis-intersection-observer-ssr-test.md)
+7. [CI/CD ด้วย GitHub Actions](teach/07-cicd-github-actions.md)
 
 ## แต่ละไฟล์มีอะไรบ้าง
 
@@ -82,6 +83,18 @@
 - test environment เช่น jsdom คืออะไร
 - ทำไมต้อง guard ด้วย `isPlatformBrowser()` และ `typeof IntersectionObserver`
 
+### 7. CI/CD ด้วย GitHub Actions
+
+อ่านเรื่อง:
+
+- CI/CD คืออะไร
+- GitHub Actions workflow คืออะไร
+- `ci.yml` ตรวจ test/build ยังไง
+- `deploy-pages.yml` deploy ไป GitHub Pages ยังไง
+- `npm ci` ต่างจาก `npm install` ยังไง
+- ทำไม GitHub Pages ต้องใช้ `base-href`
+- ต้องตั้งค่าอะไรใน GitHub หลัง push workflow
+
 ## จำสั้น ๆ
 
 - `signal`: กล่อง state ที่ UI ตามทันเมื่อค่าเปลี่ยน
@@ -95,3 +108,4 @@
 - `hydration`: Angular รับช่วง HTML ที่ server สร้างไว้
 - `prerender`: สร้าง HTML static ตอน build
 - `IntersectionObserver`: เฝ้าว่า element เข้า viewport หรือยัง
+- `CI/CD`: ตรวจและ deploy code อัตโนมัติ

@@ -16,6 +16,7 @@
 3. [Verification Commands](commands/03-verification.md)
 4. [Git Commands](commands/04-git.md)
 5. [Utility และ Troubleshooting Commands](commands/05-utility-and-troubleshooting.md)
+6. [CI/CD Commands](commands/06-cicd-commands.md)
 
 ## หมายเหตุ
 
@@ -28,4 +29,3 @@ PATH=/Users/aporaviz/.nvm/versions/node/v24.16.0/bin:$PATH npm run build
 ```
 
 เหตุผลคือป้องกันไม่ให้เครื่องเผลอใช้ Node version อื่นตอน build/test
-

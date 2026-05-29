@@ -152,6 +152,8 @@
 - โครง portfolio พร้อมต่อยอดแล้ว
 - มีเอกสาร progress และ teach เพิ่มใน `docs/`
 - เพิ่ม `docs/commands.md` และ `docs/commands/` สำหรับบันทึกคำสั่งที่ใช้ในโปรเจกต์แบบแยกหมวด
+- เพิ่ม GitHub Actions CI/CD workflows สำหรับ test/build และ deploy ไป GitHub Pages
+- เพิ่ม `public/.nojekyll` เพื่อให้ GitHub Pages เสิร์ฟ static output โดยไม่ผ่าน Jekyll
 - เพิ่ม `docs/design-direction.md` สำหรับ direction ใหม่ของเว็บ
 - เริ่ม redesign เว็บไปทาง `Gamer-minded developer profile`
 - เอาชื่อออกจาก navbar ให้เหลือ logo เป็น brand mark
@@ -188,6 +190,7 @@ docs/teach/
 - `04-redesign-rpg-profile.md`: เหตุผลของ redesign แนว gamer/RPG profile
 - `05-resume-data-and-hero-background.md`: resume data, Hero background, section/div, color palette
 - `06-browser-apis-intersection-observer-ssr-test.md`: IntersectionObserver, SSR, test environment และ browser API guard สำหรับมือใหม่
+- `07-cicd-github-actions.md`: CI/CD, GitHub Actions, npm ci, GitHub Pages deploy และสิ่งที่ต้องตั้งค่าใน GitHub
 
 เหตุผลที่แยก:
 
@@ -212,6 +215,7 @@ docs/commands/
 - `03-verification.md`: test, build, diff check, curl check
 - `04-git.md`: init, remote, fetch, merge, add, commit, push, log
 - `05-utility-and-troubleshooting.md`: rg, find, sed, tail, wc, lsof, kill, mkdir
+- `06-cicd-commands.md`: npm ci, test/build แบบ CI, build สำหรับ GitHub Pages, GitHub CLI workflow commands
 
 เหตุผลที่แยก:
 
