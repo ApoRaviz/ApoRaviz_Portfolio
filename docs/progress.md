@@ -151,6 +151,7 @@
 - Remote คือ `origin/main`
 - โครง portfolio พร้อมต่อยอดแล้ว
 - มีเอกสาร progress และ teach เพิ่มใน `docs/`
+- เพิ่ม `docs/commands.md` และ `docs/commands/` สำหรับบันทึกคำสั่งที่ใช้ในโปรเจกต์แบบแยกหมวด
 - เพิ่ม `docs/design-direction.md` สำหรับ direction ใหม่ของเว็บ
 - เริ่ม redesign เว็บไปทาง `Gamer-minded developer profile`
 - เอาชื่อออกจาก navbar ให้เหลือ logo เป็น brand mark
@@ -193,6 +194,30 @@ docs/teach/
 - กลับมาทบทวนเฉพาะเรื่องได้เร็วขึ้น
 - เพิ่มบทเรียนใหม่ในอนาคตได้เป็นหมวด ๆ
 - `docs/teach.md` กลายเป็นหน้าสารบัญสำหรับเริ่มอ่าน
+
+## อัปเดตเอกสารคำสั่ง
+
+เราเพิ่มชุดเอกสารคำสั่งไว้ที่:
+
+```text
+docs/commands.md
+docs/commands/
+```
+
+ไฟล์ย่อยที่เพิ่ม:
+
+- `01-project-setup.md`: Node 24, npm, Angular CLI, Tailwind install
+- `02-development-server.md`: npm start, ng serve, port 4200/4201, SSR server
+- `03-verification.md`: test, build, diff check, curl check
+- `04-git.md`: init, remote, fetch, merge, add, commit, push, log
+- `05-utility-and-troubleshooting.md`: rg, find, sed, tail, wc, lsof, kill, mkdir
+
+เหตุผลที่แยก:
+
+- ไม่ให้ `progress.md` ยาวเกินไป
+- กลับมาดูคำสั่งที่เคยใช้ได้ง่าย
+- มีคำอธิบายว่าแต่ละคำสั่งทำอะไร
+- ลดการจดคำสั่งซ้ำหลายรอบ
 
 ## สิ่งที่ควรทำต่อ
 
