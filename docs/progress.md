@@ -226,6 +226,38 @@ docs/commands/
 
 ## สิ่งที่ควรทำต่อ
 
+## Note สำหรับมาต่อพรุ่งนี้
+
+สถานะล่าสุดของวันนี้:
+
+- Portfolio หลักพร้อมใช้งานและ deploy ผ่าน GitHub Pages ได้แล้ว
+- ตั้งค่า GitHub Pages เป็น `Source: GitHub Actions` แล้ว
+- ไม่ต้องใช้ self-hosted action runner เพราะ workflow ใช้ GitHub-hosted runner ผ่าน `runs-on: ubuntu-latest`
+- เมื่อ push เข้า `main` ระบบจะรัน workflow อัตโนมัติ
+  - `CI`: test/build
+  - `Deploy GitHub Pages`: build ด้วย `--base-href /ApoRaviz_Portfolio/` แล้ว deploy
+- เอกสาร CI/CD อยู่ที่ `docs/teach/07-cicd-github-actions.md`
+- คำสั่ง CI/CD อยู่ที่ `docs/commands/06-cicd-commands.md`
+- เอกสาร IntersectionObserver/SSR/test อยู่ที่ `docs/teach/06-browser-apis-intersection-observer-ssr-test.md`
+
+สิ่งที่ควรกลับมาเช็กต่อ:
+
+- เปิดหน้า GitHub Actions ดูว่า workflow `CI` และ `Deploy GitHub Pages` ผ่านจริงหลัง push ล่าสุด
+- เปิด URL GitHub Pages ประมาณ `https://aporaviz.github.io/ApoRaviz_Portfolio/`
+- อ่านทบทวน `IntersectionObserver`, `SSR`, `test environment`, `CI/CD`
+- เริ่มใส่ข้อมูลจริงใน `src/app/services/portfolio-data.service.ts`
+
+ความเข้าใจสำคัญของวันนี้:
+
+```text
+push main
+→ GitHub-hosted runner เปิดเครื่องชั่วคราว
+→ npm ci
+→ test/build
+→ deploy dist/portfolio/browser
+→ GitHub Pages อัปเดตเว็บ
+```
+
 1. แก้ข้อมูล placeholder จริง
 
 - Email
