@@ -36,10 +36,20 @@
             <!-- ใช้ div เป็น action row wrapper เพื่อจัดปุ่มสองแบบให้อยู่บรรทัดเดียวกัน -->
             <div class="mt-6 flex gap-3">
               <!-- ใช้ a เพราะ Live Demo/GitHub เป็น navigation ไป URL ของโปรเจกต์ -->
-              <a class="rounded-lg border border-primary px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary/10" [href]="project.liveUrl">
+              <a
+                class="rounded-lg border border-primary px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary/10"
+                [href]="project.liveUrl"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Live Demo
               </a>
-              <a class="rounded-lg px-4 py-2 text-sm font-semibold text-neutral-300 transition hover:text-primary" [href]="project.githubUrl">
+              <a
+                class="rounded-lg px-4 py-2 text-sm font-semibold text-neutral-300 transition hover:text-primary"
+                [href]="project.githubUrl"
+                target="_blank"
+                rel="noreferrer"
+              >
                 GitHub
               </a>
             </div>

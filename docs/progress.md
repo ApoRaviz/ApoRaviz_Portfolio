@@ -173,6 +173,8 @@
 - อัปเดต skill groups ให้ตรงกับ resume มากขึ้น เช่น HTML, CSS, JavaScript, Angular, Ionic, C#, .NET Core, SQL Server, SSRS, Crystal Report
 - ปรับ hero background เป็น RPG/HUD style ด้วย grid, radial atmosphere, diagonal energy lines, และ corner frame
 - ปรับ navbar กับ hero ให้เข้ากันมากขึ้น โดยให้ navbar เป็น glass menu สีดำส้ม และ hero เป็นฉาก game lobby / quest map ที่มี scenery layer, silhouette, rune ring, และ HUD grid
+- เพิ่ม `MooPing Loyalty` เป็น Quest 1 ใน Project cards โดยเชื่อมไปยัง demo `https://aporaviz.github.io/mooping/` และ GitHub `https://github.com/ApoRaviz/mooping`
+- อัปเดตไฟล์กลาง `/Users/aporaviz/ApoRaviz/_docs/NEW_PROJECT_GUIDE.md` ให้ชัดขึ้นว่าโปรเจกต์ใหม่ต้องอ่านจาก `ApoRaviz_Portfolio`, ทำ repo แยก, เขียน `docs/teach/` เป็น learning path และเชื่อมกลับเข้า Portfolio ผ่าน `PortfolioDataService`
 
 ## อัปเดตเอกสารสอน
 

@@ -80,6 +80,16 @@ export class PortfolioDataService {
   readonly projects = signal<Project[]>([
     {
       id: 1,
+      title: 'MooPing Loyalty',
+      description:
+        'In-progress loyalty web app for a pork skewer shop, with POS confirmation, saved rewards, iPad display, and LINE OA mock flow.',
+      tech: ['Angular 21', 'Signals', 'GitHub Pages'],
+      liveUrl: 'https://aporaviz.github.io/mooping/',
+      githubUrl: 'https://github.com/ApoRaviz/mooping',
+      featured: true,
+    },
+    {
+      id: 2,
       title: 'AI LINE OA Chatbot',
       description: 'Customer service chatbot that combines LINE messaging, AI responses, and backend automation.',
       tech: ['LINE Bot', 'OpenAI', 'Node.js'],
@@ -88,7 +98,7 @@ export class PortfolioDataService {
       featured: true,
     },
     {
-      id: 2,
+      id: 3,
       title: 'Law Firm Management System',
       description: 'Case, client, and document workflow system for legal operations.',
       tech: ['Next.js', 'PostgreSQL', 'Supabase'],
@@ -97,7 +107,7 @@ export class PortfolioDataService {
       featured: true,
     },
     {
-      id: 3,
+      id: 4,
       title: 'E-commerce Dashboard',
       description: 'Analytics dashboard for sales, inventory, orders, and performance reporting.',
       tech: ['Angular', 'Chart.js', 'REST API'],
@@ -106,7 +116,7 @@ export class PortfolioDataService {
       featured: false,
     },
     {
-      id: 4,
+      id: 5,
       title: 'CRM System',
       description: 'Customer pipeline, task tracking, and internal collaboration system.',
       tech: ['React', 'NestJS', 'PostgreSQL'],
@@ -115,7 +125,7 @@ export class PortfolioDataService {
       featured: false,
     },
     {
-      id: 5,
+      id: 6,
       title: 'AI Content Generator',
       description: 'Marketing content tool that helps teams draft posts, captions, and campaign ideas.',
       tech: ['OpenAI API', 'Next.js', 'Tailwind CSS'],
@@ -124,7 +134,7 @@ export class PortfolioDataService {
       featured: false,
     },
     {
-      id: 6,
+      id: 7,
       title: 'Portfolio Website',
       description: 'Fast Angular portfolio with SSR, modern UI, and editable content architecture.',
       tech: ['Angular', 'Tailwind CSS', 'Vercel'],
