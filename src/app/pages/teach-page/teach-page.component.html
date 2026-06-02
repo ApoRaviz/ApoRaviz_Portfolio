@@ -1,24 +1,32 @@
+<!-- ใช้ section เพราะทั้งหน้า Teach เป็นเนื้อหาหลักหนึ่งหมวด และ aria-labelledby ผูกกับ h1 เพื่อให้ screen reader รู้ชื่อ section -->
 <section class="relative isolate overflow-hidden bg-dark text-neutral-200" aria-labelledby="teach-title">
+  <!-- ใช้ div เป็น background atmosphere เพราะเป็น visual layer ตกแต่ง ไม่มีความหมายเชิงเนื้อหา -->
   <div
-    class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_12%,rgba(255,107,0,.20),transparent_30%),radial-gradient(circle_at_82%_8%,rgba(34,197,94,.10),transparent_26%),linear-gradient(180deg,#0a0a0a_0%,#100b08_46%,#0a0a0a_100%)]"
+    class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_12%,rgba(255,107,0,.20),transparent_30%),radial-gradient(circle_at_82%_8%,rgba(185,28,28,.12),transparent_26%),linear-gradient(180deg,#0a0a0a_0%,#100b08_46%,#0a0a0a_100%)]"
   ></div>
+  <!-- ใช้ div เป็น grid overlay ด้านหลัง เพื่อสร้าง mood แบบ HUD โดยไม่เพิ่ม semantic node ให้เนื้อหา -->
   <div class="absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] bg-[size:48px_48px] opacity-70 [mask-image:linear-gradient(to_bottom,black,transparent_82%)]"></div>
 
+  <!-- ใช้ div เป็น container จำกัดความกว้างและ padding ของทั้งหน้า เพราะเป็น layout wrapper ไม่ใช่เนื้อหาใหม่ -->
   <div class="mx-auto w-full max-w-7xl px-5 py-14 sm:px-8 lg:py-20">
+    <!-- ใช้ div เป็น grid วาง intro กับ reading order เพราะต้องจัด layout สองคอลัมน์บนจอใหญ่ -->
     <div class="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-end">
+      <!-- ใช้ div รวม text intro เพื่อจัดกลุ่ม visual ของ eyebrow, h1 และ paragraph -->
       <div>
         <p class="font-mono text-sm uppercase tracking-[0.25em] text-primary">Learning Route</p>
         <h1 id="teach-title" class="mt-4 font-display text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
           Teach
         </h1>
         <p class="mt-5 max-w-2xl text-lg leading-8 text-neutral-300">
-          หน้าสรุปบทเรียนจากโฟลเดอร์ <span class="font-mono text-primary">docs/teach/</span> เรียงตามลำดับอ่าน พร้อมลิงก์เปิดไฟล์ markdown ต้นฉบับของแต่ละหัวข้อ.
+          หน้าสรุปบทเรียนจากโฟลเดอร์ <span class="font-mono text-primary">docs/teach/</span> เรียงตามลำดับอ่าน กดแต่ละหัวข้อเพื่อดูเนื้อหา HTML, demo flow และตัวอย่าง code ใน popup เดียว.
         </p>
       </div>
 
+      <!-- ใช้ aside เพราะ reading order เป็นข้อมูลประกอบที่ช่วยอ่านหน้า Teach แต่ไม่ใช่เนื้อหาหลักของบทเรียน -->
       <aside class="rounded-xl border border-primary/20 bg-black/35 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,.08),0_24px_80px_rgba(0,0,0,.35)] backdrop-blur-md">
-        <p class="font-mono text-xs uppercase tracking-[0.2em] text-green-300">Recommended Reading Order</p>
-        <div class="mt-4 grid gap-3 sm:grid-cols-3">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-primary">Recommended Reading Order</p>
+        <!-- ใช้ div เป็น grid สำหรับกล่องช่วงบทเรียน เพราะเป็น layout container ของ summary cards -->
+        <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <div class="rounded-lg border border-white/10 bg-white/[0.04] p-4">
             <p class="font-display text-2xl font-semibold text-white">01-03</p>
             <p class="mt-1 text-sm text-neutral-400">พื้นฐาน Angular</p>
@@ -31,32 +39,42 @@
             <p class="font-display text-2xl font-semibold text-white">07</p>
             <p class="mt-1 text-sm text-neutral-400">ขั้นตอน deploy</p>
           </div>
+          <div class="rounded-lg border border-white/10 bg-white/[0.04] p-4">
+            <p class="font-display text-2xl font-semibold text-white">08</p>
+            <p class="mt-1 text-sm text-neutral-400">dropdown และ smooth scroll</p>
+          </div>
         </div>
       </aside>
     </div>
 
+    <!-- ใช้ div เป็น card grid ของ lesson list เพราะรายการด้านในเป็น article แต่ตัว grid เองเป็น layout เท่านั้น -->
     <div class="mt-12 grid gap-5 lg:grid-cols-2">
-      @for (lesson of lessons; track lesson.href; let index = $index) {
+      @for (lesson of lessons; track lesson.id) {
+        <!-- ใช้ article เพราะ lesson card เป็น content item ที่อ่านแยกจากรายการอื่นได้ -->
         <article class="rounded-xl border border-white/10 bg-black/35 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,.06)] transition hover:border-primary/35 hover:bg-primary/5">
+          <!-- ใช้ div เป็น flex row เพื่อแยกข้อความกับปุ่มเปิด modal -->
           <div class="flex items-start justify-between gap-4">
+            <!-- ใช้ div รวม heading/summary ของ card เพราะเป็นกลุ่มข้อความ ไม่ต้องมี semantic เพิ่ม -->
             <div>
-              <p class="font-mono text-xs uppercase tracking-[0.2em] text-primary">Lesson {{ index + 1 }}</p>
+              <p class="font-mono text-xs uppercase tracking-[0.2em] text-primary">Lesson {{ lesson.id }}</p>
               <h2 class="mt-2 font-display text-2xl font-semibold text-white">{{ lesson.title }}</h2>
+              <p class="mt-3 line-clamp-3 leading-7 text-neutral-400">{{ lesson.summary }}</p>
             </div>
-            <a
+            <button
+              type="button"
               class="shrink-0 rounded-lg border border-primary/40 px-3 py-2 font-mono text-xs text-primary transition hover:bg-primary hover:text-white"
-              [href]="lesson.href"
-              target="_blank"
-              rel="noopener"
+              (click)="openLesson(lesson)"
             >
               เปิด
-            </a>
+            </button>
           </div>
 
+          <!-- ใช้ ul เพราะ topics เป็นรายการคำสำคัญของบทเรียน -->
           <ul class="mt-5 grid gap-2">
             @for (topic of lesson.topics; track topic) {
               <li class="flex gap-3 text-sm leading-6 text-neutral-300">
-                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-400 shadow-[0_0_12px_rgba(74,222,128,.7)]"></span>
+                <!-- ใช้ span เป็น bullet visual แทน list marker เพื่อคุมสีและ glow ให้เข้ากับ UI -->
+                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary shadow-[0_0_12px_rgba(255,107,0,.65)]"></span>
                 <span>{{ topic }}</span>
               </li>
             }
@@ -65,10 +83,13 @@
       }
     </div>
 
+    <!-- ใช้ section เพราะ glossary เป็นหมวดเนื้อหาย่อยที่มี heading ของตัวเอง -->
     <section class="mt-12 rounded-xl border border-white/10 bg-black/35 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,.06)]" aria-labelledby="teach-glossary">
       <h2 id="teach-glossary" class="font-display text-2xl font-semibold text-white">จำสั้น ๆ</h2>
+      <!-- ใช้ div เป็น responsive grid สำหรับ glossary cards -->
       <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         @for (item of glossary; track item[0]) {
+          <!-- ใช้ div เป็น card สั้น ๆ เพราะแต่ละ item ไม่จำเป็นต้องเป็น article แยก -->
           <div class="rounded-lg border border-white/10 bg-white/[0.04] p-4">
             <p class="font-mono text-sm text-primary">{{ item[0] }}</p>
             <p class="mt-2 text-sm leading-6 text-neutral-400">{{ item[1] }}</p>
@@ -78,3 +99,8 @@
     </section>
   </div>
 </section>
+
+@if (selectedLesson(); as lesson) {
+  <!-- ใช้ component แยกเพื่อให้ popup lesson มี responsibility ของตัวเอง และหน้า Teach ไม่ยาวเกินไป -->
+  <app-teach-lesson-modal [lesson]="lesson" (closed)="closeLesson()" />
+}

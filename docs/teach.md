@@ -11,6 +11,13 @@
 5. [Resume Data, Hero Background และ Color](teach/05-resume-data-and-hero-background.md)
 6. [Browser APIs: IntersectionObserver, SSR และ Test](teach/06-browser-apis-intersection-observer-ssr-test.md)
 7. [CI/CD ด้วย GitHub Actions](teach/07-cicd-github-actions.md)
+8. [Navbar Dropdown และ Custom Smooth Scroll](teach/08-navbar-dropdown-and-smooth-scroll.md)
+
+## กฎการ sync กับหน้าเว็บ
+
+- ถ้าเพิ่มหรือแก้หัวข้อใน `docs/teach/` ต้องอัปเดตหน้า `/teach` ด้วย
+- หน้า `/teach` ใช้ HTML/popup ในเว็บ ไม่พาผู้ใช้ไปเปิดไฟล์ `.md` โดยตรง
+- ถ้ามี HTML ใหม่ ต้องใส่ comment เชิงสอนอธิบาย semantic element และ `div` สำคัญเสมอ
 
 ## แต่ละไฟล์มีอะไรบ้าง
 
@@ -95,6 +102,18 @@
 - ทำไม GitHub Pages ต้องใช้ `base-href`
 - ต้องตั้งค่าอะไรใน GitHub หลัง push workflow
 
+### 8. Navbar Dropdown และ Custom Smooth Scroll
+
+อ่านเรื่อง:
+
+- ทำไม `Learn` dropdown หายตอนเลื่อนเม้าช้า
+- วิธีทำ invisible hit-area bridge ด้วย wrapper และ `pt-3`
+- ทำไม section navigation ควรเป็น `a` ที่มี `href` fallback
+- ใช้ `scrollIntoView()` และ `scroll-margin-top` แทน custom scroll animation ที่ซับซ้อน
+- เช็ก `prefers-reduced-motion` และ `scroll-behavior: auto !important` เมื่อ scroll วาปทันที
+- วิธี queue section scroll เมื่อต้อง navigate จาก `/teach` หรือ `/commands` กลับ `/`
+- checklist สำหรับตรวจ scroll/navigation รอบหน้า
+
 ## จำสั้น ๆ
 
 - `signal`: กล่อง state ที่ UI ตามทันเมื่อค่าเปลี่ยน
@@ -109,3 +128,5 @@
 - `prerender`: สร้าง HTML static ตอน build
 - `IntersectionObserver`: เฝ้าว่า element เข้า viewport หรือยัง
 - `CI/CD`: ตรวจและ deploy code อัตโนมัติ
+- `dropdown bridge`: พื้นที่ hover ที่ครอบช่องว่างระหว่างปุ่มกับ submenu
+- `section anchor`: ถ้าเมนูพาไป section จริง ควรมี `href` fallback และใช้ `scroll-margin-top` กัน navbar บัง

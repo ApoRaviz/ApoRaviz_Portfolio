@@ -23,11 +23,6 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              },
-              {
-                "glob": "**/*",
-                "input": "docs/teach",
-                "output": "docs/teach"
               }
             ],
             "styles": ["src/styles.css"],

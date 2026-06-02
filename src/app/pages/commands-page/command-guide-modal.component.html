@@ -1,0 +1,94 @@
+<!-- ใช้ div เป็น modal overlay เพราะต้องครอบทั้ง viewport, จัด scroll และประกาศ role dialog -->
+<div class="fixed inset-0 z-[80] overflow-y-auto bg-black/75 px-4 py-6 backdrop-blur-md sm:px-6" role="dialog" aria-modal="true" [attr.aria-labelledby]="'command-title-' + guide.id">
+  <!-- ใช้ button เต็มจอเป็น backdrop สำหรับคลิกปิด popup โดยยังเป็น control ที่ accessible -->
+  <button class="fixed inset-0 h-full w-full cursor-default" type="button" aria-label="Close command modal" (click)="closed.emit()"></button>
+
+  <!-- ใช้ article เพราะ command guide เป็นเนื้อหาหนึ่งหมวดที่อ่านแยกได้ -->
+  <article class="relative mx-auto flex min-h-[calc(100vh-3rem)] w-full max-w-5xl flex-col rounded-xl border border-primary/25 bg-[#0b0b0b] shadow-[0_30px_120px_rgba(0,0,0,.75)]">
+    <!-- ใช้ header เพราะเป็นหัวของ command guide มี title, summary, tags และปุ่มปิด -->
+    <header class="sticky top-0 z-10 border-b border-white/10 bg-[#0b0b0b]/95 p-5 backdrop-blur-xl sm:p-6">
+      <!-- ใช้ div เป็น flex layout เพื่อวาง title group กับ close button -->
+      <div class="flex items-start justify-between gap-4">
+        <!-- ใช้ div รวมข้อความหัว modal เพราะเป็นกลุ่ม presentation -->
+        <div>
+          <p class="font-mono text-xs uppercase tracking-[0.22em] text-primary">Command Set {{ guide.id }}</p>
+          <h2 [id]="'command-title-' + guide.id" class="mt-2 font-display text-2xl font-semibold leading-tight text-white sm:text-4xl">
+            {{ guide.title }}
+          </h2>
+          <p class="mt-3 max-w-3xl leading-7 text-neutral-300">{{ guide.summary }}</p>
+        </div>
+
+        <!-- ใช้ button เพราะ action นี้ปิด popup ไม่ใช่ navigation -->
+        <button
+          type="button"
+          class="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-white/10 text-neutral-300 transition hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
+          aria-label="Close command guide"
+          (click)="closed.emit()"
+        >
+          <span class="font-mono text-xl leading-none">x</span>
+        </button>
+      </div>
+
+      <!-- ใช้ div เป็น tag container สำหรับจัด wrap ของ command tags -->
+      <div class="mt-5 flex flex-wrap gap-2">
+        @for (tag of guide.tags; track tag) {
+          <span class="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-xs text-neutral-300">{{ tag }}</span>
+        }
+      </div>
+    </header>
+
+    <!-- ใช้ div เป็น content stack ของ modal เพราะด้านในมี demo และหลาย command section -->
+    <div class="grid gap-5 p-5 sm:p-6">
+      <!-- ใช้ aside เพราะ demo flow เป็นข้อมูลประกอบที่ช่วยให้เข้าใจลำดับใช้งานคำสั่ง -->
+      <aside class="rounded-xl border border-primary/20 bg-primary/10 p-5">
+        <p class="font-mono text-xs uppercase tracking-[0.16em] text-primary">Demo Flow</p>
+        <h3 class="mt-2 font-display text-2xl font-semibold text-white">{{ guide.demo.title }}</h3>
+        <!-- ใช้ ol เพราะ demo flow ต้องอ่านตามลำดับขั้นตอน -->
+        <ol class="mt-4 grid gap-2">
+          @for (step of guide.demo.steps; track step; let index = $index) {
+            <li class="flex gap-3 text-sm leading-6 text-neutral-300">
+              <span class="grid h-6 w-6 shrink-0 place-items-center rounded-full border border-primary/40 font-mono text-xs text-primary">{{ index + 1 }}</span>
+              <span>{{ step }}</span>
+            </li>
+          }
+        </ol>
+      </aside>
+
+      @for (example of guide.examples; track example.command) {
+        <!-- ใช้ section เพราะ command example แต่ละชุดมี heading, code และ notes ของตัวเอง -->
+        <section class="rounded-xl border border-white/10 bg-white/[0.035] p-5">
+          <h3 class="font-display text-2xl font-semibold text-white">{{ example.purpose }}</h3>
+          <!-- ใช้ figure เพราะ command block เป็นตัวอย่างประกอบ และ figcaption ระบุบริบทว่าเป็น terminal -->
+          <figure class="mt-4 overflow-hidden rounded-lg border border-white/10 bg-black/55">
+            <figcaption class="border-b border-white/10 px-4 py-3 font-mono text-xs uppercase tracking-[0.16em] text-primary">
+              Terminal
+            </figcaption>
+            <pre class="overflow-x-auto p-4 text-sm leading-6 text-neutral-200"><code>{{ example.command }}</code></pre>
+          </figure>
+          <!-- ใช้ ul เพราะ notes เป็นรายการคำอธิบาย/ข้อสังเกตที่ไม่จำเป็นต้องเรียงลำดับ -->
+          <ul class="mt-4 grid gap-2">
+            @for (note of example.notes; track note) {
+              <li class="flex gap-3 text-sm leading-6 text-neutral-300">
+                <!-- ใช้ span เป็น bullet visual เพื่อคุมสีและ glow ให้เข้ากับ design system -->
+                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary shadow-[0_0_12px_rgba(255,107,0,.65)]"></span>
+                <span>{{ note }}</span>
+              </li>
+            }
+          </ul>
+        </section>
+      }
+    </div>
+
+    <!-- ใช้ footer เพราะข้อควรระวังและ source path เป็นข้อมูลท้าย popup -->
+    <footer class="border-t border-white/10 p-5 sm:p-6">
+      <h3 class="font-display text-xl font-semibold text-white">ข้อควรระวัง</h3>
+      <!-- ใช้ div เป็น responsive grid ของ caution cards -->
+      <div class="mt-4 grid gap-3 sm:grid-cols-2">
+        @for (caution of guide.cautions; track caution) {
+          <p class="rounded-lg border border-white/10 bg-white/[0.035] px-4 py-3 text-sm leading-6 text-neutral-300">{{ caution }}</p>
+        }
+      </div>
+      <p class="mt-5 font-mono text-xs text-neutral-500">Source: {{ guide.sourcePath }}</p>
+    </footer>
+  </article>
+</div>

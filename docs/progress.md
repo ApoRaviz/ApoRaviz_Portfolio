@@ -176,6 +176,15 @@
 - เพิ่ม `MooPing Loyalty` เป็น Quest 1 ใน Project cards โดยเชื่อมไปยัง demo `https://aporaviz.github.io/mooping/` และ GitHub `https://github.com/ApoRaviz/mooping`
 - อัปเดตไฟล์กลาง `/Users/aporaviz/ApoRaviz/_docs/NEW_PROJECT_GUIDE.md` ให้ชัดขึ้นว่าโปรเจกต์ใหม่ต้องอ่านจาก `ApoRaviz_Portfolio`, ทำ repo แยก, เขียน `docs/teach/` เป็น learning path และเชื่อมกลับเข้า Portfolio ผ่าน `PortfolioDataService`
 
+## กฎที่ต้องจำระหว่างพัฒนา
+
+- HTML ที่เพิ่มหรือแก้ต้องมี comment เชิงสอนตรง element สำคัญ เพื่ออธิบายว่าทำไมใช้ `section`, `div`, `article`, `aside`, `button`, `a`, `form`, `ul`, `ol`, `figure` หรือ semantic tag นั้น
+- โดยเฉพาะ `div` ที่ใช้เป็น layout wrapper, background layer, grid/flex container, overlay หรือ modal backdrop ต้อง comment ว่าใช้เพื่อจัด layout/visual ไม่ใช่เนื้อหา semantic
+- ถ้าเพิ่มไฟล์หรือหัวข้อใหม่ใน `docs/teach/` ต้องเพิ่มข้อมูลที่หน้า HTML `/teach` ด้วย โดยแก้ data/component ที่เกี่ยวข้อง ไม่ให้หน้าเว็บตกหล่นจากเอกสาร
+- ถ้าเพิ่มไฟล์หรือหัวข้อใหม่ใน `docs/commands/` ต้องเพิ่มข้อมูลที่หน้า HTML `/commands` ด้วย โดยแก้ data/component ที่เกี่ยวข้อง ไม่ให้หน้าเว็บตกหล่นจากเอกสาร
+- หน้า `/teach` และ `/commands` ต้องแสดงเนื้อหาเป็น HTML/popup ภายในเว็บ ไม่พาผู้ใช้ไปเปิดไฟล์ `.md` โดยตรง
+- เมื่อเพิ่ม docs ใหม่ ควรอัปเดตทั้งสารบัญ markdown และ data ของหน้า HTML ในรอบเดียวกัน
+
 ## อัปเดตเอกสารสอน
 
 เราแยก `docs/teach.md` จากไฟล์ยาวไฟล์เดียวให้เป็นสารบัญหลัก และสร้าง folder:

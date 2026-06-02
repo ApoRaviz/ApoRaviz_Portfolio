@@ -27,18 +27,18 @@ body {
   font-family: "Nunito", "DM Sans", sans-serif;
 }
 
+/* section[id] มี scroll-margin เพื่อให้ anchor/scrollIntoView ไม่พาหัว section ไปซ่อนใต้ navbar sticky */
+section[id] {
+  scroll-margin-top: 88px;
+}
+
 /* ลด motion สำหรับผู้ใช้ที่ตั้งค่า prefers-reduced-motion เพื่อให้เว็บอ่านสบายและไม่เวียนหัว */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
 }

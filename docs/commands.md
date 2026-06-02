@@ -18,6 +18,12 @@
 5. [Utility และ Troubleshooting Commands](commands/05-utility-and-troubleshooting.md)
 6. [CI/CD Commands](commands/06-cicd-commands.md)
 
+## กฎการ sync กับหน้าเว็บ
+
+- ถ้าเพิ่มหรือแก้หัวข้อใน `docs/commands/` ต้องอัปเดตหน้า `/commands` ด้วย
+- หน้า `/commands` ใช้ HTML/popup ในเว็บ ไม่พาผู้ใช้ไปเปิดไฟล์ `.md` โดยตรง
+- ถ้ามี HTML ใหม่ ต้องใส่ comment เชิงสอนอธิบาย semantic element และ `div` สำคัญเสมอ
+
 ## หมายเหตุ
 
 บางคำสั่งในเอกสารนี้ใส่เป็นรูปแบบที่อ่านง่าย เช่น `npm run build`

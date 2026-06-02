@@ -29,7 +29,14 @@ export class HomePageComponent implements AfterViewInit {
   private readonly theme = inject(ThemeService);
 
   ngAfterViewInit(): void {
-    this.theme.setActiveSection('home');
     this.theme.observeSections(this.data.navLinks().map((link) => link.id));
+
+    const queuedSectionId = this.theme.consumeQueuedSectionScroll();
+    if (queuedSectionId) {
+      this.theme.scrollToSectionWhenReady(queuedSectionId);
+      return;
+    }
+
+    this.theme.setActiveSection('home');
   }
 }
