@@ -12,6 +12,7 @@
 6. [Browser APIs: IntersectionObserver, SSR และ Test](teach/06-browser-apis-intersection-observer-ssr-test.md)
 7. [CI/CD ด้วย GitHub Actions](teach/07-cicd-github-actions.md)
 8. [Navbar Dropdown และ Custom Smooth Scroll](teach/08-navbar-dropdown-and-smooth-scroll.md)
+9. [Component Folder Best Practices](teach/09-component-folder-best-practices.md)
 
 ## กฎการ sync กับหน้าเว็บ
 
@@ -114,6 +115,17 @@
 - วิธี queue section scroll เมื่อต้อง navigate จาก `/teach` หรือ `/commands` กลับ `/`
 - checklist สำหรับตรวจ scroll/navigation รอบหน้า
 
+### 9. Component Folder Best Practices
+
+อ่านเรื่อง:
+
+- ทำไม modal ไม่ควรวางปนกับ page file เมื่อ feature เริ่มโต
+- ความต่างระหว่าง feature-local component กับ shared component
+- เมื่อไรควรวางใน `pages/<page>/components/`
+- เมื่อไรควรวางใน `src/app/components/`
+- import path หลังย้าย component เข้า folder ย่อย
+- checklist ก่อนย้าย component
+
 ## จำสั้น ๆ
 
 - `signal`: กล่อง state ที่ UI ตามทันเมื่อค่าเปลี่ยน
@@ -130,3 +142,5 @@
 - `CI/CD`: ตรวจและ deploy code อัตโนมัติ
 - `dropdown bridge`: พื้นที่ hover ที่ครอบช่องว่างระหว่างปุ่มกับ submenu
 - `section anchor`: ถ้าเมนูพาไป section จริง ควรมี `href` fallback และใช้ `scroll-margin-top` กัน navbar บัง
+- `feature-local component`: component ที่ใช้เฉพาะ page เดียว ควรอยู่ใต้ page owner
+- `shared component`: component ที่ใช้หลายหน้า ค่อยย้ายไป `src/app/components/`

@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { ThemeService } from '../../services/theme.service';
-import { CommandGuideModalComponent } from './command-guide-modal.component';
+import { CommandGuideModalComponent } from './components/command-guide-modal/command-guide-modal.component';
 import { COMMAND_GUIDES, CommandGuide } from './commands-data';
 
 @Component({

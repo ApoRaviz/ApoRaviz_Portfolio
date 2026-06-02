@@ -455,4 +455,66 @@ void this.router.navigate(['/']);`,
     ],
     quickNotes: ['Dropdown มี gap ต้องทำ bridge', 'Section nav ควรเป็น a ที่มี href fallback', 'ใช้ scrollIntoView ก่อนเขียน custom animation', "อย่าให้ nav scroll ถูกเปลี่ยนเป็น behavior: 'auto'", 'section[id] ต้องมี scroll-margin-top เมื่อมี sticky navbar'],
   },
+  {
+    id: 9,
+    title: 'Component Folder Best Practices',
+    sourcePath: 'docs/teach/09-component-folder-best-practices.md',
+    summary: 'สรุปวิธีจัด folder ของ component ย่อย เช่น modal ของ Teach และ Commands ให้เป็น feature-local component ที่อ่าน ownership ได้ชัด',
+    topics: ['component folders', 'feature-local component', 'shared component', 'modal structure', 'import path'],
+    sections: [
+      {
+        heading: 'ทำไม modal ไม่ควรวางปนกับ page เสมอไป',
+        paragraphs: [
+          'ถ้า page มีแค่ component หลักไฟล์ไม่กี่ตัว การวางปนกันยังอ่านได้ แต่เมื่อมี modal, data, helper และ component ย่อยหลายตัว folder จะเริ่มรก',
+          'การแยก modal เข้า folder ของตัวเองช่วยให้รู้ว่าไฟล์ .ts และ .html ชุดนี้เป็น component เดียวกัน และไม่ปนกับ data/page หลัก',
+        ],
+        code: {
+          label: 'Before',
+          language: 'text',
+          code: `src/app/pages/teach-page/
+  teach-page.component.ts
+  teach-page.component.html
+  teach-lessons.ts
+  teach-lesson-modal.component.ts
+  teach-lesson-modal.component.html`,
+        },
+      },
+      {
+        heading: 'Feature-local component',
+        paragraphs: [
+          'ถ้า component ใช้เฉพาะ page เดียว ให้วางใต้ page owner เช่น pages/teach-page/components/teach-lesson-modal/',
+          'ถ้า component ถูกใช้หลายหน้า ค่อยย้ายไป shared folder อย่าง src/app/components/',
+        ],
+        bullets: ['TeachLessonModal ใช้เฉพาะ /teach', 'CommandGuideModal ใช้เฉพาะ /commands', 'Navbar/Footer ใช้ทั้งแอป จึงอยู่ src/app/components'],
+        code: {
+          label: 'After',
+          language: 'text',
+          code: `src/app/pages/teach-page/
+  teach-page.component.ts
+  teach-page.component.html
+  teach-lessons.ts
+  components/
+    teach-lesson-modal/
+      teach-lesson-modal.component.ts
+      teach-lesson-modal.component.html`,
+        },
+      },
+      {
+        heading: 'Import path หลังย้าย',
+        paragraphs: ['Page หลัก import modal จาก folder ย่อย ส่วน modal import type/data กลับไปหา page owner ด้วย relative path ที่ชัดเจน'],
+        code: {
+          label: 'Feature import',
+          language: 'ts',
+          code: `import { TeachLessonModalComponent } from './components/teach-lesson-modal/teach-lesson-modal.component';
+import { TeachLesson } from '../../teach-lessons';`,
+        },
+        demo: {
+          title: 'Ownership อ่านจาก path',
+          description: 'path บอกได้ว่า modal เป็น component ย่อยของหน้า Teach ไม่ใช่ shared component ทั้งเว็บ',
+          steps: ['page มี components folder', 'modal อยู่ใน folder ของตัวเอง', 'data ยังอยู่ระดับ page', 'build ตรวจ import path หลังย้าย'],
+        },
+      },
+    ],
+    quickNotes: ['ใช้เฉพาะ page เดียว ให้วางใต้ pages/<page>/components', 'ใช้หลายหน้า ค่อยวาง src/app/components', 'component มี .ts/.html ควรมี folder ของตัวเอง', 'data ของ page อยู่ระดับ page ได้', 'หลังย้ายต้องรัน build'],
+  },
 ];

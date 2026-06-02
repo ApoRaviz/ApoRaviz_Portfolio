@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { ThemeService } from '../../services/theme.service';
-import { TeachLessonModalComponent } from './teach-lesson-modal.component';
+import { TeachLessonModalComponent } from './components/teach-lesson-modal/teach-lesson-modal.component';
 import { TEACH_LESSONS, TeachLesson } from './teach-lessons';
 
 @Component({

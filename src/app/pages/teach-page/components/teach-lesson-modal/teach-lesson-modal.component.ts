@@ -1,12 +1,12 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
-import { CommandGuide } from './commands-data';
+import { TeachLesson } from '../../teach-lessons';
 
 @Component({
-  selector: 'app-command-guide-modal',
-  templateUrl: './command-guide-modal.component.html',
+  selector: 'app-teach-lesson-modal',
+  templateUrl: './teach-lesson-modal.component.html',
 })
-export class CommandGuideModalComponent {
-  @Input({ required: true }) guide!: CommandGuide;
+export class TeachLessonModalComponent {
+  @Input({ required: true }) lesson!: TeachLesson;
   @Output() closed = new EventEmitter<void>();
 
   @HostListener('document:keydown.escape')
