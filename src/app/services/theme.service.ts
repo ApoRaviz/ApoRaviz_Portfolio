@@ -134,4 +134,12 @@ export class ThemeService {
     // update() ใช้เปลี่ยนค่าจากค่าเดิม เหมาะกับ toggle เพราะต้องรู้สถานะก่อนหน้า open/closed
     this.mobileMenuOpen.update((open) => !open);
   }
+
+  closeMobileMenu(): void {
+    this.mobileMenuOpen.set(false);
+  }
+
+  setActiveSection(id: string): void {
+    this.activeSection.set(id);
+  }
 }

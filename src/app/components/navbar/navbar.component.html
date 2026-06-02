@@ -1,70 +1,86 @@
-<!-- ใช้ nav เพราะ block นี้มีหน้าที่นำทางหลักของเว็บไซต์โดยตรง -->
-<nav
+N์<nav
   class="sticky top-0 z-50 border-b border-white/10 bg-dark/75 transition-all duration-300 backdrop-blur-xl"
   [class.border-b]="theme.scrolled()"
   [class.border-primary/20]="theme.scrolled()"
   [class.shadow-glow]="theme.scrolled()"
 >
-  <!-- ใช้ div เป็น layout wrapper เพื่อจำกัดความกว้างและจัด flex; div ไม่มีความหมาย semantic เพิ่มเติม -->
   <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
-    <!-- ใช้ button เพราะคลิกแล้วสั่ง scroll ภายในหน้า ไม่ใช่การเปิด URL ใหม่ -->
-    <button
-      type="button"
+    <a
+      routerLink="/"
       class="flex items-center gap-3 rounded-xl border border-primary/20 bg-black/30 px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,.08)] transition hover:border-primary/50 hover:bg-primary/10"
-      aria-label="Scroll to home section"
-      (click)="theme.scrollToSection('home')"
+      aria-label="Open home page"
+      (click)="theme.closeMobileMenu()"
     >
-      <!-- ใช้ img เพื่อแสดงโลโก้จริงของแบรนด์ และ alt ช่วยให้ screen reader เข้าใจภาพ -->
       <img class="h-10 w-auto" [src]="data.profile().logoUrl" alt="ApoRaviz logo" />
-    </button>
+    </a>
 
-    <!-- ใช้ div เป็นกลุ่ม layout ของ links บน desktop; ความหมาย navigation อยู่ที่ parent nav แล้ว -->
     <div class="hidden items-center gap-8 md:flex">
       @for (link of data.navLinks(); track link.id) {
-        <!-- ใช้ button เพราะทำ smooth scroll และอัปเดต UI state ในหน้าเดียว -->
-        <button
-          type="button"
+        <a
+          [routerLink]="['/']"
+          [fragment]="link.id"
           class="relative rounded-lg px-2 py-1 font-mono text-sm text-neutral-300 transition hover:bg-primary/10 hover:text-primary"
           [class.text-primary]="theme.activeSection() === link.id"
           [class.bg-primary/10]="theme.activeSection() === link.id"
-          (click)="theme.scrollToSection(link.id)"
+          (click)="theme.closeMobileMenu()"
         >
           {{ link.label }}
           @if (theme.activeSection() === link.id) {
-            <!-- ใช้ span เป็น decorative underline เพราะเป็น visual state ไม่ใช่เนื้อหาใหม่ -->
             <span class="absolute -bottom-2 left-0 h-0.5 w-full rounded-full bg-primary shadow-glow"></span>
           }
-        </button>
+        </a>
       }
+      <a
+        routerLink="/teach"
+        routerLinkActive="bg-primary/10 text-primary"
+        class="relative rounded-lg px-2 py-1 font-mono text-sm text-neutral-300 transition hover:bg-primary/10 hover:text-primary"
+        (click)="theme.closeMobileMenu()"
+      >
+        Teach
+      </a>
     </div>
 
-    <!-- ใช้ button สำหรับ hamburger เพราะเป็น action เปิด/ปิด menu ไม่ใช่ navigation link -->
     <button
       type="button"
       class="grid h-11 w-11 place-items-center rounded-lg border border-dark-border text-white transition hover:border-primary/50 hover:text-primary md:hidden"
       aria-label="Toggle navigation menu"
       (click)="theme.toggleMobileMenu()"
     >
-      <span class="text-2xl">{{ theme.mobileMenuOpen() ? '×' : '☰' }}</span>
+      @if (theme.mobileMenuOpen()) {
+        <span class="font-mono text-2xl leading-none">x</span>
+      } @else {
+        <span class="grid gap-1.5" aria-hidden="true">
+          <span class="block h-0.5 w-5 rounded-full bg-current"></span>
+          <span class="block h-0.5 w-5 rounded-full bg-current"></span>
+          <span class="block h-0.5 w-5 rounded-full bg-current"></span>
+        </span>
+      }
     </button>
   </div>
 
   @if (theme.mobileMenuOpen()) {
-    <!-- ใช้ div เป็น mobile overlay container เพราะมีหน้าที่จัด layout ของปุ่มเมนูเท่านั้น -->
     <div class="border-t border-dark-border bg-dark/95 px-5 py-5 backdrop-blur-xl md:hidden">
-      <!-- ใช้ div เป็น stack wrapper เพื่อจัด spacing ของรายการเมนูบน mobile -->
       <div class="mx-auto flex max-w-7xl flex-col gap-2">
         @for (link of data.navLinks(); track link.id) {
-          <button
-            type="button"
+          <a
+            [routerLink]="['/']"
+            [fragment]="link.id"
             class="rounded-lg px-4 py-3 text-left font-mono text-sm transition hover:bg-primary/10 hover:text-primary"
             [class.bg-primary/10]="theme.activeSection() === link.id"
             [class.text-primary]="theme.activeSection() === link.id"
-            (click)="theme.scrollToSection(link.id)"
+            (click)="theme.closeMobileMenu()"
           >
             {{ link.label }}
-          </button>
+          </a>
         }
+        <a
+          routerLink="/teach"
+          routerLinkActive="bg-primary/10 text-primary"
+          class="rounded-lg px-4 py-3 text-left font-mono text-sm transition hover:bg-primary/10 hover:text-primary"
+          (click)="theme.closeMobileMenu()"
+        >
+          Teach
+        </a>
       </div>
     </div>
   }

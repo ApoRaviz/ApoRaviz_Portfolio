@@ -1,9 +1,11 @@
 import { Component, AfterViewInit, inject } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { PortfolioDataService } from '../../services/portfolio-data.service';
 import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-navbar',
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent implements AfterViewInit {
@@ -14,6 +16,5 @@ export class NavbarComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     // ngAfterViewInit ใช้เมื่อ DOM ของ component และ section ต่าง ๆ พร้อมให้ IntersectionObserver หา element ได้
     this.theme.startScrollTracking();
-    this.theme.observeSections(this.data.navLinks().map((link) => link.id));
   }
 }

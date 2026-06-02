@@ -1,30 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { AboutComponent } from './components/about/about.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { ExperienceComponent } from './components/experience/experience.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HeroComponent } from './components/hero/hero.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { ProjectsComponent } from './components/projects/projects.component';
-import { ServicesComponent } from './components/services/services.component';
-import { SkillsComponent } from './components/skills/skills.component';
-import { TestimonialsComponent } from './components/testimonials/testimonials.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [
-    NavbarComponent,
-    HeroComponent,
-    AboutComponent,
-    SkillsComponent,
-    ProjectsComponent,
-    ServicesComponent,
-    ExperienceComponent,
-    TestimonialsComponent,
-    ContactComponent,
-    FooterComponent,
-  ],
+  imports: [NavbarComponent, RouterOutlet, FooterComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

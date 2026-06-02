@@ -1,18 +1,7 @@
-<!-- ใช้ app-navbar แยกออกมา เพราะ navigation มี state/behavior ของตัวเอง เช่น scroll spy และ mobile menu -->
 <app-navbar />
 
-<!-- ใช้ main หนึ่งครั้งต่อหน้า เพื่อบอก browser และ screen reader ว่านี่คือเนื้อหาหลักของเว็บ -->
 <main>
-  <!-- แต่ละ component ด้านในใช้ section ของตัวเอง เพราะเป็นหมวดเนื้อหาหลักและมี id สำหรับ scroll navigation -->
-  <app-hero />
-  <app-about />
-  <app-skills />
-  <app-projects />
-  <app-services-section />
-  <app-experience />
-  <app-testimonials />
-  <app-contact />
+  <router-outlet />
 </main>
 
-<!-- ใช้ footer semantic เพราะเป็นส่วนท้ายเว็บที่มี copyright/social/back-to-top -->
 <app-footer />
