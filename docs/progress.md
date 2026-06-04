@@ -263,6 +263,7 @@ docs/commands/
 - แก้บัค navbar underline แว๊บผ่าน section กลางทางตอน smooth scroll โดยเพิ่ม active-section lock ใน `ThemeService`
 - เพิ่ม regression test ใน `src/app/services/theme.service.spec.ts` เพื่อกัน `activeSection` เปลี่ยนไปตาม section ที่ scroll ผ่านหลังผู้ใช้กดเมนูเป้าหมาย
 - อัปเดต `docs/teach/08-navbar-dropdown-and-smooth-scroll.md` และ `docs/commands/03-verification.md` ตามกติกา learning capture
+- เพิ่ม `docs/teach/10-angular-spec-and-unit-test.md` เพื่ออธิบายไฟล์ `.spec.ts`, `TestBed`, mock, fake timers และ regression test จากเคส `ThemeService`
 
 ความเข้าใจสำคัญของวันนี้:
 

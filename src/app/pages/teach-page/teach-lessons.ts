@@ -517,4 +517,86 @@ import { TeachLesson } from '../../teach-lessons';`,
     ],
     quickNotes: ['ใช้เฉพาะ page เดียว ให้วางใต้ pages/<page>/components', 'ใช้หลายหน้า ค่อยวาง src/app/components', 'component มี .ts/.html ควรมี folder ของตัวเอง', 'data ของ page อยู่ระดับ page ได้', 'หลังย้ายต้องรัน build'],
   },
+  {
+    id: 10,
+    title: 'Angular .spec.ts และ Unit Test',
+    sourcePath: 'docs/teach/10-angular-spec-and-unit-test.md',
+    summary: 'อธิบายว่าไฟล์ .spec.ts คือไฟล์ทดสอบของ Angular ใช้ TestBed, mock และ expect เพื่อกัน bug เดิมกลับมา โดยยกเคส ThemeService เป็นตัวอย่าง',
+    topics: ['.spec.ts', 'unit test', 'TestBed', 'mock', 'regression test'],
+    sections: [
+      {
+        heading: '.spec.ts คืออะไร',
+        paragraphs: [
+          'ไฟล์ .spec.ts คือไฟล์ทดสอบ ไม่ได้ถูกรวมเป็นเว็บ production ให้ผู้ใช้โหลด แต่จะถูกรันตอนใช้ ng test หรือ npm run test:ci',
+          'ให้จำว่า theme.service.ts คือ code จริง ส่วน theme.service.spec.ts คือ code ที่ตรวจว่า ThemeService ยังทำงานถูกต้องไหม',
+        ],
+        bullets: ['code จริงอยู่ใน .ts', 'test อยู่ใน .spec.ts', 'test ช่วยจับ bug ก่อน push/deploy', 'เหมาะกับ logic ที่พังง่ายหรือเคยมี bug จริง'],
+      },
+      {
+        heading: 'describe, it และ expect',
+        paragraphs: [
+          'describe() คือกลุ่ม test เช่น กำลังทดสอบ ThemeService',
+          'it() คือ test case หนึ่งข้อ ส่วน expect() คือการตรวจว่าผลลัพธ์ตรงกับที่คาดไหม',
+        ],
+        code: {
+          label: 'โครง test พื้นฐาน',
+          language: 'ts',
+          code: `describe('ThemeService', () => {
+  it('keeps the clicked nav section active', () => {
+    expect(theme.activeSection()).toBe('projects');
+  });
+});`,
+        },
+      },
+      {
+        heading: 'TestBed คือ Angular app จำลอง',
+        paragraphs: [
+          'Service ของ Angular มักใช้ dependency injection เช่น DOCUMENT หรือ PLATFORM_ID จึงไม่ควรสร้างด้วย new เองใน test',
+          'TestBed ช่วยสร้าง environment เล็ก ๆ ให้ Angular inject service ได้ใกล้เคียง app จริง',
+        ],
+        code: {
+          label: 'Inject service ใน test',
+          language: 'ts',
+          code: `TestBed.configureTestingModule({});
+
+const theme = TestBed.inject(ThemeService);`,
+        },
+      },
+      {
+        heading: 'Mock browser behavior',
+        paragraphs: [
+          'ThemeService ใช้ IntersectionObserver แต่ test ไม่ได้ scroll browser จริง จึงต้องมี MockIntersectionObserver เพื่อจำลองว่า section เข้า viewport',
+          'method emit() ใน mock ใช้เรียก callback เหมือน browser แจ้ง entries กลับมา',
+        ],
+        code: {
+          label: 'จำลองว่า section about เข้าจอ',
+          language: 'ts',
+          code: `sectionObserver.emit([
+  { target: about, isIntersecting: true, intersectionRatio: 0.8 },
+]);`,
+        },
+      },
+      {
+        heading: 'Regression test จาก bug navbar',
+        paragraphs: [
+          'บัคจริงคือหลังผู้ใช้กด Quests แล้ว smooth scroll ผ่าน Profile/Loadout ทำให้ underline แว๊บตาม section กลางทาง',
+          'test นี้พิสูจน์ว่าเมื่อ scrollToSection(projects) แล้ว observer เห็น about ระหว่างทาง activeSection ต้องยังเป็น projects',
+        ],
+        demo: {
+          title: 'กัน bug เดิมกลับมา',
+          description: 'ถ้าวันหลังมีคนลบ active-section lock ออก test นี้จะ fail และบอกเราก่อน deploy',
+          steps: ['สั่ง scroll ไป projects', 'activeSection เป็น projects', 'จำลอง observer เห็น about', 'activeSection ต้องยังเป็น projects', 'ถึง projects แล้วค่อยปลด lock'],
+        },
+      },
+      {
+        heading: 'Fake timers และ cleanup',
+        paragraphs: [
+          'vi.useFakeTimers() ทำให้ test คุม timeout เอง ไม่ต้องรอเวลาจริง และลดความไม่นิ่งของ test',
+          'หลัง mock global API เช่น IntersectionObserver หรือ scrollIntoView ต้องคืนของจริงใน afterEach() เพื่อไม่ให้ test อื่นโดนผลกระทบ',
+        ],
+        bullets: ['mock อะไรไว้ต้อง cleanup อันนั้น', 'beforeEach ใช้เตรียมสถานการณ์', 'afterEach ใช้คืน environment', 'fake timers คือเวลาแบบจำลองของ test'],
+      },
+    ],
+    quickNotes: ['.spec.ts คือไฟล์ทดสอบ', 'TestBed คือ Angular app จำลอง', 'expect ใช้ตรวจผลลัพธ์', 'mock ใช้แทน browser/API จริง', 'regression test กัน bug เดิมกลับมา'],
+  },
 ];

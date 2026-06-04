@@ -13,6 +13,7 @@
 7. [CI/CD ด้วย GitHub Actions](teach/07-cicd-github-actions.md)
 8. [Navbar Dropdown และ Custom Smooth Scroll](teach/08-navbar-dropdown-and-smooth-scroll.md)
 9. [Component Folder Best Practices](teach/09-component-folder-best-practices.md)
+10. [Angular .spec.ts และ Unit Test](teach/10-angular-spec-and-unit-test.md)
 
 ## กฎการ sync กับหน้าเว็บ
 
@@ -126,6 +127,18 @@
 - import path หลังย้าย component เข้า folder ย่อย
 - checklist ก่อนย้าย component
 
+### 10. Angular .spec.ts และ Unit Test
+
+อ่านเรื่อง:
+
+- `.spec.ts` คืออะไร
+- `describe()`, `it()`, `expect()` ใช้ทำอะไร
+- `TestBed` คือ Angular app จำลองสำหรับ test
+- ทำไมต้อง mock `IntersectionObserver`
+- `vi.useFakeTimers()` ช่วย test timeout อย่างไร
+- regression test คืออะไร
+- ทำไม `theme.service.spec.ts` ช่วยกันบัค navbar underline แว๊บกลับมา
+
 ## จำสั้น ๆ
 
 - `signal`: กล่อง state ที่ UI ตามทันเมื่อค่าเปลี่ยน
@@ -144,3 +157,6 @@
 - `section anchor`: ถ้าเมนูพาไป section จริง ควรมี `href` fallback และใช้ `scroll-margin-top` กัน navbar บัง
 - `feature-local component`: component ที่ใช้เฉพาะ page เดียว ควรอยู่ใต้ page owner
 - `shared component`: component ที่ใช้หลายหน้า ค่อยย้ายไป `src/app/components/`
+- `.spec.ts`: ไฟล์ทดสอบที่รันด้วย `ng test` หรือ `npm run test:ci`
+- `TestBed`: Angular app จำลองสำหรับ test service/component
+- `regression test`: test ที่เขียนเพื่อกันบัคเดิมกลับมา
