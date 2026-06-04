@@ -112,13 +112,56 @@ ngAfterViewInit(): void {
 }
 ```
 
+## ปัญหา underline ใน navbar แว๊บผ่านทุก section
+
+อาการคือผู้ใช้กดเมนูที่อยู่ไกล เช่น `Quests` แต่ระหว่าง smooth scroll หน้าเว็บต้องเลื่อนผ่าน `Profile` และ `Loadout` ก่อน ทำให้เส้น underline/active state ใน navbar แว๊บไปตาม section ที่เลื่อนผ่าน
+
+สาเหตุคือ `IntersectionObserver` ทำงานตลอดเวลาระหว่าง scroll:
+
+```text
+กด Quests
+-> activeSection ถูก set เป็น projects
+-> smooth scroll เริ่มเลื่อนผ่าน about
+-> observer เห็น about
+-> activeSection เปลี่ยนเป็น about
+-> observer เห็น skills
+-> activeSection เปลี่ยนเป็น skills
+-> ถึง projects แล้วค่อยกลับเป็น projects
+```
+
+พฤติกรรมนี้ถูกต้องในแง่ scroll spy แต่ไม่ดีต่อ interaction หลังผู้ใช้คลิกเมนู เพราะผู้ใช้ตั้งใจเลือกปลายทางแล้ว ไม่ได้อยากเห็น active state วิ่งผ่านทุก section กลางทาง
+
+แนวทางแก้คือทำ active-section lock:
+
+- ตอนคลิกเมนูให้ set `activeSection` เป็น id เป้าหมายทันที
+- เก็บ `activeSectionLockId` ไว้ชั่วคราว
+- ระหว่าง lock ถ้า observer เห็น section อื่นให้ ignore
+- เมื่อ observer เห็น section เป้าหมาย หรือครบ fallback timeout ให้ปลด lock
+
+ตัวอย่างแนวคิด:
+
+```ts
+private lockActiveSection(id: string): void {
+  this.activeSection.set(id);
+  this.activeSectionLockId = id;
+
+  this.activeSectionLockTimer = globalThis.setTimeout(
+    () => this.clearActiveSectionLock(),
+    1400,
+  );
+}
+```
+
+เหตุผลที่ยังต้องมี timeout เพราะ smooth scroll ไม่มี event มาตรฐานที่บอกว่าเลื่อนจบแล้วในทุก browser ถ้าผู้ใช้ scroll แทรกหรือ layout เปลี่ยนจน observer ไม่เห็น section เป้าหมาย lock จะไม่ค้างถาวร
+
 ## Checklist เวลาแก้ scroll/navigation รอบหน้า
 
 - เช็กว่า nav id ตรงกับ section id จริง เช่น `Profile -> about`, `Loadout -> skills`
 - ถ้า section navigation เป็นเมนูจริง ควรใช้ `a` พร้อม `href` เป็น fallback ไม่ใช่ `button` ล้วน
 - ใช้ `scrollIntoView()` ก่อนคิดจะเขียน custom scroll animation เอง
 - ใส่ `scroll-margin-top` ให้ section id เมื่อมี sticky navbar
+- ถ้า active underline แว๊บผ่านหลายเมนูระหว่าง smooth scroll ให้เช็ก active-section lock ใน `ThemeService`
 - ถ้าหน้าวาปทันที ให้เช็ก `prefers-reduced-motion`, `scroll-behavior: auto !important` และ branch ที่คืนค่า `behavior: 'auto'`
 - ถ้า scroll หลัง route change ให้รอ view พร้อมก่อน
 - ถ้า dropdown มีระยะห่างจาก trigger ให้ทำ hover bridge
-- หลังแก้ให้รัน `npm.cmd run build`, `git diff --check` และเช็ก route หลักตอบ `200`
+- หลังแก้ให้รัน `npm run test:ci`, `npm run build`, `git diff --check` และเช็ก route หลักตอบ `200`

@@ -260,6 +260,9 @@ docs/commands/
 - เพิ่ม `_docs/` roadmap กลางแบบ 7 step สำหรับ workspace
 - เพิ่ม `docs/roadmap.md` และ `docs/architecture.md` ให้ Portfolio เพื่อแยกแผนอนาคตออกจาก progress log
 - ปรับ `npm run build` ให้ใช้ `CI=1 ng build --progress=false` เพราะ local terminal เคยเจอ esbuild deadlock เมื่อใช้ `ng build` แบบ raw
+- แก้บัค navbar underline แว๊บผ่าน section กลางทางตอน smooth scroll โดยเพิ่ม active-section lock ใน `ThemeService`
+- เพิ่ม regression test ใน `src/app/services/theme.service.spec.ts` เพื่อกัน `activeSection` เปลี่ยนไปตาม section ที่ scroll ผ่านหลังผู้ใช้กดเมนูเป้าหมาย
+- อัปเดต `docs/teach/08-navbar-dropdown-and-smooth-scroll.md` และ `docs/commands/03-verification.md` ตามกติกา learning capture
 
 ความเข้าใจสำคัญของวันนี้:
 

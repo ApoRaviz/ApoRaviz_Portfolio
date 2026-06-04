@@ -13,6 +13,8 @@ export class ThemeService {
   private revealObserver?: IntersectionObserver;
   private pendingSectionId: string | null = null;
   private pendingScrollTimer?: ReturnType<typeof globalThis.setTimeout>;
+  private activeSectionLockId: string | null = null;
+  private activeSectionLockTimer?: ReturnType<typeof globalThis.setTimeout>;
 
   readonly scrolled = signal(false);
   readonly activeSection = signal('home');
@@ -38,6 +40,18 @@ export class ThemeService {
 
     this.sectionObserver = new IntersectionObserver(
       (entries) => {
+        // ตอนผู้ใช้กดเมนูให้ smooth scroll ไป section ไกล ๆ หน้าเว็บจะเลื่อนผ่าน section กลางทาง
+        // ถ้าให้ observer set active ทันที underline ใน navbar จะกระพริบผ่านทุก section จึงต้อง lock id เป้าหมายไว้ก่อน
+        if (this.activeSectionLockId) {
+          const lockedEntry = entries.find((entry) => entry.target.id === this.activeSectionLockId);
+
+          if (!lockedEntry?.isIntersecting) {
+            return;
+          }
+
+          this.clearActiveSectionLock();
+        }
+
         const visible = entries
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
@@ -88,11 +102,13 @@ export class ThemeService {
     const section = this.document.getElementById(id);
 
     if (section) {
+      // set active ก่อนเริ่ม scroll เพื่อให้ผู้ใช้เห็นทันทีว่าเมนูที่กดถูกเลือกแล้ว
+      // จากนั้น lock ไว้ชั่วคราว เพื่อไม่ให้ scroll spy เปลี่ยน underline ไปตาม section ที่วิ่งผ่านระหว่างทาง
+      this.lockActiveSection(id);
       section.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       });
-      this.activeSection.set(id);
     }
 
     this.mobileMenuOpen.set(false);
@@ -127,6 +143,7 @@ export class ThemeService {
   }
 
   setActiveSection(id: string): void {
+    this.clearActiveSectionLock();
     this.activeSection.set(id);
   }
 
@@ -153,6 +170,28 @@ export class ThemeService {
     window.requestAnimationFrame(() => {
       globalThis.setTimeout(() => this.scrollToSectionWithRetry(id, attempt + 1), 80);
     });
+  }
+
+  private lockActiveSection(id: string): void {
+    this.activeSection.set(id);
+    this.activeSectionLockId = id;
+
+    if (this.activeSectionLockTimer) {
+      globalThis.clearTimeout(this.activeSectionLockTimer);
+    }
+
+    // smooth scroll ไม่มี event มาตรฐานที่บอกว่าเลื่อนจบแล้วในทุก browser
+    // timeout นี้เป็น fallback กัน lock ค้าง ถ้า observer ไม่เห็น section เป้าหมายเพราะ layout หรือ user scroll แทรก
+    this.activeSectionLockTimer = globalThis.setTimeout(() => this.clearActiveSectionLock(), 1400);
+  }
+
+  private clearActiveSectionLock(): void {
+    this.activeSectionLockId = null;
+
+    if (this.activeSectionLockTimer) {
+      globalThis.clearTimeout(this.activeSectionLockTimer);
+      this.activeSectionLockTimer = undefined;
+    }
   }
 
 }

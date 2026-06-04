@@ -121,3 +121,20 @@ curl -I http://127.0.0.1:4201/
 ```text
 HTTP/1.1 200 OK
 ```
+
+## ตรวจ navbar smooth scroll ด้วยตา
+
+หลังแก้ `ThemeService` หรือ `NavbarComponent` ให้เปิด dev server แล้วลองคลิกเมนูที่อยู่ไกล เช่น `Quests` หรือ `Contact`
+
+สิ่งที่ต้องดู:
+
+- หน้าเลื่อนไป section เป้าหมายจริง
+- underline/active state ค้างที่เมนูที่กด ไม่แว๊บผ่าน `Profile`, `Loadout`, หรือ section กลางทาง
+- mobile menu ปิดหลังคลิก section
+- ถ้าอยู่หน้า `/teach` หรือ `/commands` แล้วกด section menu ต้องกลับ `/` แล้ว scroll ต่อได้
+
+คำสั่งเปิด dev server:
+
+```bash
+PATH=/Users/aporaviz/.nvm/versions/node/v24.16.0/bin:$PATH ./node_modules/.bin/ng serve --host 127.0.0.1 --port 4201
+```
