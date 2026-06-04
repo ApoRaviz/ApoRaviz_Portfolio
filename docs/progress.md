@@ -257,6 +257,9 @@ docs/commands/
 - เปิด URL GitHub Pages ประมาณ `https://aporaviz.github.io/ApoRaviz_Portfolio/`
 - อ่านทบทวน `IntersectionObserver`, `SSR`, `test environment`, `CI/CD`
 - เริ่มใส่ข้อมูลจริงใน `src/app/services/portfolio-data.service.ts`
+- เพิ่ม `_docs/` roadmap กลางแบบ 7 step สำหรับ workspace
+- เพิ่ม `docs/roadmap.md` และ `docs/architecture.md` ให้ Portfolio เพื่อแยกแผนอนาคตออกจาก progress log
+- ปรับ `npm run build` ให้ใช้ `CI=1 ng build --progress=false` เพราะ local terminal เคยเจอ esbuild deadlock เมื่อใช้ `ng build` แบบ raw
 
 ความเข้าใจสำคัญของวันนี้:
 

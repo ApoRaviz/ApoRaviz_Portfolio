@@ -8,9 +8,9 @@
   --color-dark: #0a0a0a;
   --color-dark-card: #111111;
   --color-dark-border: #1a1a1a;
-  --font-display: "Fredoka", "Space Grotesk", sans-serif;
-  --font-body: "Nunito", "DM Sans", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-display: "Trebuchet MS", "Aptos Display", "Segoe UI", sans-serif;
+  --font-body: "Aptos", "Segoe UI", Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --shadow-glow: 0 0 20px rgba(255, 107, 0, 0.4);
   --shadow-glow-lg: 0 0 40px rgba(255, 107, 0, 0.3);
 }
@@ -24,7 +24,7 @@ body {
   margin: 0;
   background: #0a0a0a;
   color: #e5e5e5;
-  font-family: "Nunito", "DM Sans", sans-serif;
+  font-family: "Aptos", "Segoe UI", Arial, sans-serif;
 }
 
 /* section[id] มี scroll-margin เพื่อให้ anchor/scrollIntoView ไม่พาหัว section ไปซ่อนใต้ navbar sticky */

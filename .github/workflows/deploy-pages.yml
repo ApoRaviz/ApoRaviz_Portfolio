@@ -34,7 +34,7 @@ jobs:
         run: npm ci
 
       - name: Build Angular app for repository Pages URL
-        run: npm run build -- --progress=false --base-href /ApoRaviz_Portfolio/
+        run: npm run build -- --base-href /ApoRaviz_Portfolio/
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -56,4 +56,3 @@ jobs:
       - name: Deploy artifact
         id: deployment
         uses: actions/deploy-pages@v4
-

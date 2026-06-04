@@ -19,6 +19,18 @@ npm run test
 ## ng test แบบ CI
 
 ```bash
+npm run test:ci
+```
+
+เรียก script:
+
+```json
+"test:ci": "CI=1 ng test --watch=false --progress=false"
+```
+
+หรือเรียกตรงด้วย Node 24:
+
+```bash
 PATH=/Users/aporaviz/.nvm/versions/node/v24.16.0/bin:$PATH CI=1 ./node_modules/.bin/ng test --watch=false --progress=false
 ```
 
@@ -46,10 +58,20 @@ npm run build
 เรียก script:
 
 ```json
-"build": "ng build"
+"build": "CI=1 ng build --progress=false"
 ```
 
 ใช้ build โปรเจกต์สำหรับ production
+
+หมายเหตุ: local terminal นี้เคยเจอ esbuild deadlock เมื่อรัน `ng build` แบบ raw ดังนั้น `npm run build` ถูกตั้งให้ใช้ CI mode และปิด progress output เป็น default
+
+อีกกรณีที่เคยเจอคือ build fail เพราะ Angular พยายาม inline Google Fonts แต่เครื่องไม่มี network ไป `fonts.googleapis.com` โปรเจกต์จึงเอา external font links ออกจาก `src/index.html` และใช้ local/system fonts ใน `src/styles.css`
+
+ถ้าต้องการ debug Angular CLI แบบเดิม ใช้:
+
+```bash
+npm run build:raw
+```
 
 ## ng build แบบ CI
 
@@ -69,7 +91,7 @@ Application bundle generation complete.
 ## ng build แบบ development
 
 ```bash
-PATH=/Users/aporaviz/.nvm/versions/node/v24.16.0/bin:$PATH CI=1 ./node_modules/.bin/ng build --configuration development --progress=false
+npm run build:dev
 ```
 
 ใช้ build แบบ development configuration
@@ -99,4 +121,3 @@ curl -I http://127.0.0.1:4201/
 ```text
 HTTP/1.1 200 OK
 ```
-
