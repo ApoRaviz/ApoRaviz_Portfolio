@@ -1,0 +1,63 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 2669 >>
+stream
+q
+50 50 512 692 re S
+Q
+BT /F1 22 Tf 64 725 Td (Tanonchai Promsiri) Tj ET
+BT /F1 12 Tf 64 694 Td (Senior Programmer | Web App Builder | AI Automation Learner) Tj ET
+BT /F1 10 Tf 64 674 Td (Tanonchai.pr@hotmail.com | 081-436-8601 | Bangkok, Thailand | github.com/yourname) Tj ET
+BT /F1 14 Tf 64 646 Td (PROFILE) Tj ET
+BT /F1 10 Tf 64 623 Td (Programmer who enjoys building web apps, dashboards, backend APIs, LINE OA flows, and) Tj ET
+BT /F1 10 Tf 64 608 Td (automation tools that make daily work clearer and easier.) Tj ET
+BT /F1 14 Tf 64 580 Td (SKILLS) Tj ET
+BT /F1 10 Tf 64 557 Td (Frontend: HTML, CSS, JavaScript, Angular, Ionic, Tailwind CSS) Tj ET
+BT /F1 10 Tf 64 539 Td (Backend: C#, .NET Core, MVC, Node.js, REST API, ASP.NET) Tj ET
+BT /F1 10 Tf 64 521 Td (Database / Reports: SQL Server, MongoDB, MySQL, SSRS, Crystal Report) Tj ET
+BT /F1 10 Tf 64 503 Td (Tools / Workflow: GitHub, GitHub Actions, Jira, Figma, IIS Server, PrimeNG) Tj ET
+BT /F1 14 Tf 64 475 Td (EXPERIENCE) Tj ET
+BT /F1 11 Tf 64 452 Td (Senior Programmer | Unbox.IT | Nov 2023-Present) Tj ET
+BT /F1 10 Tf 64 433 Td (- Work with WMS interfaces, SFTP/API data exchange, Keycloak authentication, WMS platform) Tj ET
+BT /F1 10 Tf 64 418 Td (improvements, and CI/CD pipelines with GitHub Actions and self-hosted runners.) Tj ET
+BT /F1 11 Tf 64 400 Td (Systems Analyst / Senior Programmer | Techsoft Holding | Jun 2023-Nov 2023) Tj ET
+BT /F1 10 Tf 64 381 Td (- Collected user requirements, prepared business and SIT documents, assessed and designed) Tj ET
+BT /F1 10 Tf 64 366 Td (systems, supported UAT, and helped junior developers troubleshoot issues.) Tj ET
+BT /F1 11 Tf 64 348 Td (Senior Programmer | Yamato Unyu \(Thailand\) Co., Ltd. | 2019-2023) Tj ET
+BT /F1 10 Tf 64 329 Td (- Built and maintained TMS, WMS, back office, management dashboard, reminder, and customer) Tj ET
+BT /F1 10 Tf 64 314 Td (survey web applications for transport and warehouse workflows.) Tj ET
+BT /F1 11 Tf 64 296 Td (Programmer | Panjawattana Plastic Public Company Limited | 2015-2019) Tj ET
+BT /F1 10 Tf 64 277 Td (- Supported ERP on Syteline, created warehouse handheld scanning tools with ASP.NET and C#,) Tj ET
+BT /F1 10 Tf 64 262 Td (built Crystal/SSRS reports, and worked with SQL queries and stored procedures.) Tj ET
+BT /F1 14 Tf 64 234 Td (PROJECTS) Tj ET
+BT /F1 10 Tf 64 211 Td (MooPing Loyalty: Angular 21 loyalty web app with POS confirmation, saved rewards, iPad) Tj ET
+BT /F1 10 Tf 64 196 Td (display, and LINE OA mock flow.) Tj ET
+BT /F1 10 Tf 64 178 Td (Portfolio Website: Angular portfolio with SSR, teaching docs, editable data service, and) Tj ET
+BT /F1 10 Tf 64 163 Td (modern UI sections.) Tj ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000311 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+3031
+%%EOF

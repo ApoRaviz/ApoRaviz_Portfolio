@@ -79,12 +79,12 @@
       <aside class="reveal rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm sm:p-8">
         <h3 class="font-display text-2xl font-semibold text-white">Contact Channels</h3>
         <p class="mt-4 leading-8 text-neutral-400">
-          Have a web app, dashboard, bot, LINE OA, or automation idea? Send a message and we can talk through the next step.
+          Looking for Angular work, frontend projects, or future AI-powered web tools. Send a message and we can talk through the next step.
         </p>
 
         <!-- ใช้ div เป็น vertical list wrapper ของ contact methods -->
         <div class="mt-8 space-y-4">
-          @for (item of data.contactInfo(); track item.label) {
+          @for (item of data.visibleContactInfo(); track item.label) {
             <!-- ใช้ a เพราะแต่ละ item เป็นช่องทางติดต่อที่นำไปยัง URL ได้ -->
             <a class="flex items-center gap-4 rounded-xl border border-dark-border bg-dark-card p-4 transition hover:border-primary/50 hover:text-primary" [href]="item.url">
               <span class="grid h-10 w-14 place-items-center rounded-lg bg-primary/10 font-mono text-xs text-primary">{{ item.icon }}</span>

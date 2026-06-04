@@ -22,6 +22,7 @@ export interface Project {
   liveUrl: string;
   githubUrl: string;
   featured: boolean;
+  isDemo?: boolean;
 }
 
 export interface Service {
@@ -43,6 +44,7 @@ export interface Testimonial {
   company: string;
   review: string;
   avatar: string;
+  isDemo?: boolean;
 }
 
 export interface ContactInfo {
@@ -50,4 +52,5 @@ export interface ContactInfo {
   label: string;
   value: string;
   url: string;
+  isDemo?: boolean;
 }

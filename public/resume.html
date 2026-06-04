@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tanonchai Promsiri Resume</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #1a1a1a;
+        --muted: #646464;
+        --line: #d8d8d8;
+        --accent: #ff6b00;
+        --soft: #f6f3ef;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #ececec;
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.5;
+      }
+
+      .page {
+        width: min(100%, 900px);
+        margin: 24px auto;
+        background: #fff;
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.12);
+      }
+
+      .resume {
+        padding: 42px;
+      }
+
+      header {
+        border-bottom: 3px solid var(--accent);
+        padding-bottom: 18px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 38px;
+        line-height: 1.1;
+        letter-spacing: 0;
+      }
+
+      .role {
+        margin: 8px 0 0;
+        color: var(--accent);
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .contact {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 18px;
+        margin: 14px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 28px;
+        margin-top: 28px;
+      }
+
+      section {
+        margin-bottom: 24px;
+      }
+
+      h2 {
+        margin: 0 0 10px;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 6px;
+        color: var(--accent);
+        font-size: 15px;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      p {
+        margin: 7px 0 0;
+      }
+
+      ul {
+        margin: 8px 0 0;
+        padding-left: 18px;
+      }
+
+      li {
+        margin: 4px 0;
+      }
+
+      .item {
+        margin-bottom: 18px;
+      }
+
+      .meta {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-top: 8px;
+      }
+
+      .pill {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--soft);
+        padding: 4px 9px;
+        font-size: 12px;
+      }
+
+      .actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        padding: 16px 24px;
+        border-top: 1px solid var(--line);
+        background: #fafafa;
+      }
+
+      .actions a,
+      .actions button {
+        border: 1px solid var(--accent);
+        border-radius: 6px;
+        background: #fff;
+        color: var(--accent);
+        cursor: pointer;
+        font: inherit;
+        font-weight: 700;
+        padding: 9px 14px;
+        text-decoration: none;
+      }
+
+      .actions button {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      @media (max-width: 720px) {
+        .page {
+          margin: 0;
+        }
+
+        .resume {
+          padding: 28px 20px;
+        }
+
+        main {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 31px;
+        }
+      }
+
+      @media print {
+        body {
+          background: #fff;
+        }
+
+        .page {
+          width: 100%;
+          margin: 0;
+          box-shadow: none;
+        }
+
+        .resume {
+          padding: 0;
+        }
+
+        .actions {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <article class="resume">
+        <header>
+          <h1>Tanonchai Promsiri</h1>
+          <p class="role">Senior Programmer · Web App Builder · AI Automation Learner</p>
+          <div class="contact">
+            <span>Tanonchai.pr@hotmail.com</span>
+            <span>081-436-8601</span>
+            <span>Bangkok, Thailand</span>
+            <span>github.com/yourname</span>
+          </div>
+        </header>
+
+        <main>
+          <aside>
+            <section>
+              <h2>Profile</h2>
+              <p>
+                Programmer who enjoys building web apps, dashboards, backend APIs, LINE OA flows,
+                and automation tools that make daily work clearer and easier.
+              </p>
+            </section>
+
+            <section>
+              <h2>Skills</h2>
+              <div class="pill-list">
+                <span class="pill">HTML</span>
+                <span class="pill">CSS</span>
+                <span class="pill">JavaScript</span>
+                <span class="pill">Angular</span>
+                <span class="pill">Ionic</span>
+                <span class="pill">Tailwind CSS</span>
+                <span class="pill">C#</span>
+                <span class="pill">.NET Core</span>
+                <span class="pill">MVC</span>
+                <span class="pill">Node.js</span>
+                <span class="pill">REST API</span>
+                <span class="pill">SQL Server</span>
+                <span class="pill">MongoDB</span>
+                <span class="pill">MySQL</span>
+                <span class="pill">SSRS</span>
+                <span class="pill">Crystal Report</span>
+                <span class="pill">GitHub Actions</span>
+                <span class="pill">Jira</span>
+                <span class="pill">IIS Server</span>
+              </div>
+            </section>
+
+            <section>
+              <h2>Projects</h2>
+              <div class="item">
+                <h3>MooPing Loyalty</h3>
+                <p class="meta">Angular 21 · Signals · GitHub Pages</p>
+                <p>Loyalty web app with POS confirmation, saved rewards, display screen, and LINE OA mock flow.</p>
+              </div>
+              <div class="item">
+                <h3>Portfolio Website</h3>
+                <p class="meta">Angular · Tailwind CSS · SSR</p>
+                <p>Fast portfolio with editable data structure, teaching docs, and modern UI sections.</p>
+              </div>
+            </section>
+          </aside>
+
+          <div>
+            <section>
+              <h2>Experience</h2>
+              <div class="item">
+                <h3>Senior Programmer · Unbox.IT</h3>
+                <p class="meta">Nov 2023-Present</p>
+                <ul>
+                  <li>Work with WMS interfaces, SFTP/API data exchange, and WMS platform improvements.</li>
+                  <li>Support Keycloak authentication and CI/CD pipelines with GitHub Actions and self-hosted runners.</li>
+                </ul>
+              </div>
+              <div class="item">
+                <h3>Systems Analyst / Senior Programmer · Techsoft Holding</h3>
+                <p class="meta">Jun 2023-Nov 2023</p>
+                <ul>
+                  <li>Collected user requirements and prepared business, SIT, and UAT support documents.</li>
+                  <li>Assessed system design and helped junior developers troubleshoot issues.</li>
+                </ul>
+              </div>
+              <div class="item">
+                <h3>Senior Programmer · Yamato Unyu (Thailand) Co., Ltd.</h3>
+                <p class="meta">2019-2023</p>
+                <ul>
+                  <li>Built and maintained TMS, WMS, back office, dashboard, reminder, and survey web applications.</li>
+                  <li>Supported transport and warehouse workflows with practical internal tools.</li>
+                </ul>
+              </div>
+              <div class="item">
+                <h3>Programmer · Panjawattana Plastic Public Company Limited</h3>
+                <p class="meta">2015-2019</p>
+                <ul>
+                  <li>Supported ERP on Syteline and created warehouse handheld scanning tools with ASP.NET and C#.</li>
+                  <li>Built Crystal/SSRS reports and worked with SQL queries and stored procedures.</li>
+                </ul>
+              </div>
+            </section>
+
+            <section>
+              <h2>Working Style</h2>
+              <ul>
+                <li>Easy to work with, clear in communication, and comfortable supporting teammates.</li>
+                <li>Enjoys readable code, practical tools, and steady learning through real projects.</li>
+                <li>Interested in web applications, AI automation, LINE OA, dashboards, APIs, and workflow tools.</li>
+              </ul>
+            </section>
+          </div>
+        </main>
+      </article>
+
+      <div class="actions">
+        <a href="resume.pdf" download="Tanonchai-Promsiri-Resume.pdf">Download PDF</a>
+        <button type="button" onclick="window.print()">Print / Save as PDF</button>
+      </div>
+    </div>
+  </body>
+</html>

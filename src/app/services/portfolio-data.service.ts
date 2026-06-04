@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import {
   ContactInfo,
   Experience,
@@ -32,38 +32,40 @@ export class PortfolioDataService {
     name: 'Tanonchai Promsiri',
     initials: 'AP',
     logoUrl: 'aporaviz-logo.png',
-    role: 'Gamer-minded developer who builds useful web tools',
+    role: 'Angular Developer focused on practical web apps and future AI-powered tools',
     email: 'Tanonchai.pr@hotmail.com',
     phone: '081-436-8601',
     line: '@yourline',
-    github: 'github.com/yourname',
+    github: 'github.com/ApoRaviz',
     facebook: 'fb.com/yourname',
+    resumeUrl: 'resume.pdf',
+    resumePageUrl: 'resume.html',
   });
 
   // roles ใช้กับ typewriter effect ใน Hero แยกออกมาเพื่อเพิ่ม/ลด role ได้โดยไม่แตะ component logic
-  readonly roles = signal(['Web App Builder', 'AI Automation Learner', 'Game-Loving Programmer']);
+  readonly roles = signal(['Angular Developer', 'Frontend Builder', 'AI-Curious Learner']);
 
   // features คือการ์ดจุดเด่นใน About section เก็บเป็น data เพื่อให้ template ใช้ @for render ซ้ำได้
   readonly features = signal<FeatureCard[]>([
     {
       icon: 'FUN',
-      title: 'Easy to Work With',
-      desc: 'I like keeping work simple, friendly, and clear so people around me feel comfortable.',
+      title: 'Open to Younger Teams',
+      desc: 'I enjoy exchanging ideas with modern teams, learning from younger developers, and keeping communication friendly.',
     },
     {
       icon: 'CODE',
-      title: 'Readable Code',
-      desc: 'I try to write code that I can come back to later without fighting my past self.',
+      title: 'Angular Focus',
+      desc: 'I want to grow deeper in Angular, TypeScript, reusable components, forms, routing, SSR, and practical frontend architecture.',
     },
     {
       icon: 'CARE',
-      title: 'Team Mind',
-      desc: 'I care about friends, teammates, and the people who have to use what I build.',
+      title: 'AI Future Mind',
+      desc: 'I am interested in AI-assisted workflows and web tools that combine useful UX with smarter automation.',
     },
     {
       icon: 'PLAY',
-      title: 'Game Energy',
-      desc: 'Games taught me to enjoy quests, learn patterns, and keep trying after a failed round.',
+      title: 'Steady Learner',
+      desc: 'Games taught me to learn patterns, ask better questions, and keep improving after every round.',
     },
   ]);
 
@@ -82,7 +84,7 @@ export class PortfolioDataService {
       id: 1,
       title: 'MooPing Loyalty',
       description:
-        'In-progress loyalty web app for a pork skewer shop, with POS confirmation, saved rewards, iPad display, and LINE OA mock flow.',
+        'Angular loyalty web app for a pork skewer shop concept, with POS confirmation, saved rewards, display screen, and LINE OA mock flow.',
       tech: ['Angular 21', 'Signals', 'GitHub Pages'],
       liveUrl: 'https://aporaviz.github.io/mooping/',
       githubUrl: 'https://github.com/ApoRaviz/mooping',
@@ -96,6 +98,7 @@ export class PortfolioDataService {
       liveUrl: '#',
       githubUrl: '#',
       featured: true,
+      isDemo: true,
     },
     {
       id: 3,
@@ -105,6 +108,7 @@ export class PortfolioDataService {
       liveUrl: '#',
       githubUrl: '#',
       featured: true,
+      isDemo: true,
     },
     {
       id: 4,
@@ -114,6 +118,7 @@ export class PortfolioDataService {
       liveUrl: '#',
       githubUrl: '#',
       featured: false,
+      isDemo: true,
     },
     {
       id: 5,
@@ -123,6 +128,7 @@ export class PortfolioDataService {
       liveUrl: '#',
       githubUrl: '#',
       featured: false,
+      isDemo: true,
     },
     {
       id: 6,
@@ -132,6 +138,7 @@ export class PortfolioDataService {
       liveUrl: '#',
       githubUrl: '#',
       featured: false,
+      isDemo: true,
     },
     {
       id: 7,
@@ -141,8 +148,12 @@ export class PortfolioDataService {
       liveUrl: '#',
       githubUrl: '#',
       featured: false,
+      isDemo: true,
     },
   ]);
+
+  // computed ใช้คัดเฉพาะข้อมูลจริงไปแสดงหน้าเว็บ โดยยังเก็บ demo data ไว้แก้/เปิดใช้ภายหลังได้
+  readonly visibleProjects = computed(() => this.projects().filter((project) => !project.isDemo));
 
   // services ใช้ render service cards ในหน้า Services แต่ละ item มี icon/title/description ครบในตัว
   readonly services = signal<Service[]>([
@@ -195,6 +206,7 @@ export class PortfolioDataService {
       company: 'Shared Quest',
       review: 'He is easy to talk to, cares about the people around him, and keeps trying until the tool feels useful.',
       avatar: 'TF',
+      isDemo: true,
     },
     {
       name: 'Project Teammate',
@@ -202,6 +214,7 @@ export class PortfolioDataService {
       company: 'Small Build',
       review: 'He likes turning confusing steps into something clearer, and he asks questions instead of pretending.',
       avatar: 'PT',
+      isDemo: true,
     },
     {
       name: 'Future Client',
@@ -209,15 +222,20 @@ export class PortfolioDataService {
       company: 'Open Slot',
       review: 'This space is ready for a real note from someone I help next.',
       avatar: 'NQ',
+      isDemo: true,
     },
   ]);
+
+  readonly visibleTestimonials = computed(() => this.testimonials().filter((testimonial) => !testimonial.isDemo));
 
   // contactInfo ใช้ซ้ำทั้ง Contact section และ Footer เพื่อให้ช่องทางติดต่อไม่ซ้ำหลายที่
   readonly contactInfo = signal<ContactInfo[]>([
     { icon: 'MAIL', label: 'Email', value: 'Tanonchai.pr@hotmail.com', url: 'mailto:Tanonchai.pr@hotmail.com' },
     { icon: 'CALL', label: 'Phone', value: '081-436-8601', url: 'tel:0814368601' },
-    { icon: 'LINE', label: 'LINE', value: '@yourline', url: '#' },
-    { icon: 'GH', label: 'GitHub', value: 'github.com/yourname', url: '#' },
-    { icon: 'FB', label: 'Facebook', value: 'fb.com/yourname', url: '#' },
+    { icon: 'GH', label: 'GitHub', value: 'github.com/ApoRaviz', url: 'https://github.com/ApoRaviz' },
+    { icon: 'LINE', label: 'LINE', value: '@yourline', url: '#', isDemo: true },
+    { icon: 'FB', label: 'Facebook', value: 'fb.com/yourname', url: '#', isDemo: true },
   ]);
+
+  readonly visibleContactInfo = computed(() => this.contactInfo().filter((item) => !item.isDemo));
 }

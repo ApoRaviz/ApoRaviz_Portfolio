@@ -43,10 +43,10 @@ section[id] {
   }
 }
 
-/* class reveal เป็นระบบ animation กลาง ทุก section ใช้ซ้ำได้ผ่าน IntersectionObserver */
+/* class reveal เป็นระบบ animation กลาง แต่ต้องไม่ซ่อน content สำคัญแม้ JS/IntersectionObserver มีปัญหา */
 .reveal {
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: translateY(0);
   transition:
     opacity 0.6s ease,
     transform 0.6s ease;
@@ -58,11 +58,11 @@ section[id] {
 }
 
 .reveal-left {
-  transform: translateX(-40px);
+  transform: translateX(0);
 }
 
 .reveal-right {
-  transform: translateX(40px);
+  transform: translateX(0);
 }
 
 .reveal-left.animate-in,

@@ -73,7 +73,12 @@ export class ThemeService {
   }
 
   observeReveals(): void {
-    if (!this.isBrowser || typeof IntersectionObserver === 'undefined') {
+    if (!this.isBrowser) {
+      return;
+    }
+
+    if (typeof IntersectionObserver === 'undefined') {
+      this.document.querySelectorAll('.reveal').forEach((element) => element.classList.add('animate-in'));
       return;
     }
 

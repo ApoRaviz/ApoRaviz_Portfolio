@@ -43,7 +43,7 @@
     <div class="reveal rounded-2xl border border-primary/15 bg-black/35 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,.08),0_30px_90px_rgba(0,0,0,.45)] backdrop-blur-md sm:p-8">
       <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-4 py-2 font-mono text-sm text-green-300">
         <span class="h-2.5 w-2.5 rounded-full bg-green-400 shadow-[0_0_16px_rgba(74,222,128,.8)] animate-pulse"></span>
-        Ready for the next quest
+        Open to Angular opportunities
       </p>
 
       <p class="font-mono text-sm uppercase tracking-[0.25em] text-primary">Player Intro</p>
@@ -59,7 +59,7 @@
       </p>
 
       <p class="mt-6 max-w-2xl text-lg leading-8 text-neutral-400">
-        I enjoy games, code, and helping people around me. I build web apps, bots, dashboards, and small automations that make messy work feel easier.
+        I am looking for Angular work where I can build useful web screens, learn with modern teams, and grow toward AI-powered tools in the future.
       </p>
 
       <!-- ใช้ div เป็น wrapper ของ CTA buttons เพื่อจัด flex/spacing เท่านั้น -->
@@ -69,23 +69,24 @@
           class="rounded-lg bg-primary px-6 py-3 font-semibold text-white shadow-glow transition hover:bg-primary-light"
           (click)="theme.scrollToSection('projects')"
         >
-          Open Quest Log
+          View Angular Work
         </button>
-        <button
-          type="button"
+        <!-- ใช้ a เพราะ Resume เป็นไฟล์จริงใน public ที่ browser สามารถดาวน์โหลดได้โดยตรงหลัง deploy -->
+        <a
+          [href]="data.profile().resumeUrl"
+          download="Tanonchai-Promsiri-Resume.pdf"
           class="rounded-lg border border-primary px-6 py-3 font-semibold text-primary transition hover:bg-primary/10 hover:shadow-glow"
-          (click)="theme.scrollToSection('contact')"
         >
-          Send Message
-        </button>
+          Download Resume
+        </a>
       </div>
 
       <!-- ใช้ div เป็น quick stat row แบบ RPG tag แต่ไม่ใช่ progress bar หรือค่าพลัง -->
       <div class="mt-8 flex flex-wrap gap-3">
         <span class="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-mono text-xs text-neutral-300">Gamer</span>
-        <span class="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-mono text-xs text-neutral-300">Programmer</span>
-        <span class="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-mono text-xs text-neutral-300">Friendly Builder</span>
-        <span class="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-mono text-xs text-neutral-300">Learning Every Run</span>
+        <span class="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-mono text-xs text-neutral-300">Angular</span>
+        <span class="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-mono text-xs text-neutral-300">AI Curious</span>
+        <span class="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-mono text-xs text-neutral-300">Team Learner</span>
       </div>
     </div>
 
@@ -95,16 +96,16 @@
       <div class="grid aspect-[5/2] place-items-center rounded-xl border border-primary/25 bg-[linear-gradient(135deg,rgba(255,107,0,.10),rgba(255,255,255,.03),rgba(0,0,0,.25))] p-8 shadow-[inset_0_0_40px_rgba(255,107,0,.08)]">
         <img class="h-auto w-full max-w-md" [src]="data.profile().logoUrl" alt="ApoRaviz brand logo" />
       </div>
-      <!-- ใช้ div เป็น concept panel เพื่อเล่า character direction โดยยังไม่ต้องมีภาพจริง -->
+      <!-- ใช้ div เป็น focus panel เพราะเป็นข้อมูลเสริมด้านข้างของ hero ไม่ใช่ section ใหม่ -->
       <div class="mt-5 rounded-xl border border-red-500/20 bg-gradient-to-br from-red-500/10 via-black/20 to-primary/10 p-5">
-        <p class="font-mono text-xs uppercase tracking-[0.2em] text-red-300">Companion Concept</p>
-        <h2 class="mt-2 font-display text-2xl font-semibold text-white">Armored Axe Heroine</h2>
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-red-300">Current Direction</p>
+        <h2 class="mt-2 font-display text-2xl font-semibold text-white">Angular first, AI ready</h2>
         <p class="mt-3 leading-7 text-neutral-400">
-          An original character direction for the site: brave, protective, playful, and ready to clear the next quest.
+          Seeking frontend work where Angular, TypeScript, clean UI, and a learning mindset can create useful tools for real teams.
         </p>
       </div>
       <p class="mt-5 font-mono text-sm text-neutral-400">
-        Angular 21 · Node 24 · Web Apps · Bots · Automation
+        Angular · TypeScript · Web Apps · AI Learning · Team Growth
       </p>
     </aside>
   </div>

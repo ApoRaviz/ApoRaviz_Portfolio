@@ -1,4 +1,5 @@
 <!-- ใช้ section เพราะ Testimonials เป็นหมวดหลักที่ช่วยยืนยันความน่าเชื่อถือ -->
+@if (data.visibleTestimonials().length > 0) {
 <section id="testimonials" class="bg-[#0d0d0d] py-24" aria-labelledby="testimonials-title">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <header class="reveal text-center">
@@ -10,7 +11,7 @@
     </header>
 
     <div class="mt-12 grid gap-6 lg:grid-cols-3">
-      @for (testimonial of data.testimonials(); track testimonial.name) {
+      @for (testimonial of data.visibleTestimonials(); track testimonial.name) {
         <!-- ใช้ article เพราะ testimonial หนึ่งใบมีเนื้อหารีวิวและผู้เขียนครบในตัวเอง -->
         <article class="reveal rounded-2xl border border-dark-border bg-dark-card p-8 transition hover:border-primary/40 hover:shadow-glow">
           <p class="font-display text-5xl text-primary" aria-hidden="true">"</p>
@@ -32,3 +33,4 @@
     </div>
   </div>
 </section>
+}
