@@ -40,13 +40,13 @@
 
 - [ ] 2.1 เพิ่ม project screenshot หรือ visual preview
 - [ ] 2.2 ปรับ project descriptions ให้เล่า value มากกว่า tech stack
-- [ ] 2.3 เพิ่ม case study ของ `MooPing_Loyalty`
+- [ ] 2.3 เพิ่ม case study ของ `ApoRaviz_Mooping`
 - [ ] 2.4 ตรวจ SEO title/description/open graph
 - [ ] 2.5 ตรวจ accessibility ของ nav, buttons, links และ form
 
 ## Step 3 - Portfolio As Hub
 
-- [x] 3.1 เพิ่ม `MooPing_Loyalty` เป็น project card
+- [x] 3.1 เพิ่ม `ApoRaviz_Mooping` เป็น project card
 - [ ] 3.2 เชื่อม live URL และ GitHub URL จริงของทุก project
 - [ ] 3.3 เพิ่ม learning/case study links
 - [ ] 3.4 วางระบบ publish flow สำหรับโปรเจกต์ลูก

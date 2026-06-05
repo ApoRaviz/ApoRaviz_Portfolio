@@ -86,8 +86,8 @@ export class PortfolioDataService {
       description:
         'Angular loyalty web app for a pork skewer shop concept, with POS confirmation, saved rewards, display screen, and LINE OA mock flow.',
       tech: ['Angular 21', 'Signals', 'GitHub Pages'],
-      liveUrl: 'https://aporaviz.github.io/mooping/',
-      githubUrl: 'https://github.com/ApoRaviz/mooping',
+      liveUrl: 'https://aporaviz.github.io/ApoRaviz_Mooping/',
+      githubUrl: 'https://github.com/ApoRaviz/ApoRaviz_Mooping',
       featured: true,
     },
     {

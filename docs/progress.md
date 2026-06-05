@@ -4,7 +4,7 @@
 
 ## Current Role
 
-`ApoRaviz_Portfolio` คือ profile หลักของ ApoRaviz และเป็น hub สำหรับ link ไปยังโปรเจกต์ลูก เช่น `MooPing_Loyalty`
+`ApoRaviz_Portfolio` คือ profile หลักของ ApoRaviz และเป็น hub สำหรับ link ไปยังโปรเจกต์ลูก เช่น `ApoRaviz_Mooping`
 
 ## Done
 
@@ -24,7 +24,7 @@
 - [x] ย้าย project skill ไปที่ `.codex/skills/angular-portfolio-mentor/SKILL.md`
 - [x] ลบ generic UI skill copy ที่ซ้ำกับกติกากลาง
 - [x] ลบ prompt/spec เก่า Angular 19 เพื่อไม่ให้สับสนกับ Angular 21
-- [x] เพิ่ม `MooPing_Loyalty` เป็น project card ใน portfolio
+- [x] เพิ่ม `ApoRaviz_Mooping` เป็น project card ใน portfolio
 - [x] เพิ่ม GitHub Actions สำหรับ CI และ GitHub Pages deploy
 - [x] เอา external Google Fonts ออกจาก build path เพื่อลด dependency กับ network
 - [x] ปรับ build script ให้ใช้ CI mode และปิด progress output
