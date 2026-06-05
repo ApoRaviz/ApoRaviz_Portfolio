@@ -1,165 +1,55 @@
 # Teach
 
-เอกสารเรียนรู้ของโปรเจกต์นี้ถูกแยกเป็นไฟล์ย่อยตามหัวข้อแล้ว เพื่อให้อ่านง่ายและกลับมาทบทวนเฉพาะเรื่องได้เร็วขึ้น
+เอกสารนี้คือสารบัญบทเรียนเฉพาะ `ApoRaviz_Portfolio`
 
-ถ้าต้องการอ่าน Angular concept กลางก่อน ให้เริ่มที่ `_docs/angular/teach/README.md` แล้วค่อยกลับมาอ่านไฟล์นี้เพื่อดูตัวอย่างจริงจาก Portfolio
+บทเรียนในโปรเจกต์นี้ไม่เก็บ Angular พื้นฐานซ้ำแล้ว เพราะ concept กลางย้ายไปอยู่ที่:
 
-## แนะนำลำดับการอ่าน
+```text
+_docs/angular/teach/README.md
+_docs/angular/commands.md
+_docs/git/commands.md
+```
 
-1. [Angular Reactive และ Signals](teach/01-angular-reactive-and-signals.md)
-2. [Services และ Dependency Injection](teach/02-services-and-dependency-injection.md)
-3. [Angular App Config และ SSR](teach/03-angular-app-config-and-ssr.md)
-4. [Redesign แนว RPG Profile](teach/04-redesign-rpg-profile.md)
-5. [Resume Data, Hero Background และ Color](teach/05-resume-data-and-hero-background.md)
-6. [Browser APIs: IntersectionObserver, SSR และ Test](teach/06-browser-apis-intersection-observer-ssr-test.md)
-7. [CI/CD ด้วย GitHub Actions](teach/07-cicd-github-actions.md)
-8. [Navbar Dropdown และ Custom Smooth Scroll](teach/08-navbar-dropdown-and-smooth-scroll.md)
-9. [Component Folder Best Practices](teach/09-component-folder-best-practices.md)
-10. [Angular .spec.ts และ Unit Test](teach/10-angular-spec-and-unit-test.md)
+## โปรเจกต์นี้สอนอะไร
 
-## กฎการ sync กับหน้าเว็บ
+`ApoRaviz_Portfolio` สอนวิธีทำ profile หลักให้เป็น project hub ที่มีตัวตนชัด อ่านง่าย และเชื่อมไปยังโปรเจกต์ลูกได้
+
+สิ่งที่ควรเรียนจากโปรเจกต์นี้:
+
+- การกำหนด design direction ก่อนแก้ UI
+- การเก็บข้อมูลจริงไว้ใน `PortfolioDataService`
+- การออกแบบ Hero ให้เป็น first signal ของตัวตน
+- การทำ navbar/route/scroll flow ให้ไม่หลุด
+- การทำหน้า `/teach` และ `/commands` ให้สอน command/flow ได้จริง
+
+## Reading Order
+
+1. [RPG Profile Design Direction](teach/04-redesign-rpg-profile.md)
+2. [Resume Data, Hero Background และ Color](teach/05-resume-data-and-hero-background.md)
+3. [Navbar Dropdown และ Custom Smooth Scroll](teach/08-navbar-dropdown-and-smooth-scroll.md)
+4. [Teach และ Commands Page Structure](teach/09-component-folder-best-practices.md)
+
+## Command Learning Rule
+
+คำสั่งที่อยู่ในหน้า `/commands` หรือ `docs/commands.md` ต้องไม่เป็นแค่รายการ copy/paste
+
+ทุก command ควรตอบ:
+
+```text
+ใช้ทำอะไร
+ใช้เมื่อไหร่
+ตรวจผลลัพธ์อย่างไร
+มีข้อควรระวังอะไร
+```
+
+ถ้าเป็น command กลาง เช่น `npm ci`, `ng build`, `git status`, `git diff --check` ให้สรุปไว้ที่ `_docs/angular/commands.md` หรือ `_docs/git/commands.md`
+
+ถ้าเป็น command เฉพาะ Portfolio เช่น base-href, route/manual UI check หรือ source path ของหน้า `/teach` ให้เก็บใน `docs/commands.md` และ sync `src/app/pages/commands-page/commands-data.ts`
+
+## Maintenance Rule
 
 - ถ้าเพิ่มหรือแก้หัวข้อใน `docs/teach/` ต้องอัปเดตหน้า `/teach` ด้วย
-- หน้า `/teach` ใช้ HTML/popup ในเว็บ ไม่พาผู้ใช้ไปเปิดไฟล์ `.md` โดยตรง
-- ถ้ามี HTML ใหม่ ต้องใส่ comment เชิงสอนอธิบาย semantic element และ `div` สำคัญเสมอ
-- ถ้าเรื่องนั้นเป็น Angular concept กลาง เช่น signals, DI, SSR, browser API, unit test หรือ CI/CD ให้สรุปกลับไป `_docs/angular/teach/`
-
-## แต่ละไฟล์มีอะไรบ้าง
-
-### 1. Angular Reactive และ Signals
-
-อ่านเรื่อง:
-
-- `reactive` ของ Angular คืออะไร
-- `signal` คืออะไร
-- อ่านค่า signal ด้วย `()`
-- เปลี่ยนค่า signal ด้วย `set()` และ `update()`
-- `computed()` และ `effect()`
-- ตัวอย่างจาก `ThemeService`, `HeroComponent`, `ContactComponent`
-
-### 2. Services และ Dependency Injection
-
-อ่านเรื่อง:
-
-- ทำไมบางข้อมูลต้องอยู่ใน service
-- `PortfolioDataService` มีไว้ทำไม
-- `ThemeService` มีไว้ทำไม
-- `inject()` คืออะไร
-- dependency injection คืออะไร
-- ทำไมต้อง guard browser APIs ในโปรเจกต์ SSR
-
-### 3. Angular App Config และ SSR
-
-อ่านเรื่อง:
-
-- `app.config.ts` คืออะไร
-- `provideBrowserGlobalErrorListeners()` ใช้ทำอะไร
-- `provideRouter(routes)` ใช้ทำอะไร
-- `provideClientHydration(withEventReplay())` คืออะไร
-- `provideAnimations()` คืออะไร
-- `provideServerRendering(withRoutes(serverRoutes))` คืออะไร
-- `prerender` กับ `hydration` ต่างกันยังไง
-
-### 4. Redesign แนว RPG Profile
-
-อ่านเรื่อง:
-
-- ทำไมต้องมี `docs/design-direction.md`
-- copy tone คืออะไร
-- ทำไม navbar เอาชื่อออก
-- ทำไม Skills เปลี่ยนเป็น Loadout
-- ทำไม Projects เปลี่ยนเป็น Quest Log
-- ทำไมใช้ text badge แทน emoji icon
-- ทำไมเพิ่ม `prefers-reduced-motion`
-- ทำไมเปลี่ยน font
-
-### 5. Resume Data, Hero Background และ Color
-
-อ่านเรื่อง:
-
-- เอาข้อมูล resume มาใส่ตรงไหน
-- ทำไมข้อมูลจริงควรอยู่ใน `PortfolioDataService`
-- ทำไม Hero หลักใช้ `section`
-- ทำไม background/visual layer ใช้ `div`
-- ดำส้มควรเติมสีอะไรให้เว็บดูมีมิติขึ้น
-
-### 6. Browser APIs: IntersectionObserver, SSR และ Test
-
-อ่านเรื่อง:
-
-- Browser API คืออะไร
-- `IntersectionObserver` ใช้ทำอะไร
-- `entry`, `threshold`, `rootMargin`, `observe`, `disconnect`, `unobserve`
-- ตัวอย่างจาก `observeSections()` และ `observeReveals()`
-- SSR/prerender คืออะไร
-- test environment เช่น jsdom คืออะไร
-- ทำไมต้อง guard ด้วย `isPlatformBrowser()` และ `typeof IntersectionObserver`
-
-### 7. CI/CD ด้วย GitHub Actions
-
-อ่านเรื่อง:
-
-- CI/CD คืออะไร
-- GitHub Actions workflow คืออะไร
-- `ci.yml` ตรวจ test/build ยังไง
-- `deploy-pages.yml` deploy ไป GitHub Pages ยังไง
-- `npm ci` ต่างจาก `npm install` ยังไง
-- ทำไม GitHub Pages ต้องใช้ `base-href`
-- ต้องตั้งค่าอะไรใน GitHub หลัง push workflow
-
-### 8. Navbar Dropdown และ Custom Smooth Scroll
-
-อ่านเรื่อง:
-
-- ทำไม `Learn` dropdown หายตอนเลื่อนเม้าช้า
-- วิธีทำ invisible hit-area bridge ด้วย wrapper และ `pt-3`
-- ทำไม section navigation ควรเป็น `a` ที่มี `href` fallback
-- ใช้ `scrollIntoView()` และ `scroll-margin-top` แทน custom scroll animation ที่ซับซ้อน
-- เช็ก `prefers-reduced-motion` และ `scroll-behavior: auto !important` เมื่อ scroll วาปทันที
-- วิธี queue section scroll เมื่อต้อง navigate จาก `/teach` หรือ `/commands` กลับ `/`
-- checklist สำหรับตรวจ scroll/navigation รอบหน้า
-
-### 9. Component Folder Best Practices
-
-อ่านเรื่อง:
-
-- ทำไม modal ไม่ควรวางปนกับ page file เมื่อ feature เริ่มโต
-- ความต่างระหว่าง feature-local component กับ shared component
-- เมื่อไรควรวางใน `pages/<page>/components/`
-- เมื่อไรควรวางใน `src/app/components/`
-- import path หลังย้าย component เข้า folder ย่อย
-- checklist ก่อนย้าย component
-
-### 10. Angular .spec.ts และ Unit Test
-
-อ่านเรื่อง:
-
-- `.spec.ts` คืออะไร
-- `describe()`, `it()`, `expect()` ใช้ทำอะไร
-- `TestBed` คือ Angular app จำลองสำหรับ test
-- ทำไมต้อง mock `IntersectionObserver`
-- `vi.useFakeTimers()` ช่วย test timeout อย่างไร
-- regression test คืออะไร
-- ทำไม `theme.service.spec.ts` ช่วยกันบัค navbar underline แว๊บกลับมา
-
-## จำสั้น ๆ
-
-- `signal`: กล่อง state ที่ UI ตามทันเมื่อค่าเปลี่ยน
-- `set`: ตั้งค่าใหม่
-- `update`: เปลี่ยนจากค่าเดิม
-- `computed`: คำนวณค่าจาก signal อื่น
-- `effect`: ทำ side effect เมื่อ signal เปลี่ยน
-- `service`: ที่เก็บ logic/data กลางของแอป
-- `inject`: ขอใช้ service จาก Angular
-- `isPlatformBrowser`: กัน SSR พังจาก browser API
-- `hydration`: Angular รับช่วง HTML ที่ server สร้างไว้
-- `prerender`: สร้าง HTML static ตอน build
-- `IntersectionObserver`: เฝ้าว่า element เข้า viewport หรือยัง
-- `CI/CD`: ตรวจและ deploy code อัตโนมัติ
-- `dropdown bridge`: พื้นที่ hover ที่ครอบช่องว่างระหว่างปุ่มกับ submenu
-- `section anchor`: ถ้าเมนูพาไป section จริง ควรมี `href` fallback และใช้ `scroll-margin-top` กัน navbar บัง
-- `feature-local component`: component ที่ใช้เฉพาะ page เดียว ควรอยู่ใต้ page owner
-- `shared component`: component ที่ใช้หลายหน้า ค่อยย้ายไป `src/app/components/`
-- `.spec.ts`: ไฟล์ทดสอบที่รันด้วย `ng test` หรือ `npm run test:ci`
-- `TestBed`: Angular app จำลองสำหรับ test service/component
-- `regression test`: test ที่เขียนเพื่อกันบัคเดิมกลับมา
+- หน้า `/teach` ใช้ข้อมูลจาก `src/app/pages/teach-page/teach-lessons.ts`
+- ถ้าเพิ่มหรือแก้คำสั่งใน `docs/commands.md` ต้องอัปเดตหน้า `/commands` ด้วย
+- หน้า `/commands` ใช้ข้อมูลจาก `src/app/pages/commands-page/commands-data.ts`
+- ถ้าเป็น Angular concept กลาง ให้เพิ่มใน `_docs/angular/teach/` ไม่เพิ่มซ้ำใน project teach

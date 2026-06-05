@@ -1,6 +1,6 @@
-# Component Folder Best Practices
+# Teach และ Commands Page Structure
 
-บันทึกนี้สรุปวิธีจัดไฟล์ component ในโปรเจกต์นี้ โดยเฉพาะ component ย่อยอย่าง modal ที่อยู่ใต้หน้า `Teach` และ `Commands`
+บันทึกนี้สรุปวิธีจัดไฟล์ของหน้า `/teach` และ `/commands` ใน `ApoRaviz_Portfolio` เพื่อให้ markdown docs, data TypeScript และ modal component sync กัน
 
 ## ทำไมไม่ควรวาง modal ปนกับ page เสมอไป
 

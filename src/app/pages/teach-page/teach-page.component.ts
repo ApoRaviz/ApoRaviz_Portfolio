@@ -14,14 +14,14 @@ export class TeachPageComponent {
   readonly selectedLesson = signal<TeachLesson | null>(null);
 
   readonly glossary = [
-    ['signal', 'กล่อง state แบบ reactive ที่ทำให้ UI ตามค่าที่เปลี่ยนทัน'],
-    ['computed', 'ค่าที่คำนวณจาก signal ตัวอื่น'],
-    ['effect', 'งานข้างเคียงที่รันเมื่อ signal เปลี่ยน'],
-    ['service', 'ที่เก็บ logic หรือ data กลางของแอป'],
-    ['inject', 'วิธีขอใช้ service จาก Angular'],
-    ['hydration', 'Angular รับช่วง HTML ที่ server สร้างไว้'],
-    ['prerender', 'การสร้าง HTML static ตอน build'],
-    ['IntersectionObserver', 'Browser API สำหรับดูว่า element เข้า viewport หรือยัง'],
+    ['Design direction', 'เข็มทิศของตัวตน สี copy และ mood ของ Portfolio'],
+    ['Source data', 'จุดที่ข้อมูลจริงอยู่ เช่น PortfolioDataService'],
+    ['Fallback', 'ทางสำรองเมื่อ Angular handler หรือ timing ยังไม่พร้อม'],
+    ['Route queue', 'การเก็บ section id ไว้ก่อน navigate กลับหน้า Home'],
+    ['Feature-local', 'component ที่เป็นของ page เดียวและควรอยู่ใต้ page owner'],
+    ['sourcePath', 'ตัวชี้ว่า lesson หรือ command อ้างอิง markdown ไฟล์ไหน'],
+    ['Purpose', 'คำอธิบายว่าคำสั่งหรือ flow นั้นใช้ทำอะไร'],
+    ['Caution', 'ข้อควรระวังเมื่อใช้คำสั่งหรือแก้ flow นั้น'],
   ];
 
   private readonly title = inject(Title);
@@ -33,7 +33,7 @@ export class TeachPageComponent {
     this.title.setTitle('Teach | ApoRaviz');
     this.meta.updateTag({
       name: 'description',
-      content: 'Learning notes for the ApoRaviz portfolio project, covering Angular signals, services, SSR, browser APIs, and CI/CD.',
+      content: 'Project-specific learning notes for the ApoRaviz portfolio, covering design direction, hero data, navigation flow, and Teach/Commands page structure.',
     });
   }
 

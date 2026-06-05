@@ -22,9 +22,9 @@ export const COMMAND_GUIDES: CommandGuide[] = [
   {
     id: 1,
     title: 'Project Setup Commands',
-    sourcePath: 'docs/commands/01-project-setup.md',
-    summary: 'คำสั่งเริ่มต้นโปรเจกต์ ตั้งแต่เลือก Node version, ตรวจ npm, scaffold Angular และติดตั้ง dependency สำคัญ',
-    tags: ['Node 24', 'Angular CLI', 'npm install', 'Tailwind', 'Prettier'],
+    sourcePath: 'docs/commands.md',
+    summary: 'คำสั่งเริ่มต้นสำหรับเปิด ApoRaviz Portfolio ในเครื่อง ตั้งแต่เลือก Node 24 ไปจนถึงติดตั้ง dependency',
+    tags: ['Node 24', 'npm install', 'portfolio setup'],
     examples: [
       {
         command: 'nvm use 24',
@@ -32,32 +32,22 @@ export const COMMAND_GUIDES: CommandGuide[] = [
         notes: ['ช่วยลดปัญหา build/test ใช้ Node คนละ version', 'เหมาะก่อนรันคำสั่ง Angular'],
       },
       {
-        command: 'node -v\nnpm -v',
-        purpose: 'ตรวจ version ของ Node และ npm ที่กำลังใช้อยู่',
-        notes: ['Node ที่ต้องการคือ v24.x.x', 'โปรเจกต์ระบุ packageManager เป็น npm@11.5.1'],
-      },
-      {
-        command: 'npx -y @angular/cli@21.2.12 new portfolio --routing --ssr --style css',
-        purpose: 'สร้าง Angular project พร้อม routing, SSR/prerender และ CSS base',
-        notes: ['ใช้ CLI version ที่เจาะจง', '--routing เปิด Angular Router', '--ssr เปิด SSR/prerender'],
-      },
-      {
-        command: 'npm install tailwindcss @tailwindcss/postcss\nnpm install --save-dev prettier',
-        purpose: 'ติดตั้ง Tailwind CSS v4 และ Prettier',
-        notes: ['Tailwind ใช้กับ utility class และ theme token', 'Prettier เตรียมไว้สำหรับ format code'],
+        command: 'npm install',
+        purpose: 'ติดตั้ง dependency ของ Portfolio จาก package-lock.json',
+        notes: ['ใช้เมื่อ clone repo ใหม่หรือ node_modules หาย', 'ถ้า lockfile เปลี่ยน ควรเช็ก diff ก่อน commit'],
       },
     ],
     demo: {
       title: 'เริ่มโปรเจกต์ให้ version ไม่หลุด',
-      steps: ['สลับเป็น Node 24', 'ตรวจ node/npm version', 'สร้าง Angular project ด้วย CLI ที่กำหนด', 'ติดตั้ง dependency สำหรับ styling และ formatting'],
+      steps: ['สลับเป็น Node 24', 'ติดตั้ง dependency', 'เปิด dev server', 'รัน test/build ก่อนแก้ใหญ่'],
     },
     cautions: ['อย่าใช้ Node version สุ่ม เพราะ Angular/SSR อาจ build ไม่เหมือนกัน', 'npm install อาจอัปเดต package-lock ถ้า dependency ไม่ตรง'],
   },
   {
     id: 2,
     title: 'Development Server Commands',
-    sourcePath: 'docs/commands/02-development-server.md',
-    summary: 'คำสั่งเปิดเว็บในเครื่องระหว่างพัฒนา ทั้ง ng serve ปกติ, ระบุ host/port, port สำรอง และ serve SSR หลัง build',
+    sourcePath: 'docs/commands.md',
+    summary: 'คำสั่งเปิด ApoRaviz Portfolio ในเครื่องระหว่างพัฒนา ทั้ง npm script และ port สำรอง',
     tags: ['ng serve', 'localhost', 'port 4200', 'port 4201', 'SSR server'],
     examples: [
       {
@@ -90,7 +80,7 @@ export const COMMAND_GUIDES: CommandGuide[] = [
   {
     id: 3,
     title: 'Verification Commands',
-    sourcePath: 'docs/commands/03-verification.md',
+    sourcePath: 'docs/commands.md',
     summary: 'คำสั่งตรวจงานหลังแก้ code เช่น test, build, development build, whitespace check และ HTTP status check',
     tags: ['test', 'build', 'CI mode', 'git diff --check', 'curl -I'],
     examples: [
@@ -124,7 +114,7 @@ export const COMMAND_GUIDES: CommandGuide[] = [
   {
     id: 4,
     title: 'Git Commands',
-    sourcePath: 'docs/commands/04-git.md',
+    sourcePath: 'docs/commands.md',
     summary: 'คำสั่ง Git ตั้งแต่เริ่ม repo, ดูสถานะ, เชื่อม remote, sync กับ origin, stage, commit, push และดู log',
     tags: ['git status', 'remote', 'fetch', 'merge', 'commit', 'push'],
     examples: [
@@ -158,14 +148,14 @@ export const COMMAND_GUIDES: CommandGuide[] = [
   {
     id: 5,
     title: 'Utility และ Troubleshooting Commands',
-    sourcePath: 'docs/commands/05-utility-and-troubleshooting.md',
+    sourcePath: 'docs/commands.md',
     summary: 'คำสั่งช่วยค้นหาไฟล์/ข้อความ ดูท้ายไฟล์ นับบรรทัด หา process ที่ใช้ port และจัดการ folder ระหว่างพัฒนา',
     tags: ['rg', 'find', 'sed', 'tail', 'lsof', 'kill'],
     examples: [
       {
-        command: 'rg -n "inject\\(\\)|Dependency Injection" docs/teach.md docs/teach',
-        purpose: 'ค้นหาข้อความพร้อม filename และ line number',
-        notes: ['rg เร็วและอ่านง่าย', 'เหมาะกว่าไล่เปิดไฟล์เอง'],
+        command: 'rg -n "RPG|PortfolioDataService|queueSectionScroll" docs src/app',
+        purpose: 'ค้นหา design/data/navigation flow ของ Portfolio พร้อม filename และ line number',
+        notes: ['rg เร็วและอ่านง่าย', 'เหมาะกว่าไล่เปิดไฟล์เอง', 'ใช้ตรวจว่า docs กับ source ยังเล่าเรื่องเดียวกัน'],
       },
       {
         command: 'rg --files\nfind docs/teach -maxdepth 1 -type f -name "*.md" -print | sort',
@@ -192,8 +182,8 @@ export const COMMAND_GUIDES: CommandGuide[] = [
   {
     id: 6,
     title: 'CI/CD Commands',
-    sourcePath: 'docs/commands/06-cicd-commands.md',
-    summary: 'คำสั่งสำหรับ workflow CI/CD เช่น npm ci, test/build แบบ CI, build สำหรับ GitHub Pages และ GitHub CLI',
+    sourcePath: 'docs/commands.md',
+    summary: 'คำสั่งตรวจ workflow และ GitHub Pages ของ Portfolio เช่น build แบบ base-href และ GitHub CLI',
     tags: ['npm ci', 'GitHub Pages', 'base-href', 'workflow_dispatch', 'gh CLI'],
     examples: [
       {

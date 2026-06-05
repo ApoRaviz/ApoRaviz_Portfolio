@@ -22,7 +22,7 @@ export class CommandsPageComponent {
     this.title.setTitle('Commands | ApoRaviz');
     this.meta.updateTag({
       name: 'description',
-      content: 'Command reference for the ApoRaviz portfolio project, covering setup, development server, verification, Git, troubleshooting, and CI/CD.',
+      content: 'Project-specific command reference for the ApoRaviz portfolio, covering local setup, dev server, verification, Git, troubleshooting, and deployment checks.',
     });
   }
 
