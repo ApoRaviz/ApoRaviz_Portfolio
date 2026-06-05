@@ -166,9 +166,9 @@ Original armored axe heroine
 - Draft / publish
 - ใช้ Supabase หรือ Firebase
 
-## Design Skill Notes
+## Design System Notes
 
-จาก `.codex/skills/ui-ux-pro-max` แนวที่เหมาะคือ:
+จากกติกากลางใน `_docs/NEW_PROJECT_GUIDE.md` แนวที่เหมาะคือ:
 
 - Portfolio grid
 - Motion-driven แบบพอดี
@@ -177,4 +177,4 @@ Original armored axe heroine
 - Avoid generic layouts
 - Respect `prefers-reduced-motion`
 
-เราจะไม่ใช้คำว่า `pro` จากชื่อ skill ในเว็บจริง เพราะไม่ตรงกับ tone ที่ต้องการ
+เว็บนี้ควรเป็น profile ที่จริงใจและมีตัวตน ไม่ต้องใช้คำใหญ่หรือ layout ที่ดูเหมือน template บริษัท

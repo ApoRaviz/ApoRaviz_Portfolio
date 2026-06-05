@@ -34,3 +34,12 @@ npm run build
 ```bash
 npm run test
 ```
+
+## Docs
+
+- [Architecture](docs/architecture.md)
+- [Commands](docs/commands.md)
+- [Design Direction](docs/design-direction.md)
+- [Implementation Plan](docs/implementation-plan.md)
+- [Progress](docs/progress.md)
+- [Teach](docs/teach.md)

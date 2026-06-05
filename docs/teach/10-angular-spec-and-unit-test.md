@@ -280,7 +280,7 @@ Unit test = กัน logic activeSection lock พัง
 E2E/manual test = ดูด้วยตาว่า underline ไม่แว๊บจริง
 ```
 
-ตอนนี้โปรเจกต์มี unit test เพื่อกัน regression แล้ว และใน `docs/commands/03-verification.md` มี checklist ให้เปิด dev server แล้วลองคลิกด้วยตา
+ตอนนี้โปรเจกต์มี unit test เพื่อกัน regression แล้ว และใน `docs/commands.md` มี checklist ให้เปิด dev server แล้วลองคลิกด้วยตา
 
 ## ควรเขียน spec เมื่อไร
 
@@ -333,7 +333,7 @@ regression test = test ที่กันบัคเดิมกลับมา
 src/app/services/theme.service.ts
 src/app/services/theme.service.spec.ts
 docs/teach/08-navbar-dropdown-and-smooth-scroll.md
-docs/commands/03-verification.md
+docs/commands.md
 ```
 
 คำสั่งที่ใช้ตรวจ:

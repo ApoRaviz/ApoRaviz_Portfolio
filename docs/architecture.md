@@ -21,7 +21,7 @@ src/app/services/    = portfolio data และ shared UI state
 src/app/components/  = section components
 docs/                = project knowledge
 docs/teach/          = learning notes
-docs/commands/       = command reference
+docs/commands.md     = command reference
 ```
 
 ## Data Flow

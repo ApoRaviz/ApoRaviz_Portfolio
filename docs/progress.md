@@ -1,356 +1,59 @@
-# Progress
+# Portfolio Progress
 
-เอกสารนี้สรุปว่าโปรเจกต์ `ApoRaviz_Portfolio` ทำอะไรไปแล้ว ทำถึงไหนแล้ว และเหลืออะไรให้กลับมาทำต่อ
+ไฟล์นี้เก็บสถานะล่าสุดของ `ApoRaviz_Portfolio` ส่วนสิ่งที่จะทำต่ออยู่ที่ `docs/implementation-plan.md`
 
-## เป้าหมายเริ่มต้น
+## Current Role
 
-- สร้าง personal portfolio จากไฟล์สเปก `files/angular-portfolio-spec.md`
-- ใช้ prompt หลักจาก `files/angular-portfolio-prompt.md`
-- ปรับจาก Angular 19 เป็น Angular 21
-- ล็อก runtime เป็น Node 24
-- ใช้โลโก้ `ApoRaviz(5*2).png`
-- ใช้ชื่อจริง `Tanonchai Promsiri`
-- ไม่ใช้ progress bar หรือค่าพลังใน profile/skills
-- ใส่ comment ภาษาไทยใน code เพื่อเรียนรู้ว่าบรรทัดสำคัญมีไว้ทำอะไร
+`ApoRaviz_Portfolio` คือ profile หลักของ ApoRaviz และเป็น hub สำหรับ link ไปยังโปรเจกต์ลูก เช่น `MooPing_Loyalty`
 
-## สิ่งที่เลือกใช้
+## Done
 
-- Angular `21.x`
-- Node `24`
-- TypeScript `5.9`
-- Tailwind CSS v4
-- Angular SSR / prerender
-- Standalone components
-- Angular signals
-- Reactive Forms
-- Angular Router
-- Angular animations provider
+- [x] สร้าง Angular 21 project พร้อม routing, SSR/prerender และ standalone components
+- [x] ใช้ Node 24, TypeScript strict, Angular signals และ `inject()`
+- [x] เพิ่ม Tailwind CSS v4 และ dark/orange ApoRaviz visual direction
+- [x] แยกข้อมูลหลักไว้ใน `PortfolioDataService`
+- [x] แยก scroll/theme state ไว้ใน `ThemeService`
+- [x] เพิ่ม section components: navbar, hero, about, skills, projects, services, experience, testimonials, contact, footer
+- [x] เพิ่ม comment ภาษาไทยเพื่ออธิบาย semantic HTML, Angular state, SSR guard และ UX decisions
+- [x] เพิ่ม `docs/architecture.md`
+- [x] เพิ่ม `docs/design-direction.md`
+- [x] เพิ่ม `docs/commands.md`
+- [x] เพิ่ม `docs/implementation-plan.md`
+- [x] เพิ่ม `docs/teach.md` และ `docs/teach/`
+- [x] รวม command docs ย่อยให้เหลือ `docs/commands.md`
+- [x] ย้าย project skill ไปที่ `.codex/skills/angular-portfolio-mentor/SKILL.md`
+- [x] ลบ generic UI skill copy ที่ซ้ำกับกติกากลาง
+- [x] ลบ prompt/spec เก่า Angular 19 เพื่อไม่ให้สับสนกับ Angular 21
+- [x] เพิ่ม `MooPing_Loyalty` เป็น project card ใน portfolio
+- [x] เพิ่ม GitHub Actions สำหรับ CI และ GitHub Pages deploy
+- [x] เอา external Google Fonts ออกจาก build path เพื่อลด dependency กับ network
+- [x] ปรับ build script ให้ใช้ CI mode และปิด progress output
 
-## งานที่ทำแล้ว
-
-1. สร้าง Angular 21 project
-
-- ใช้ Angular CLI `21.2.12`
-- เปิด standalone component architecture
-- เปิด routing
-- เปิด SSR / prerender
-- ใช้ CSS เป็น style base
-
-2. ตั้งค่า Node 24
-
-- เพิ่ม `.nvmrc`
-- เพิ่ม `.node-version`
-- ตั้ง `engines.node` ใน `package.json` เป็น `>=24.0.0 <25`
-
-3. ตั้งค่า Tailwind CSS v4
-
-- ติดตั้ง `tailwindcss`
-- ติดตั้ง `@tailwindcss/postcss`
-- เพิ่ม `.postcssrc.json`
-- เพิ่ม `tailwind.config.ts`
-- ตั้งค่า theme tokens ใน `src/styles.css`
-
-4. วางโครงสร้าง portfolio
-
-- `src/app/models/portfolio.models.ts`
-- `src/app/services/portfolio-data.service.ts`
-- `src/app/services/theme.service.ts`
-- components:
-  - Navbar
-  - Hero
-  - About
-  - Skills
-  - Projects
-  - Services
-  - Experience
-  - Testimonials
-  - Contact
-  - Footer
-
-5. เพิ่มข้อมูล portfolio
-
-- ชื่อ: `Tanonchai Promsiri`
-- โลโก้: `public/aporaviz-logo.png`
-- Role หลัก:
-  - Web App Builder
-  - AI Automation Learner
-  - Game-Loving Programmer
-- Projects mock data 6 รายการ
-- Services 7 รายการ
-- Experience timeline 4 รายการ
-- Testimonials 3 รายการ
-- Contact info placeholder
-
-6. ทำ UI ตามสเปก
-
-- Dark premium style
-- Orange accent `#FF6B00`
-- Glassmorphism แบบพอดี
-- Hero section พร้อม typewriter effect
-- Sticky navbar
-- Mobile menu
-- Scroll spy
-- Smooth scroll
-- Reveal animation ตอน section เข้าจอ
-- Skills เป็น badge group เท่านั้น ไม่มี progress bar
-- Contact reactive form พร้อม validators และ mock toast
-
-7. ทำ SSR-safe browser APIs
-
-- ใช้ `PLATFORM_ID`
-- ใช้ `isPlatformBrowser()`
-- guard ก่อนแตะ `window`
-- guard ก่อนใช้ `IntersectionObserver`
-- guard เพิ่มสำหรับ test environment เช่น jsdom
-
-8. เพิ่ม comment เชิงสอน
-
-- HTML อธิบายว่าทำไมใช้ `section`, `div`, `article`, `button`, `a`, `form`
-- TypeScript อธิบาย `inject`, `signal`, lifecycle, browser guard, service state
-- Config อธิบาย provider เช่น:
-  - `provideBrowserGlobalErrorListeners()`
-  - `provideRouter(routes)`
-  - `provideClientHydration(withEventReplay())`
-  - `provideAnimations()`
-  - `provideServerRendering(withRoutes(serverRoutes))`
-
-9. ทำ skill สำหรับโปรเจกต์
-
-- เพิ่ม `skills/angular-portfolio-mentor/SKILL.md`
-- ติดตั้งไว้ใน Codex skills folder ด้วย
-- skill นี้บอกแนวทางของโปรเจกต์:
-  - Angular 21
-  - Node 24
-  - Tailwind v4
-  - SSR-safe
-  - comment ภาษาไทยเพื่อเรียนรู้
-
-10. Git และ GitHub
-
-- `git init`
-- ตั้ง remote:
-  - `https://github.com/ApoRaviz/ApoRaviz_Portfolio.git`
-- commit initial Angular portfolio
-- merge GitHub initial commit เดิมที่มี `README.md`, `.gitignore`, `LICENSE`
-- push ขึ้น `origin/main`
-
-## การตรวจสอบที่ทำแล้ว
-
-- `ng test --watch=false --progress=false`
-  - ผ่าน 2 tests
-- `ng build --progress=false`
-  - ผ่าน production build
-  - SSR prerender สำเร็จ
-- dev server เคยรันที่ `http://127.0.0.1:4200/`
-- ตรวจว่า port 4200 ว่างหลังหยุด server แล้ว
-
-## สถานะล่าสุด
-
-- โปรเจกต์หลักทำงานได้
-- Git branch คือ `main`
-- Remote คือ `origin/main`
-- โครง portfolio พร้อมต่อยอดแล้ว
-- มีเอกสาร progress และ teach เพิ่มใน `docs/`
-- เพิ่ม `docs/commands.md` และ `docs/commands/` สำหรับบันทึกคำสั่งที่ใช้ในโปรเจกต์แบบแยกหมวด
-- เพิ่ม GitHub Actions CI/CD workflows สำหรับ test/build และ deploy ไป GitHub Pages
-- เพิ่ม `public/.nojekyll` เพื่อให้ GitHub Pages เสิร์ฟ static output โดยไม่ผ่าน Jekyll
-- เพิ่ม `docs/design-direction.md` สำหรับ direction ใหม่ของเว็บ
-- เริ่ม redesign เว็บไปทาง `Gamer-minded developer profile`
-- เอาชื่อออกจาก navbar ให้เหลือ logo เป็น brand mark
-- เปลี่ยน wording หลักให้เป็นกันเองขึ้น และลดคำที่ดูโอ้อวด เช่น pro/professional/expert
-- เปลี่ยน concept ของ section:
-  - Skills → Loadout
-  - Projects → Quest Log
-  - Services → Useful Builds
-  - Experience → Journey
-  - Testimonials → Party Notes
-- เพิ่มคำอธิบายรอบ redesign ใน `docs/teach.md`
-- ดึงข้อมูลจาก resume มาใส่ใน `Build Journey`
-  - Unbox.IT
-  - Techsoft Holding
-  - Yamato Unyu (Thailand) Co., Ltd.
-  - Panjawattana Plastic Public Company Limited
-- อัปเดต skill groups ให้ตรงกับ resume มากขึ้น เช่น HTML, CSS, JavaScript, Angular, Ionic, C#, .NET Core, SQL Server, SSRS, Crystal Report
-- ปรับ hero background เป็น RPG/HUD style ด้วย grid, radial atmosphere, diagonal energy lines, และ corner frame
-- ปรับ navbar กับ hero ให้เข้ากันมากขึ้น โดยให้ navbar เป็น glass menu สีดำส้ม และ hero เป็นฉาก game lobby / quest map ที่มี scenery layer, silhouette, rune ring, และ HUD grid
-- เพิ่ม `MooPing Loyalty` เป็น Quest 1 ใน Project cards โดยเชื่อมไปยัง demo `https://aporaviz.github.io/mooping/` และ GitHub `https://github.com/ApoRaviz/mooping`
-- อัปเดตไฟล์กลาง `/Users/aporaviz/ApoRaviz/_docs/NEW_PROJECT_GUIDE.md` ให้ชัดขึ้นว่าโปรเจกต์ใหม่ต้องอ่านจาก `ApoRaviz_Portfolio`, ทำ repo แยก, เขียน `docs/teach/` เป็น learning path และเชื่อมกลับเข้า Portfolio ผ่าน `PortfolioDataService`
-
-## กฎที่ต้องจำระหว่างพัฒนา
-
-- HTML ที่เพิ่มหรือแก้ต้องมี comment เชิงสอนตรง element สำคัญ เพื่ออธิบายว่าทำไมใช้ `section`, `div`, `article`, `aside`, `button`, `a`, `form`, `ul`, `ol`, `figure` หรือ semantic tag นั้น
-- โดยเฉพาะ `div` ที่ใช้เป็น layout wrapper, background layer, grid/flex container, overlay หรือ modal backdrop ต้อง comment ว่าใช้เพื่อจัด layout/visual ไม่ใช่เนื้อหา semantic
-- ถ้าเพิ่มไฟล์หรือหัวข้อใหม่ใน `docs/teach/` ต้องเพิ่มข้อมูลที่หน้า HTML `/teach` ด้วย โดยแก้ data/component ที่เกี่ยวข้อง ไม่ให้หน้าเว็บตกหล่นจากเอกสาร
-- ถ้าเพิ่มไฟล์หรือหัวข้อใหม่ใน `docs/commands/` ต้องเพิ่มข้อมูลที่หน้า HTML `/commands` ด้วย โดยแก้ data/component ที่เกี่ยวข้อง ไม่ให้หน้าเว็บตกหล่นจากเอกสาร
-- หน้า `/teach` และ `/commands` ต้องแสดงเนื้อหาเป็น HTML/popup ภายในเว็บ ไม่พาผู้ใช้ไปเปิดไฟล์ `.md` โดยตรง
-- เมื่อเพิ่ม docs ใหม่ ควรอัปเดตทั้งสารบัญ markdown และ data ของหน้า HTML ในรอบเดียวกัน
-
-## อัปเดตเอกสารสอน
-
-เราแยก `docs/teach.md` จากไฟล์ยาวไฟล์เดียวให้เป็นสารบัญหลัก และสร้าง folder:
+## Current Docs
 
 ```text
-docs/teach/
-```
-
-ไฟล์ย่อยที่เพิ่ม:
-
-- `01-angular-reactive-and-signals.md`: reactive, signal, set, update, computed, effect
-- `02-services-and-dependency-injection.md`: service, inject, dependency injection, browser API guard
-- `03-angular-app-config-and-ssr.md`: app config, router, hydration, SSR, prerender
-- `04-redesign-rpg-profile.md`: เหตุผลของ redesign แนว gamer/RPG profile
-- `05-resume-data-and-hero-background.md`: resume data, Hero background, section/div, color palette
-- `06-browser-apis-intersection-observer-ssr-test.md`: IntersectionObserver, SSR, test environment และ browser API guard สำหรับมือใหม่
-- `07-cicd-github-actions.md`: CI/CD, GitHub Actions, npm ci, GitHub Pages deploy และสิ่งที่ต้องตั้งค่าใน GitHub
-
-เหตุผลที่แยก:
-
-- อ่านง่ายกว่าไฟล์เดียวที่ยาวมาก
-- กลับมาทบทวนเฉพาะเรื่องได้เร็วขึ้น
-- เพิ่มบทเรียนใหม่ในอนาคตได้เป็นหมวด ๆ
-- `docs/teach.md` กลายเป็นหน้าสารบัญสำหรับเริ่มอ่าน
-
-## อัปเดตเอกสารคำสั่ง
-
-เราเพิ่มชุดเอกสารคำสั่งไว้ที่:
-
-```text
+README.md
+docs/architecture.md
 docs/commands.md
-docs/commands/
+docs/design-direction.md
+docs/implementation-plan.md
+docs/progress.md
+docs/teach.md
+docs/teach/
+.codex/skills/angular-portfolio-mentor/SKILL.md
 ```
 
-ไฟล์ย่อยที่เพิ่ม:
+## Keep In Mind
 
-- `01-project-setup.md`: Node 24, npm, Angular CLI, Tailwind install
-- `02-development-server.md`: npm start, ng serve, port 4200/4201, SSR server
-- `03-verification.md`: test, build, diff check, curl check
-- `04-git.md`: init, remote, fetch, merge, add, commit, push, log
-- `05-utility-and-troubleshooting.md`: rg, find, sed, tail, wc, lsof, kill, mkdir
-- `06-cicd-commands.md`: npm ci, test/build แบบ CI, build สำหรับ GitHub Pages, GitHub CLI workflow commands
+- ถ้าเพิ่มหรือแก้หัวข้อใน `docs/teach/` ต้อง sync หน้า `/teach` ด้วย
+- ถ้าเพิ่มหรือแก้คำสั่งใน `docs/commands.md` ต้อง sync หน้า `/commands` ด้วย
+- Project card ใหม่ควรเพิ่มผ่าน `PortfolioDataService` ไม่ hardcode ใน HTML
+- โค้ดใหม่ควรมี comment ภาษาไทยในจุดที่สอน intent หรือ decision สำคัญ
 
-เหตุผลที่แยก:
+## Next
 
-- ไม่ให้ `progress.md` ยาวเกินไป
-- กลับมาดูคำสั่งที่เคยใช้ได้ง่าย
-- มีคำอธิบายว่าแต่ละคำสั่งทำอะไร
-- ลดการจดคำสั่งซ้ำหลายรอบ
-
-## สิ่งที่ควรทำต่อ
-
-## Note สำหรับมาต่อพรุ่งนี้
-
-สถานะล่าสุดของวันนี้:
-
-- Portfolio หลักพร้อมใช้งานและ deploy ผ่าน GitHub Pages ได้แล้ว
-- ตั้งค่า GitHub Pages เป็น `Source: GitHub Actions` แล้ว
-- ไม่ต้องใช้ self-hosted action runner เพราะ workflow ใช้ GitHub-hosted runner ผ่าน `runs-on: ubuntu-latest`
-- เมื่อ push เข้า `main` ระบบจะรัน workflow อัตโนมัติ
-  - `CI`: test/build
-  - `Deploy GitHub Pages`: build ด้วย `--base-href /ApoRaviz_Portfolio/` แล้ว deploy
-- เอกสาร CI/CD อยู่ที่ `docs/teach/07-cicd-github-actions.md`
-- คำสั่ง CI/CD อยู่ที่ `docs/commands/06-cicd-commands.md`
-- เอกสาร IntersectionObserver/SSR/test อยู่ที่ `docs/teach/06-browser-apis-intersection-observer-ssr-test.md`
-
-สิ่งที่ควรกลับมาเช็กต่อ:
-
-- เปิดหน้า GitHub Actions ดูว่า workflow `CI` และ `Deploy GitHub Pages` ผ่านจริงหลัง push ล่าสุด
-- เปิด URL GitHub Pages ประมาณ `https://aporaviz.github.io/ApoRaviz_Portfolio/`
-- อ่านทบทวน `IntersectionObserver`, `SSR`, `test environment`, `CI/CD`
-- เริ่มใส่ข้อมูลจริงใน `src/app/services/portfolio-data.service.ts`
-- เพิ่ม `_docs/` roadmap กลางแบบ 7 step สำหรับ workspace
-- เพิ่ม `docs/roadmap.md` และ `docs/architecture.md` ให้ Portfolio เพื่อแยกแผนอนาคตออกจาก progress log
-- ปรับ `npm run build` ให้ใช้ `CI=1 ng build --progress=false` เพราะ local terminal เคยเจอ esbuild deadlock เมื่อใช้ `ng build` แบบ raw
-- แก้บัค navbar underline แว๊บผ่าน section กลางทางตอน smooth scroll โดยเพิ่ม active-section lock ใน `ThemeService`
-- เพิ่ม regression test ใน `src/app/services/theme.service.spec.ts` เพื่อกัน `activeSection` เปลี่ยนไปตาม section ที่ scroll ผ่านหลังผู้ใช้กดเมนูเป้าหมาย
-- อัปเดต `docs/teach/08-navbar-dropdown-and-smooth-scroll.md` และ `docs/commands/03-verification.md` ตามกติกา learning capture
-- เพิ่ม `docs/teach/10-angular-spec-and-unit-test.md` เพื่ออธิบายไฟล์ `.spec.ts`, `TestBed`, mock, fake timers และ regression test จากเคส `ThemeService`
-
-ความเข้าใจสำคัญของวันนี้:
+ดู checklist ล่าสุดใน:
 
 ```text
-push main
-→ GitHub-hosted runner เปิดเครื่องชั่วคราว
-→ npm ci
-→ test/build
-→ deploy dist/portfolio/browser
-→ GitHub Pages อัปเดตเว็บ
-```
-
-1. แก้ข้อมูล placeholder จริง
-
-- Email
-- LINE
-- GitHub
-- Facebook
-- Resume link
-- Project live URLs
-- Project GitHub URLs
-
-ไฟล์หลักที่แก้คือ:
-
-```text
-src/app/services/portfolio-data.service.ts
-```
-
-2. ปรับ content ให้เป็นตัวตนจริงมากขึ้น
-
-- About paragraph
-- Project descriptions
-- Experience descriptions
-- Services wording
-- Testimonials ถ้ายังไม่มีลูกค้าจริง อาจเปลี่ยนเป็น case-study style
-
-3. เพิ่มรูปหรือ mockup ของ projects
-
-ตอนนี้ project card ใช้ gradient placeholder อยู่ ถ้ามีภาพจริงหรือ mockup จะทำให้ portfolio ดูน่าเชื่อถือขึ้น
-
-4. ตรวจ responsive ด้วย browser จริง
-
-- Desktop
-- Tablet
-- Mobile
-- Hamburger menu
-- Contact form
-- Scroll spy
-
-5. Deploy
-
-ตัวเลือกที่เหมาะ:
-
-- Vercel
-- Netlify
-- GitHub Pages ถ้าปรับเป็น static output
-
-## คำสั่งที่ใช้บ่อย
-
-ใช้ Node 24 ก่อน:
-
-```bash
-nvm use 24
-```
-
-รัน dev server:
-
-```bash
-npm run start
-```
-
-build:
-
-```bash
-npm run build
-```
-
-test:
-
-```bash
-npm run test
-```
-
-git รอบต่อไป:
-
-```bash
-git add .
-git commit -m "your message"
-git push
+docs/implementation-plan.md
 ```

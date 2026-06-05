@@ -30,7 +30,7 @@ Prefer comments for:
 - SSR safety: why browser APIs are guarded.
 - Tailwind/CSS concepts: design tokens, responsive layout, reveal animation, focus state, hover state.
 
-Avoid comments that merely repeat the code, such as “set text color to white” for a `text-white` class.
+Avoid comments that merely repeat the code, such as "set text color to white" for a `text-white` class.
 
 ## HTML Semantics Rule
 
@@ -69,3 +69,4 @@ When using a `div` in HTML, add a nearby Thai comment if the reason is not obvio
 - Do not create a marketing landing page before the actual portfolio experience.
 - Avoid decorative blobs/orbs and one-note palettes.
 - Prefer real structure, accessible controls, and content that can be edited from data services.
+
