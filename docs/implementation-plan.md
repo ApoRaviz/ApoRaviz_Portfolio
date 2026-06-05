@@ -23,6 +23,8 @@
 - [x] 0.9 รวม command docs ให้เหลือ `docs/commands.md`
 - [x] 0.10 ย้าย project skill เข้า `.codex/skills/angular-portfolio-mentor`
 - [x] 0.11 ลบ prompt/spec เก่า Angular 19 ที่ไม่ตรงกับโปรเจกต์ปัจจุบัน
+- [x] 0.12 เพิ่ม `docs/teach/README.md` เพื่อบอกว่า Portfolio teach เป็น local example ส่วน common Angular อยู่ `_docs/angular/`
+- [x] 0.13 เชื่อม `docs/commands.md` ไปยัง command กลาง `_docs/angular/commands.md` และ `_docs/git/commands.md`
 
 ## Step 1 - Hardening
 

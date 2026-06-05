@@ -2,6 +2,8 @@
 
 เอกสารเรียนรู้ของโปรเจกต์นี้ถูกแยกเป็นไฟล์ย่อยตามหัวข้อแล้ว เพื่อให้อ่านง่ายและกลับมาทบทวนเฉพาะเรื่องได้เร็วขึ้น
 
+ถ้าต้องการอ่าน Angular concept กลางก่อน ให้เริ่มที่ `_docs/angular/teach/README.md` แล้วค่อยกลับมาอ่านไฟล์นี้เพื่อดูตัวอย่างจริงจาก Portfolio
+
 ## แนะนำลำดับการอ่าน
 
 1. [Angular Reactive และ Signals](teach/01-angular-reactive-and-signals.md)
@@ -20,6 +22,7 @@
 - ถ้าเพิ่มหรือแก้หัวข้อใน `docs/teach/` ต้องอัปเดตหน้า `/teach` ด้วย
 - หน้า `/teach` ใช้ HTML/popup ในเว็บ ไม่พาผู้ใช้ไปเปิดไฟล์ `.md` โดยตรง
 - ถ้ามี HTML ใหม่ ต้องใส่ comment เชิงสอนอธิบาย semantic element และ `div` สำคัญเสมอ
+- ถ้าเรื่องนั้นเป็น Angular concept กลาง เช่น signals, DI, SSR, browser API, unit test หรือ CI/CD ให้สรุปกลับไป `_docs/angular/teach/`
 
 ## แต่ละไฟล์มีอะไรบ้าง
 

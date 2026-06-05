@@ -20,7 +20,9 @@
 - [x] เพิ่ม `docs/commands.md`
 - [x] เพิ่ม `docs/implementation-plan.md`
 - [x] เพิ่ม `docs/teach.md` และ `docs/teach/`
+- [x] เพิ่ม `docs/teach/README.md` เพื่อแยกบทเรียน Portfolio ออกจาก Angular concept กลาง
 - [x] รวม command docs ย่อยให้เหลือ `docs/commands.md`
+- [x] เชื่อม `docs/commands.md` และ `docs/teach/` กลับไป `_docs/angular/` และ `_docs/git/`
 - [x] ย้าย project skill ไปที่ `.codex/skills/angular-portfolio-mentor/SKILL.md`
 - [x] ลบ generic UI skill copy ที่ซ้ำกับกติกากลาง
 - [x] ลบ prompt/spec เก่า Angular 19 เพื่อไม่ให้สับสนกับ Angular 21
@@ -47,6 +49,8 @@ docs/teach/
 
 - ถ้าเพิ่มหรือแก้หัวข้อใน `docs/teach/` ต้อง sync หน้า `/teach` ด้วย
 - ถ้าเพิ่มหรือแก้คำสั่งใน `docs/commands.md` ต้อง sync หน้า `/commands` ด้วย
+- ถ้าเป็น Angular concept กลาง ให้สรุปกลับไป `_docs/angular/teach/` ก่อนเพิ่มซ้ำใน project docs
+- ถ้าเป็น command pattern กลาง ให้สรุปกลับไป `_docs/angular/commands.md` หรือ `_docs/git/commands.md`
 - Project card ใหม่ควรเพิ่มผ่าน `PortfolioDataService` ไม่ hardcode ใน HTML
 - โค้ดใหม่ควรมี comment ภาษาไทยในจุดที่สอน intent หรือ decision สำคัญ
 

@@ -2,6 +2,15 @@
 
 เอกสารนี้รวมคำสั่งที่ใช้กับ `ApoRaviz_Portfolio` ไว้ไฟล์เดียว เพื่อไม่ให้ command docs แตกย่อยเกินจำเป็น
 
+Command pattern กลางของ Angular และ Git อยู่ที่:
+
+```text
+_docs/angular/commands.md
+_docs/git/commands.md
+```
+
+ไฟล์นี้เก็บรายละเอียดเฉพาะ Portfolio เช่น script name, port ที่ใช้ตรวจ, base-href และ manual UI check ของโปรเจกต์นี้
+
 ## Setup
 
 ```bash
@@ -138,4 +147,3 @@ gh run watch
 - active underline ต้องไม่แว๊บผ่าน section กลางทาง
 - mobile menu ต้องปิดหลังเลือก section
 - จาก `/teach` หรือ `/commands` ต้องกลับ `/` แล้ว scroll ต่อได้
-
