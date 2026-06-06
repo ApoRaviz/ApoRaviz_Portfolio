@@ -8,7 +8,8 @@
 
 ## Done
 
-- [x] สร้าง Angular 21 project พร้อม routing, SSR/prerender และ standalone components
+- [x] สร้าง Angular project รุ่นตั้งต้นพร้อม routing, SSR/prerender และ standalone components
+- [x] Upgrade frontend baseline ปัจจุบันเป็น Angular 22 + TypeScript 6.0.x ตามกติกากลางปี 2026
 - [x] ใช้ Node 24, TypeScript strict, Angular signals และ `inject()`
 - [x] เพิ่ม Tailwind CSS v4 และ dark/orange ApoRaviz visual direction
 - [x] แยกข้อมูลหลักไว้ใน `PortfolioDataService`
@@ -29,7 +30,7 @@
 - [x] ปรับ README ให้บอกว่า Portfolio คือ profile hub และ project hub ของ ApoRaviz
 - [x] ย้าย project skill ไปที่ `.codex/skills/angular-portfolio-mentor/SKILL.md`
 - [x] ลบ generic UI skill copy ที่ซ้ำกับกติกากลาง
-- [x] ลบ prompt/spec เก่า Angular 19 เพื่อไม่ให้สับสนกับ Angular 21
+- [x] ลบ prompt/spec เก่าเพื่อไม่ให้สับสนกับ frontend baseline ปัจจุบัน
 - [x] เพิ่ม `ApoRaviz_Mooping` เป็น project card ใน portfolio
 - [x] เพิ่ม GitHub Actions สำหรับ CI และ GitHub Pages deploy
 - [x] เอา external Google Fonts ออกจาก build path เพื่อลด dependency กับ network

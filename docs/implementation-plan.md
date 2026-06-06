@@ -12,8 +12,9 @@
 
 ## Step 0 - Project Baseline
 
-- [x] 0.1 สร้าง Angular 21 project
+- [x] 0.1 สร้าง Angular project รุ่นตั้งต้น พร้อม routing และ SSR
 - [x] 0.2 ใช้ Node 24, TypeScript strict, standalone components และ signals
+- [x] 0.2.1 Upgrade baseline ปัจจุบันเป็น Angular 22 + TypeScript 6.0.x ตาม `_docs`
 - [x] 0.3 เปิด SSR/prerender
 - [x] 0.4 เพิ่ม Tailwind CSS v4
 - [x] 0.5 แยก models, services, section components
@@ -22,7 +23,7 @@
 - [x] 0.8 เพิ่ม comment เชิงสอนตาม style ของ portfolio
 - [x] 0.9 รวม command docs ให้เหลือ `docs/commands.md`
 - [x] 0.10 ย้าย project skill เข้า `.codex/skills/angular-portfolio-mentor`
-- [x] 0.11 ลบ prompt/spec เก่า Angular 19 ที่ไม่ตรงกับโปรเจกต์ปัจจุบัน
+- [x] 0.11 ลบ prompt/spec เก่าที่ไม่ตรงกับ frontend baseline ปัจจุบัน
 - [x] 0.12 เพิ่ม `docs/teach/README.md` เพื่อบอกว่า Portfolio teach เป็น local example ส่วน common Angular อยู่ `_docs/angular/`
 - [x] 0.13 เชื่อม `docs/commands.md` ไปยัง command กลาง `_docs/angular/commands.md` และ `_docs/git/commands.md`
 - [x] 0.14 ลบ Angular concept กลางที่ซ้ำใน Portfolio teach

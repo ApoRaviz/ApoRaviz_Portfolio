@@ -5,9 +5,9 @@
 ## Runtime
 
 ```text
-Angular 21
-Node 24
-TypeScript strict
+Angular 22
+Node 24 LTS
+TypeScript 6.0.x strict
 Tailwind CSS v4
 Angular SSR / prerender
 GitHub Pages static deploy

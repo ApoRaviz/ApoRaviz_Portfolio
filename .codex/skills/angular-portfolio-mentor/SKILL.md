@@ -1,6 +1,6 @@
 ---
 name: angular-portfolio-mentor
-description: Build or update this Angular portfolio project with Angular 21, Node 24, Tailwind CSS v4, SSR-safe browser APIs, standalone components, signals, and Thai learning comments explaining key TypeScript, CSS, and semantic HTML decisions such as section vs div.
+description: Build or update this Angular portfolio project with Angular latest stable, Node 24 LTS, Tailwind CSS v4, SSR-safe browser APIs, standalone components, signals, and Thai learning comments explaining key TypeScript, Tailwind/CSS, and semantic HTML decisions such as section vs div.
 ---
 
 # Angular Portfolio Mentor
@@ -9,8 +9,8 @@ Use this skill when working on the ApoRaviz portfolio project or when the user a
 
 ## Project Defaults
 
-- Use Node `24` for all npm, ng, and build commands.
-- Use Angular `21.x`, standalone components, strict TypeScript, SSR, hydration, and Angular Router.
+- Use Node `24` LTS for all npm, ng, and build commands.
+- Use Angular latest stable from `_docs/angular/commands.md`; current baseline is Angular `22.x` with TypeScript `6.0.x`.
 - Use Tailwind CSS v4 utilities for styling.
 - Use Angular signals for component/service state where practical.
 - Use `inject()` for dependency injection.
@@ -50,7 +50,7 @@ When using a `div` in HTML, add a nearby Thai comment if the reason is not obvio
 
 1. Read the current files before editing.
 2. Keep edits scoped to the portfolio request.
-3. Preserve Angular 21 file naming from the scaffold (`app.ts`, `app.html`, `app.css`) unless there is a strong reason to rename.
+3. Preserve Angular standalone file naming from the scaffold (`app.ts`, `app.html`, `app.css`) unless there is a strong reason to rename.
 4. Put reusable portfolio data in `PortfolioDataService`.
 5. Put global scroll/theme state in `ThemeService`.
 6. Build each section as a standalone component.
@@ -69,4 +69,3 @@ When using a `div` in HTML, add a nearby Thai comment if the reason is not obvio
 - Do not create a marketing landing page before the actual portfolio experience.
 - Avoid decorative blobs/orbs and one-note palettes.
 - Prefer real structure, accessible controls, and content that can be edited from data services.
-

@@ -15,8 +15,8 @@
 
 ## Tech Stack
 
-- Angular 21
-- Node 24
+- Angular 22
+- Node 24 LTS
 - TypeScript strict
 - Tailwind CSS v4
 - Angular SSR / prerender
