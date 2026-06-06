@@ -28,6 +28,7 @@
 - [x] 0.14 ลบ Angular concept กลางที่ซ้ำใน Portfolio teach
 - [x] 0.15 ปรับหน้า `/teach` ให้เหลือ Portfolio-specific lessons
 - [x] 0.16 ปรับ README ให้สื่อ project purpose ชัดเจน
+- [x] 0.17 rename teach files ให้เลขและชื่อสะอาดต่อเนื่องตาม Portfolio-specific lessons
 
 ## Step 1 - Hardening
 

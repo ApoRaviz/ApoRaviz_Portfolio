@@ -23,6 +23,7 @@
 - [x] เพิ่ม `docs/teach/README.md` เพื่อแยกบทเรียน Portfolio ออกจาก Angular concept กลาง
 - [x] ลบ Angular teach กลางที่ซ้ำใน `docs/teach/` และคงไว้เฉพาะ Portfolio-specific lessons
 - [x] ปรับหน้า `/teach` ให้แสดงเฉพาะบทเรียนของ Portfolio: design direction, resume/hero, navigation flow, Teach/Commands structure
+- [x] rename Portfolio teach files เป็น `01-04` ต่อเนื่องและสื่อบทเรียนเฉพาะโปรเจกต์
 - [x] รวม command docs ย่อยให้เหลือ `docs/commands.md`
 - [x] เชื่อม `docs/commands.md` และ `docs/teach/` กลับไป `_docs/angular/` และ `_docs/git/`
 - [x] ปรับ README ให้บอกว่า Portfolio คือ profile hub และ project hub ของ ApoRaviz

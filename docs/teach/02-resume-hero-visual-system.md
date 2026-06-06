@@ -1,4 +1,4 @@
-# Resume Data, Hero Background และ Color
+# Resume Data และ Hero Visual System
 
 ไฟล์นี้อธิบายว่าข้อมูลจาก resume ถูกนำไปใส่ตรงไหน ทำไม Hero background ถึงใช้ `div` หลายชั้น และถ้าใช้ดำส้มควรเติมสีอะไร
 

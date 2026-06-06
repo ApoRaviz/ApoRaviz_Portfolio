@@ -24,10 +24,10 @@ _docs/git/commands.md
 
 ## Reading Order
 
-1. [RPG Profile Design Direction](teach/04-redesign-rpg-profile.md)
-2. [Resume Data, Hero Background และ Color](teach/05-resume-data-and-hero-background.md)
-3. [Navbar Dropdown และ Custom Smooth Scroll](teach/08-navbar-dropdown-and-smooth-scroll.md)
-4. [Teach และ Commands Page Structure](teach/09-component-folder-best-practices.md)
+1. [RPG Profile Design Direction](teach/01-rpg-profile-design-direction.md)
+2. [Resume Data และ Hero Visual System](teach/02-resume-hero-visual-system.md)
+3. [Portfolio Navigation Flow](teach/03-portfolio-navigation-flow.md)
+4. [Teach และ Commands Page Structure](teach/04-teach-commands-page-structure.md)
 
 ## Command Learning Rule
 

@@ -27,10 +27,10 @@ _docs/git/commands.md
 
 ## Current Lessons
 
-1. [RPG Profile Design Direction](04-redesign-rpg-profile.md)
-2. [Resume Data, Hero Background และ Color](05-resume-data-and-hero-background.md)
-3. [Navbar Dropdown และ Custom Smooth Scroll](08-navbar-dropdown-and-smooth-scroll.md)
-4. [Teach และ Commands Page Structure](09-component-folder-best-practices.md)
+1. [RPG Profile Design Direction](01-rpg-profile-design-direction.md)
+2. [Resume Data และ Hero Visual System](02-resume-hero-visual-system.md)
+3. [Portfolio Navigation Flow](03-portfolio-navigation-flow.md)
+4. [Teach และ Commands Page Structure](04-teach-commands-page-structure.md)
 
 ## Sync Rule
 
@@ -43,4 +43,3 @@ src/app/pages/teach-page/teach-lessons.ts
 ```
 
 ต้องตรงกันเสมอ
-

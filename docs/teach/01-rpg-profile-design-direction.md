@@ -1,4 +1,4 @@
-# Redesign แนว RPG Profile
+# RPG Profile Design Direction
 
 ไฟล์นี้อธิบายเหตุผลของการ redesign เว็บให้สื่อถึงตัวตนแบบ gamer-minded developer โดยยังไม่ใช้คำโอ้อวดเกินตัว
 
@@ -249,4 +249,3 @@ JetBrains Mono = code / HUD / tags
 - Testimonials กลายเป็น Party Notes
 - เพิ่ม design direction doc เพื่อเป็นเข็มทิศ
 - เพิ่ม reduced motion เพื่อ accessibility
-

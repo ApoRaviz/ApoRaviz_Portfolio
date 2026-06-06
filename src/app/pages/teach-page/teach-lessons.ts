@@ -32,7 +32,7 @@ export const TEACH_LESSONS: TeachLesson[] = [
   {
     id: 1,
     title: 'RPG Profile Design Direction',
-    sourcePath: 'docs/teach/04-redesign-rpg-profile.md',
+    sourcePath: 'docs/teach/01-rpg-profile-design-direction.md',
     summary: 'สอนวิธีเปลี่ยน portfolio ให้มีตัวตนแบบ gamer-minded developer โดยยังอ่านง่าย ไม่โอ้อวด และไม่หลุดจากข้อมูลจริง',
     topics: ['profile identity', 'copy tone', 'RPG naming', 'visual language', 'accessibility'],
     sections: [
@@ -69,7 +69,7 @@ sed -n '1,220p' docs/design-direction.md`,
   {
     id: 2,
     title: 'Resume Data และ Hero Visual System',
-    sourcePath: 'docs/teach/05-resume-data-and-hero-background.md',
+    sourcePath: 'docs/teach/02-resume-hero-visual-system.md',
     summary: 'สอน flow การเอาข้อมูล resume จริงเข้ามาใน PortfolioDataService และออกแบบ Hero เป็น first signal ของตัวตน ApoRaviz',
     topics: ['resume data', 'PortfolioDataService', 'hero section', 'visual layers', 'color roles'],
     sections: [
@@ -115,7 +115,7 @@ rg -n "ApoRaviz_Mooping|Quest" src/app/services/portfolio-data.service.ts`,
   {
     id: 3,
     title: 'Portfolio Navigation Flow',
-    sourcePath: 'docs/teach/08-navbar-dropdown-and-smooth-scroll.md',
+    sourcePath: 'docs/teach/03-portfolio-navigation-flow.md',
     summary: 'สอน system flow ของ navbar ใน Portfolio: dropdown bridge, anchor fallback, route queue และ active-section lock',
     topics: ['navbar flow', 'dropdown bridge', 'anchor fallback', 'scroll queue', 'active state'],
     sections: [
@@ -157,7 +157,7 @@ rg -n "queueSectionScroll|scrollToSectionWhenReady|activeSection" src/app`,
   {
     id: 4,
     title: 'Teach และ Commands Page Structure',
-    sourcePath: 'docs/teach/09-component-folder-best-practices.md',
+    sourcePath: 'docs/teach/04-teach-commands-page-structure.md',
     summary: 'สอนการจัดโครงสร้างหน้า Teach/Commands ของ Portfolio ให้ modal, data และ page owner อยู่ถูกที่และดูแลต่อได้',
     topics: ['feature-local component', 'modal ownership', 'page data', 'sourcePath', 'sync docs with UI'],
     sections: [
