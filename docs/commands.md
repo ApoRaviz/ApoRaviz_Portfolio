@@ -2,16 +2,16 @@
 
 เอกสารนี้รวมคำสั่งที่ใช้กับ `ApoRaviz_Portfolio` ไว้ไฟล์เดียว เพื่อไม่ให้ command docs แตกย่อยเกินจำเป็น
 
-Command pattern กลางของ Angular และ Git อยู่ที่:
+Command pattern กลางของ Angular, Tailwind CSS และ Git อยู่ที่ `ApoRaviz_Workspace_Docs`
 
 ```text
-_docs/angular/commands.md
-_docs/git/commands.md
+ApoRaviz_Workspace_Docs/angular/
+ApoRaviz_Workspace_Docs/git/
 ```
 
 ไฟล์นี้เก็บรายละเอียดเฉพาะ Portfolio เช่น script name, port ที่ใช้ตรวจ, base-href และ manual UI check ของโปรเจกต์นี้
 
-Command ในไฟล์นี้ควรอ่านแบบ learning note:
+Command ในไฟล์นี้ควรอ่านแบบ project note:
 
 ```text
 command = ต้องพิมพ์อะไร
@@ -59,7 +59,7 @@ npm run test:ci
 หรือรันตรงด้วย Node 24:
 
 ```bash
-PATH=/Users/aporaviz/.nvm/versions/node/v24.16.0/bin:$PATH CI=1 ./node_modules/.bin/ng test --watch=false --progress=false
+PATH=/Users/aporaviz/.nvm/versions/node/v24.16.0/bin:$PATH ./node_modules/.bin/ng test --watch=false --progress=false
 ```
 
 `test:ci` ใช้รันครั้งเดียวแล้วจบ เหมาะกับการตรวจงานก่อน commit/push
@@ -73,13 +73,13 @@ npm run build
 โปรเจกต์นี้ตั้ง `build` ให้ใช้:
 
 ```text
-CI=1 ng build --progress=false
+ng build --progress=false
 ```
 
 เหตุผล:
 
-- local terminal เคยเจอ esbuild deadlock เมื่อรัน `ng build` แบบ raw
 - ปิด progress output เพื่อให้ log อ่านง่าย
+- ใช้ syntax ที่รันได้บน Windows/PowerShell
 - โปรเจกต์เปิด SSR/prerender จึงควรเห็นข้อความ `Prerendered 1 static route.`
 
 ถ้าต้องการ debug Angular CLI แบบเดิม:
@@ -155,4 +155,4 @@ gh run watch
 - คลิกเมนูที่อยู่ไกล เช่น `Quests` หรือ `Contact`
 - active underline ต้องไม่แว๊บผ่าน section กลางทาง
 - mobile menu ต้องปิดหลังเลือก section
-- จาก `/teach` หรือ `/commands` ต้องกลับ `/` แล้ว scroll ต่อได้
+- กด `Learn Docs` แล้วต้องเปิด `ApoRaviz_Workspace_Docs` ใน tab ใหม่

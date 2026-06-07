@@ -168,7 +168,7 @@ Original armored axe heroine
 
 ## Design System Notes
 
-จากกติกากลางใน `_docs/NEW_PROJECT_GUIDE.md` แนวที่เหมาะคือ:
+จากกติกากลางใน `ApoRaviz_Workspace_Docs/NEW_PROJECT_GUIDE.md` แนวที่เหมาะคือ:
 
 - Portfolio grid
 - Motion-driven แบบพอดี

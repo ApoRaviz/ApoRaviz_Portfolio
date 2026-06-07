@@ -1,13 +1,10 @@
-<!-- ใช้ nav เพราะบล็อกนี้เป็น navigation หลักของเว็บ และช่วยให้ screen reader เข้าใจว่าเป็นเมนูนำทาง -->
 <nav
   class="sticky top-0 z-50 border-b border-white/10 bg-dark/75 transition-all duration-300 backdrop-blur-xl"
   [class.border-b]="theme.scrolled()"
   [class.border-primary/20]="theme.scrolled()"
   [class.shadow-glow]="theme.scrolled()"
 >
-  <!-- ใช้ div เป็น layout wrapper เพื่อจำกัดความกว้างและจัด logo/menu ด้วย flex -->
   <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
-    <!-- ใช้ a เพราะ logo พากลับหน้าแรก เป็น navigation จริงไม่ใช่ action ในหน้าเดิม -->
     <a
       routerLink="/"
       class="flex items-center gap-3 rounded-xl border border-primary/20 bg-black/30 px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,.08)] transition hover:border-primary/50 hover:bg-primary/10"
@@ -17,10 +14,8 @@
       <img class="h-10 w-auto" [src]="data.profile().logoUrl" alt="ApoRaviz logo" />
     </a>
 
-    <!-- ใช้ div เป็นกลุ่มเมนู desktop เพราะ parent nav ให้ semantic แล้ว ส่วนนี้มีหน้าที่จัด layout เท่านั้น -->
     <div class="hidden items-center gap-8 md:flex">
       @for (link of data.navLinks(); track link.id) {
-        <!-- ใช้ a เพราะเมนูนี้มีปลายทางเป็น section จริง และ href เป็น fallback ถ้า Angular ยังไม่พร้อมให้ browser ไป #id ได้เอง -->
         <a
           [attr.href]="'/#' + link.id"
           class="relative rounded-lg px-2 py-1 font-mono text-sm text-neutral-300 transition hover:bg-primary/10 hover:text-primary"
@@ -34,69 +29,16 @@
           }
         </a>
       }
-      <!-- ใช้ div เป็น dropdown wrapper ของ Learn เพราะต้องวางปุ่มหลักและ submenu ที่ position absolute ร่วมกัน -->
-      <div
-        class="relative"
-        (mouseenter)="openLearnMenu()"
-        (mouseleave)="closeLearnMenu()"
-        (focusin)="openLearnMenu()"
-        (focusout)="closeLearnMenuIfFocusLeaves($event)"
+      <a
+        [href]="workspaceDocsUrl"
+        target="_blank"
+        rel="noreferrer"
+        class="rounded-lg border border-primary/35 px-3 py-2 font-mono text-sm text-primary transition hover:bg-primary hover:text-white"
       >
-        <!-- ใช้ button เพราะ Learn เป็นตัวเปิด/ปิด submenu ไม่ใช่ route ปลายทางโดยตรง -->
-        <button
-          type="button"
-          class="relative rounded-lg px-2 py-1 font-mono text-sm text-neutral-300 transition hover:bg-primary/10 hover:text-primary"
-          [class.text-primary]="isLearnActive() || learnMenuOpen()"
-          [class.bg-primary/10]="isLearnActive() || learnMenuOpen()"
-          aria-haspopup="menu"
-          [attr.aria-expanded]="learnMenuOpen()"
-          (click)="openLearnMenu()"
-        >
-          Learn
-          @if (isLearnActive() || learnMenuOpen()) {
-            <span class="absolute -bottom-2 left-0 h-0.5 w-full rounded-full bg-primary shadow-glow"></span>
-          }
-        </button>
-
-        <!-- ใช้ div ชั้นนอกเป็น hit-area bridge เพราะต้องครอบช่องว่างระหว่างปุ่ม Learn กับ submenu ไม่ให้ mouseleave ปิดเมนูก่อนเลื่อนถึงลิงก์ -->
-        <div
-          class="absolute right-0 top-full min-w-40 pt-3 transition duration-200"
-          [class.pointer-events-auto]="learnMenuOpen()"
-          [class.translate-y-0]="learnMenuOpen()"
-          [class.opacity-100]="learnMenuOpen()"
-          [class.pointer-events-none]="!learnMenuOpen()"
-          [class.translate-y-2]="!learnMenuOpen()"
-          [class.opacity-0]="!learnMenuOpen()"
-          role="menu"
-        >
-          <!-- ใช้ div ชั้นในเป็น visual panel เพราะ border/background/shadow ควรอยู่เฉพาะกล่องเมนู ไม่รวมพื้นที่ bridge -->
-          <div class="rounded-xl border border-white/10 bg-dark/95 p-2 shadow-[0_18px_60px_rgba(0,0,0,.45)] backdrop-blur-xl">
-            <!-- ใช้ a เพราะ Teach เป็นหน้า route แยกในกลุ่ม Learn -->
-            <a
-              routerLink="/teach"
-              routerLinkActive="bg-primary/10 text-primary"
-              class="block rounded-lg px-3 py-2 font-mono text-sm text-neutral-300 transition hover:bg-primary/10 hover:text-primary"
-              role="menuitem"
-              (click)="closeLearnMenu()"
-            >
-              Teach
-            </a>
-            <!-- ใช้ a เพราะ Commands เป็นหน้า route แยกในกลุ่ม Learn -->
-            <a
-              routerLink="/commands"
-              routerLinkActive="bg-primary/10 text-primary"
-              class="block rounded-lg px-3 py-2 font-mono text-sm text-neutral-300 transition hover:bg-primary/10 hover:text-primary"
-              role="menuitem"
-              (click)="closeLearnMenu()"
-            >
-              Commands
-            </a>
-          </div>
-        </div>
-      </div>
+        Learn Docs
+      </a>
     </div>
 
-    <!-- ใช้ button เพราะ hamburger เป็น action เปิด/ปิดเมนูมือถือ -->
     <button
       type="button"
       class="grid h-11 w-11 place-items-center rounded-lg border border-dark-border text-white transition hover:border-primary/50 hover:text-primary md:hidden"
@@ -106,7 +48,6 @@
       @if (theme.mobileMenuOpen()) {
         <span class="font-mono text-2xl leading-none">x</span>
       } @else {
-        <!-- ใช้ span เป็น icon เส้น hamburger แบบ CSS เพื่อเลี่ยงการพึ่ง emoji/icon font -->
         <span class="grid gap-1.5" aria-hidden="true">
           <span class="block h-0.5 w-5 rounded-full bg-current"></span>
           <span class="block h-0.5 w-5 rounded-full bg-current"></span>
@@ -117,12 +58,9 @@
   </div>
 
   @if (theme.mobileMenuOpen()) {
-    <!-- ใช้ div เป็น mobile menu panel เพราะเป็น container จัด layout ของรายการเมนูที่เปิดตาม state -->
     <div class="border-t border-dark-border bg-dark/95 px-5 py-5 backdrop-blur-xl md:hidden">
-      <!-- ใช้ div เป็น stack wrapper เพื่อจัด spacing ของเมนูมือถือ -->
       <div class="mx-auto flex max-w-7xl flex-col gap-2">
         @for (link of data.navLinks(); track link.id) {
-          <!-- ใช้ a เพราะรายการนี้เป็น section navigation จริง และ href ช่วยเป็น fallback บนมือถือด้วย -->
           <a
             [attr.href]="'/#' + link.id"
             class="rounded-lg px-4 py-3 text-left font-mono text-sm transition hover:bg-primary/10 hover:text-primary"
@@ -133,28 +71,15 @@
             {{ link.label }}
           </a>
         }
-        <!-- ใช้ div เป็นกลุ่ม Learn บนมือถือ เพื่อรวม route เอกสารไว้ใต้หัวข้อเดียวโดยไม่ต้องทำ dropdown ซ้อน -->
-        <div class="rounded-lg border border-white/10 bg-white/[0.03] p-2">
-          <p class="px-2 py-2 font-mono text-xs uppercase tracking-[0.18em] text-primary">Learn</p>
-          <!-- ใช้ a เพราะ Teach เป็น route แยกจากหน้า Home -->
-          <a
-            routerLink="/teach"
-            routerLinkActive="bg-primary/10 text-primary"
-            class="block rounded-lg px-4 py-3 text-left font-mono text-sm transition hover:bg-primary/10 hover:text-primary"
-            (click)="closeLearnMenu()"
-          >
-            Teach
-          </a>
-          <!-- ใช้ a เพราะ Commands เป็น route แยกจากหน้า Home -->
-          <a
-            routerLink="/commands"
-            routerLinkActive="bg-primary/10 text-primary"
-            class="block rounded-lg px-4 py-3 text-left font-mono text-sm transition hover:bg-primary/10 hover:text-primary"
-            (click)="closeLearnMenu()"
-          >
-            Commands
-          </a>
-        </div>
+        <a
+          [href]="workspaceDocsUrl"
+          target="_blank"
+          rel="noreferrer"
+          class="rounded-lg border border-primary/35 px-4 py-3 text-left font-mono text-sm text-primary transition hover:bg-primary hover:text-white"
+          (click)="theme.closeMobileMenu()"
+        >
+          Learn Docs
+        </a>
       </div>
     </div>
   }

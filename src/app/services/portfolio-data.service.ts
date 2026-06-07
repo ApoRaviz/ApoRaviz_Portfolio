@@ -85,13 +85,23 @@ export class PortfolioDataService {
       title: 'MooPing Loyalty',
       description:
         'Angular loyalty web app for a pork skewer shop concept, with POS confirmation, saved rewards, display screen, and LINE OA mock flow.',
-      tech: ['Angular 21', 'Signals', 'GitHub Pages'],
+      tech: ['Angular 22', 'Signals', 'Tailwind CSS', 'GitHub Pages'],
       liveUrl: 'https://aporaviz.github.io/ApoRaviz_Mooping/',
       githubUrl: 'https://github.com/ApoRaviz/ApoRaviz_Mooping',
       featured: true,
     },
     {
       id: 2,
+      title: 'Workspace Learning Docs',
+      description:
+        'Central learning hub for ApoRaviz projects, with Thai-first Angular/Tailwind lessons, workspace rules, project startup guides, and AI update rules.',
+      tech: ['Markdown', 'Angular Docs', 'Tailwind CSS', 'VitePress Plan'],
+      liveUrl: 'https://github.com/ApoRaviz/ApoRaviz_Workspace_Docs',
+      githubUrl: 'https://github.com/ApoRaviz/ApoRaviz_Workspace_Docs',
+      featured: true,
+    },
+    {
+      id: 3,
       title: 'AI LINE OA Chatbot',
       description: 'Customer service chatbot that combines LINE messaging, AI responses, and backend automation.',
       tech: ['LINE Bot', 'OpenAI', 'Node.js'],
@@ -101,7 +111,7 @@ export class PortfolioDataService {
       isDemo: true,
     },
     {
-      id: 3,
+      id: 4,
       title: 'Law Firm Management System',
       description: 'Case, client, and document workflow system for legal operations.',
       tech: ['Next.js', 'PostgreSQL', 'Supabase'],
@@ -111,7 +121,7 @@ export class PortfolioDataService {
       isDemo: true,
     },
     {
-      id: 4,
+      id: 5,
       title: 'E-commerce Dashboard',
       description: 'Analytics dashboard for sales, inventory, orders, and performance reporting.',
       tech: ['Angular', 'Chart.js', 'REST API'],
@@ -121,7 +131,7 @@ export class PortfolioDataService {
       isDemo: true,
     },
     {
-      id: 5,
+      id: 6,
       title: 'CRM System',
       description: 'Customer pipeline, task tracking, and internal collaboration system.',
       tech: ['React', 'NestJS', 'PostgreSQL'],
@@ -131,7 +141,7 @@ export class PortfolioDataService {
       isDemo: true,
     },
     {
-      id: 6,
+      id: 7,
       title: 'AI Content Generator',
       description: 'Marketing content tool that helps teams draft posts, captions, and campaign ideas.',
       tech: ['OpenAI API', 'Next.js', 'Tailwind CSS'],
@@ -141,7 +151,7 @@ export class PortfolioDataService {
       isDemo: true,
     },
     {
-      id: 7,
+      id: 8,
       title: 'Portfolio Website',
       description: 'Fast Angular portfolio with SSR, modern UI, and editable content architecture.',
       tech: ['Angular', 'Tailwind CSS', 'Vercel'],

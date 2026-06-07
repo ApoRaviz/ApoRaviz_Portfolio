@@ -1,6 +1,6 @@
 # Portfolio Architecture
 
-เอกสารนี้อธิบายโครงสร้างระบบของ `ApoRaviz_Portfolio`
+เอกสารนี้อธิบายโครงสร้างของ `ApoRaviz_Portfolio` ในฐานะ profile/showcase site ไม่ใช่ learning hub กลาง
 
 ## Runtime
 
@@ -19,10 +19,21 @@ GitHub Pages static deploy
 src/app/models/      = TypeScript interfaces
 src/app/services/    = portfolio data และ shared UI state
 src/app/components/  = section components
-docs/                = project knowledge
-docs/teach/          = learning notes
-docs/commands.md     = command reference
+src/app/pages/       = routed page components
+docs/                = project-specific docs only
+docs/commands.md     = command reference เฉพาะ Portfolio
 ```
+
+บทเรียนกลาง, Angular concept, Tailwind CSS pattern, setup guide และคำศัพท์ใหม่ ต้องอยู่ที่ `ApoRaviz_Workspace_Docs`
+
+## Routes
+
+```text
+/  = HomePageComponent
+** = redirect กลับ /
+```
+
+Portfolio ไม่มีหน้าเรียนภายในเว็บแล้ว ถ้าผู้ใช้ต้องการเรียนรู้ให้กด link ไป `ApoRaviz_Workspace_Docs`
 
 ## Data Flow
 
@@ -65,10 +76,10 @@ push main
 
 ## Local Build Note
 
-ใน terminal นี้ `ng build` แบบปกติเคยเจอ esbuild deadlock แต่ build แบบ CI ผ่าน:
+ใน Windows/PowerShell ห้ามเขียน npm script แบบ `CI=1 ng ...` เพราะเป็น syntax ฝั่ง mac/Linux และจะรันไม่ผ่าน
 
 ```bash
-CI=1 ng build --progress=false
+ng build --progress=false
 ```
 
 ดังนั้น `npm run build` ถูกปรับให้ใช้ command นี้เป็น default และเก็บ `npm run build:raw` ไว้สำหรับ debug Angular CLI แบบเดิม

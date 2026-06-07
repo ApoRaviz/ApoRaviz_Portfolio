@@ -4,37 +4,35 @@
 
 ## Current Role
 
-`ApoRaviz_Portfolio` คือ profile หลักของ ApoRaviz และเป็น hub สำหรับ link ไปยังโปรเจกต์ลูก เช่น `ApoRaviz_Mooping`
+`ApoRaviz_Portfolio` คือ profile/showcase/job site ของ ApoRaviz และเป็น hub สำหรับ link ไปยังโปรเจกต์ลูก
+
+บทเรียนกลางและความรู้ใหม่ทั้งหมดต้องกลับไปอยู่ที่ `ApoRaviz_Workspace_Docs` ส่วน Portfolio แสดงลิงก์และผลงานเท่านั้น
 
 ## Done
 
-- [x] สร้าง Angular project รุ่นตั้งต้นพร้อม routing, SSR/prerender และ standalone components
-- [x] Upgrade frontend baseline ปัจจุบันเป็น Angular 22 + TypeScript 6.0.x ตามกติกากลางปี 2026
+- [x] สร้าง Angular project พร้อม routing, SSR/prerender และ standalone components
+- [x] Upgrade frontend baseline ปัจจุบันเป็น Angular 22 + TypeScript 6.0.x
 - [x] ใช้ Node 24, TypeScript strict, Angular signals และ `inject()`
 - [x] เพิ่ม Tailwind CSS v4 และ dark/orange ApoRaviz visual direction
 - [x] แยกข้อมูลหลักไว้ใน `PortfolioDataService`
 - [x] แยก scroll/theme state ไว้ใน `ThemeService`
 - [x] เพิ่ม section components: navbar, hero, about, skills, projects, services, experience, testimonials, contact, footer
-- [x] เพิ่ม comment ภาษาไทยเพื่ออธิบาย semantic HTML, Angular state, SSR guard และ UX decisions
 - [x] เพิ่ม `docs/architecture.md`
 - [x] เพิ่ม `docs/design-direction.md`
 - [x] เพิ่ม `docs/commands.md`
 - [x] เพิ่ม `docs/implementation-plan.md`
-- [x] เพิ่ม `docs/teach.md` และ `docs/teach/`
-- [x] เพิ่ม `docs/teach/README.md` เพื่อแยกบทเรียน Portfolio ออกจาก Angular concept กลาง
-- [x] ลบ Angular teach กลางที่ซ้ำใน `docs/teach/` และคงไว้เฉพาะ Portfolio-specific lessons
-- [x] ปรับหน้า `/teach` ให้แสดงเฉพาะบทเรียนของ Portfolio: design direction, resume/hero, navigation flow, Teach/Commands structure
-- [x] rename Portfolio teach files เป็น `01-04` ต่อเนื่องและสื่อบทเรียนเฉพาะโปรเจกต์
 - [x] รวม command docs ย่อยให้เหลือ `docs/commands.md`
-- [x] เชื่อม `docs/commands.md` และ `docs/teach/` กลับไป `_docs/angular/` และ `_docs/git/`
-- [x] ปรับ README ให้บอกว่า Portfolio คือ profile hub และ project hub ของ ApoRaviz
+- [x] ปรับ README ให้บอกว่า Portfolio คือ profile/showcase hub
 - [x] ย้าย project skill ไปที่ `.codex/skills/angular-portfolio-mentor/SKILL.md`
 - [x] ลบ generic UI skill copy ที่ซ้ำกับกติกากลาง
 - [x] ลบ prompt/spec เก่าเพื่อไม่ให้สับสนกับ frontend baseline ปัจจุบัน
 - [x] เพิ่ม `ApoRaviz_Mooping` เป็น project card ใน portfolio
+- [x] เพิ่ม `ApoRaviz_Workspace_Docs` เป็น project card ใน portfolio
 - [x] เพิ่ม GitHub Actions สำหรับ CI และ GitHub Pages deploy
 - [x] เอา external Google Fonts ออกจาก build path เพื่อลด dependency กับ network
-- [x] ปรับ build script ให้ใช้ CI mode และปิด progress output
+- [x] ปรับ build script ให้ใช้ command ที่รันได้บน Windows และปิด progress output
+- [x] ลบ internal learning pages/docs ของ Portfolio เพื่อให้ Workspace Docs เป็น learning hub เดียว
+- [x] ปรับ navbar ให้มี link ไป `ApoRaviz_Workspace_Docs`
 
 ## Current Docs
 
@@ -45,20 +43,15 @@ docs/commands.md
 docs/design-direction.md
 docs/implementation-plan.md
 docs/progress.md
-docs/teach.md
-docs/teach/
 .codex/skills/angular-portfolio-mentor/SKILL.md
 ```
 
 ## Keep In Mind
 
-- ถ้าเพิ่มหรือแก้หัวข้อใน `docs/teach/` ต้อง sync หน้า `/teach` ด้วย
-- ถ้าเพิ่มหรือแก้คำสั่งใน `docs/commands.md` ต้อง sync หน้า `/commands` ด้วย
-- ถ้าเป็น Angular concept กลาง ให้สรุปกลับไป `_docs/angular/teach/` ก่อนเพิ่มซ้ำใน project docs
-- ถ้าเป็น command pattern กลาง ให้สรุปกลับไป `_docs/angular/commands.md` หรือ `_docs/git/commands.md`
-- Project teach ของ Portfolio ต้องตอบว่า flow หรือ decision นี้เกี่ยวกับ Portfolio อย่างไร
-- Project card ใหม่ควรเพิ่มผ่าน `PortfolioDataService` ไม่ hardcode ใน HTML
-- โค้ดใหม่ควรมี comment ภาษาไทยในจุดที่สอน intent หรือ decision สำคัญ
+- ถ้าเจอ Angular concept, Tailwind CSS pattern, command pattern หรือศัพท์ใหม่ ให้เพิ่มบทเรียนที่ `ApoRaviz_Workspace_Docs`
+- Portfolio ควรเพิ่ม project card ผ่าน `PortfolioDataService` ไม่ hardcode ใน HTML
+- Portfolio ควร link ไป learning hub กลาง ไม่สร้างบทเรียนแยกใน repo นี้
+- โค้ดใหม่ควรมี comment ภาษาไทยเฉพาะจุดที่สอน intent หรือ decision สำคัญ
 
 ## Next
 
