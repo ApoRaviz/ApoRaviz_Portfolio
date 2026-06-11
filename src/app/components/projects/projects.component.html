@@ -17,13 +17,23 @@
       @for (project of data.visibleProjects(); track project.id) {
         <!-- ใช้ article เพราะ project card เป็นงานหนึ่งชิ้นที่แยกอ่าน/แชร์ได้ -->
         <article class="reveal overflow-hidden rounded-xl border border-dark-border bg-dark-card transition duration-300 hover:border-primary/70 hover:shadow-glow md:grid md:grid-cols-[.9fr_1.1fr]">
-          <!-- ใช้ div เป็น image placeholder layer เพราะยังไม่มีรูปจริงของแต่ละโปรเจกต์ -->
-          <div class="grid min-h-72 place-items-center bg-gradient-to-br from-orange-900/40 via-dark-card to-dark">
+          <!-- ใช้ div เป็น visual wrapper เพื่อสลับระหว่าง screenshot จริงกับ placeholder ของ future quest -->
+          <div class="relative grid min-h-72 place-items-center overflow-hidden bg-gradient-to-br from-orange-900/40 via-dark-card to-dark">
+            @if (project.imageUrl) {
+              <img
+                class="absolute inset-0 h-full w-full object-cover opacity-80"
+                [src]="project.imageUrl"
+                [alt]="project.title + ' screenshot'"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/35 to-transparent"></div>
+            }
+
             <!-- ใช้ div เป็น visual layer ภายในการ์ด ให้ยังคงตัวตนแบบเกม แต่บอกชัดว่านี่คือผลงานจริง -->
-            <div class="px-6 text-center">
-              <p class="font-mono text-xs uppercase tracking-[0.25em] text-primary">{{ project.category }}</p>
-              <p class="mt-3 font-display text-2xl font-bold text-white">{{ project.title }}</p>
-              <p class="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-neutral-500">Cleared Quest {{ project.id }}</p>
+            <div class="relative px-6 text-center">
+              <p class="font-mono text-xs uppercase tracking-[0.25em] text-primary drop-shadow">{{ project.category }}</p>
+              <p class="mt-3 font-display text-2xl font-bold text-white drop-shadow">{{ project.title }}</p>
+              <p class="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 drop-shadow">Cleared Quest {{ project.id }}</p>
             </div>
           </div>
 

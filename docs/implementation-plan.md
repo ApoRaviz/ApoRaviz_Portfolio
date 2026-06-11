@@ -32,7 +32,7 @@
 - [x] 1.3 เพิ่ม `ApoRaviz_Workspace_Docs` เป็น project card
 - [x] 1.4 เพิ่ม navbar link ไป `ApoRaviz_Workspace_Docs`
 - [x] 1.5 ปรับ README/architecture/progress ให้ตรงกับ concept ใหม่
-- [ ] 1.6 ตรวจ UI หลัง build บน desktop และ mobile
+- [x] 1.6 ตรวจ UI หลัง build บน desktop และ mobile
 
 ## Step 2 - Hardening
 
@@ -40,13 +40,13 @@
 - [x] 2.2 ปรับ `npm run build` ให้ใช้ `ng build --progress=false` ที่รันได้บน Windows
 - [x] 2.3 เอา Google Fonts link ออกจาก build path เพื่อลด network dependency
 - [ ] 2.4 เติมข้อมูลจริงใน `PortfolioDataService`
-- [ ] 2.5 เอา placeholder สำคัญออกหรือซ่อนไว้ก่อน
+- [x] 2.5 เอา placeholder สำคัญออกหรือซ่อนไว้ก่อน
 - [ ] 2.6 เพิ่ม unit tests สำหรับ service/form/SSR guards
 - [ ] 2.7 ตรวจ GitHub Actions บน remote หลัง push
 
 ## Step 3 - Content Polish
 
-- [ ] 3.1 เพิ่ม project screenshot หรือ visual preview
+- [x] 3.1 เพิ่ม project screenshot หรือ visual preview
 - [x] 3.2 ปรับ project descriptions ให้เล่า value มากกว่า tech stack
 - [ ] 3.3 เพิ่ม case study link ของ `ApoRaviz_Mooping` เมื่อ project กลับมาทำต่อ
 - [ ] 3.4 ตรวจ SEO title/description/open graph

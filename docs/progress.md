@@ -21,6 +21,7 @@
 - [x] เพิ่ม `docs/design-direction.md`
 - [x] เพิ่ม `docs/commands.md`
 - [x] เพิ่ม `docs/implementation-plan.md`
+- [x] เพิ่ม `docs/next-actions.md` เพื่อเก็บงานถัดไปที่ต้องทำทันที
 - [x] รวม command docs ย่อยให้เหลือ `docs/commands.md`
 - [x] ปรับ README ให้บอกว่า Portfolio คือ profile/showcase hub
 - [x] ย้าย project skill ไปที่ `.codex/skills/angular-portfolio-mentor/SKILL.md`
@@ -29,6 +30,9 @@
 - [x] เพิ่ม `ApoRaviz_Mooping` เป็น project card ใน portfolio
 - [x] เพิ่ม `ApoRaviz_Workspace_Docs` เป็น project card ใน portfolio
 - [x] ปรับ Quest section ให้ยังคงตัวตนแบบเกม แต่สื่อชัดขึ้นว่าเป็นผลงานจริง พร้อมแก้ live/GitHub link
+- [x] เพิ่ม screenshot preview ให้ Quest Board และซ่อน Portfolio self-card ไม่ให้ซ้ำกับเว็บปัจจุบัน
+- [x] ตรวจ Quest Board บน desktop และ mobile หลัง build
+- [x] ซ่อน placeholder สำคัญ เช่น LINE/Facebook/testimonial/demo projects จนกว่าจะมีข้อมูลจริง
 - [x] เพิ่ม GitHub Actions สำหรับ CI และ GitHub Pages deploy
 - [x] เอา external Google Fonts ออกจาก build path เพื่อลด dependency กับ network
 - [x] ปรับ build script ให้ใช้ command ที่รันได้บน Windows และปิด progress output
@@ -43,6 +47,7 @@ docs/architecture.md
 docs/commands.md
 docs/design-direction.md
 docs/implementation-plan.md
+docs/next-actions.md
 docs/progress.md
 .codex/skills/angular-portfolio-mentor/SKILL.md
 ```

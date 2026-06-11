@@ -35,9 +35,9 @@ export class PortfolioDataService {
     role: 'Angular Developer focused on practical web apps and future AI-powered tools',
     email: 'Tanonchai.pr@hotmail.com',
     phone: '081-436-8601',
-    line: '@yourline',
+    line: '',
     github: 'github.com/ApoRaviz',
-    facebook: 'fb.com/yourname',
+    facebook: '',
     resumeUrl: 'resume.pdf',
     resumePageUrl: 'resume.html',
   });
@@ -89,6 +89,7 @@ export class PortfolioDataService {
       highlight:
         'Shows practical state management, multi-screen flow, customer reward logic, and a business idea that can grow into a real shop tool.',
       tech: ['Angular 22', 'Signals', 'Tailwind CSS', 'GitHub Pages'],
+      imageUrl: 'project-screenshots/mooping.png',
       liveUrl: 'https://aporaviz.github.io/ApoRaviz_Mooping/',
       githubUrl: 'https://github.com/ApoRaviz/ApoRaviz_Mooping',
       featured: true,
@@ -102,6 +103,7 @@ export class PortfolioDataService {
       highlight:
         'Turns chat knowledge into a reusable asset, with project rules, command references, and linked learning notes for future ApoRaviz builds.',
       tech: ['VitePress', 'Markdown', 'GitHub Actions', 'GitHub Pages'],
+      imageUrl: 'project-screenshots/workspace-docs.png',
       liveUrl: 'https://aporaviz.github.io/ApoRaviz_Workspace_Docs/',
       githubUrl: 'https://github.com/ApoRaviz/ApoRaviz_Workspace_Docs',
       featured: true,
@@ -117,6 +119,7 @@ export class PortfolioDataService {
       liveUrl: 'https://aporaviz.github.io/ApoRaviz_Portfolio/',
       githubUrl: 'https://github.com/ApoRaviz/ApoRaviz_Portfolio',
       featured: true,
+      isDemo: true,
     },
     {
       id: 4,
@@ -261,8 +264,8 @@ export class PortfolioDataService {
     { icon: 'MAIL', label: 'Email', value: 'Tanonchai.pr@hotmail.com', url: 'mailto:Tanonchai.pr@hotmail.com' },
     { icon: 'CALL', label: 'Phone', value: '081-436-8601', url: 'tel:0814368601' },
     { icon: 'GH', label: 'GitHub', value: 'github.com/ApoRaviz', url: 'https://github.com/ApoRaviz' },
-    { icon: 'LINE', label: 'LINE', value: '@yourline', url: '#', isDemo: true },
-    { icon: 'FB', label: 'Facebook', value: 'fb.com/yourname', url: '#', isDemo: true },
+    { icon: 'LINE', label: 'LINE', value: '', url: '', isDemo: true },
+    { icon: 'FB', label: 'Facebook', value: '', url: '', isDemo: true },
   ]);
 
   readonly visibleContactInfo = computed(() => this.contactInfo().filter((item) => !item.isDemo));
