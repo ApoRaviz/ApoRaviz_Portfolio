@@ -16,8 +16,10 @@ export interface SkillGroup {
 
 export interface Project {
   id: number;
+  category: string;
   title: string;
   description: string;
+  highlight: string;
   tech: string[];
   liveUrl: string;
   githubUrl: string;

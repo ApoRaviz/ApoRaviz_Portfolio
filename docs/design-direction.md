@@ -109,7 +109,7 @@ Palette ที่เหมาะ:
 - Hero: Player Intro
 - About: Player Profile
 - Skills: Loadout
-- Projects: Quest Log
+- Projects: Quest Board
 - Services: Can Help With
 - Experience: Journey
 - Testimonials: Party Notes

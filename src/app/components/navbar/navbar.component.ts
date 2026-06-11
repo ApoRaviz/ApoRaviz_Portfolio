@@ -11,7 +11,7 @@ import { ThemeService } from '../../services/theme.service';
 export class NavbarComponent implements AfterViewInit {
   readonly data = inject(PortfolioDataService);
   readonly theme = inject(ThemeService);
-  readonly workspaceDocsUrl = 'https://github.com/ApoRaviz/ApoRaviz_Workspace_Docs';
+  readonly workspaceDocsUrl = 'https://aporaviz.github.io/ApoRaviz_Workspace_Docs/';
 
   ngAfterViewInit(): void {
     this.theme.startScrollTracking();

@@ -2,27 +2,28 @@
 <section id="projects" class="bg-dark py-24" aria-labelledby="projects-title">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
     <header class="reveal text-center">
-      <p class="font-mono text-sm uppercase tracking-[0.25em] text-primary">Quest Log</p>
+      <p class="font-mono text-sm uppercase tracking-[0.25em] text-primary">Quest Board</p>
       <h2 id="projects-title" class="mt-3 font-display text-4xl font-bold text-white sm:text-5xl">
-        <span class="text-primary">Things</span> I Built
+        <span class="text-primary">Quests</span> I Cleared
       </h2>
       <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-primary shadow-glow"></div>
       <p class="mx-auto mt-5 max-w-2xl leading-8 text-neutral-400">
-        Keeping only real work visible for now. MooPing is the current Angular build used to show structure, state, routing, and UI thinking.
+        A game-flavored project board for real builds: each cleared quest has a live page, source link, and a note about what it proves.
       </p>
     </header>
 
     <!-- ใช้ div เป็น responsive grid wrapper; ความหมายของแต่ละชิ้นอยู่ที่ article ด้านใน -->
-    <div class="mx-auto mt-12 grid max-w-4xl gap-6">
+    <div class="mx-auto mt-12 grid max-w-5xl gap-6">
       @for (project of data.visibleProjects(); track project.id) {
         <!-- ใช้ article เพราะ project card เป็นงานหนึ่งชิ้นที่แยกอ่าน/แชร์ได้ -->
         <article class="reveal overflow-hidden rounded-xl border border-dark-border bg-dark-card transition duration-300 hover:border-primary/70 hover:shadow-glow md:grid md:grid-cols-[.9fr_1.1fr]">
           <!-- ใช้ div เป็น image placeholder layer เพราะยังไม่มีรูปจริงของแต่ละโปรเจกต์ -->
           <div class="grid min-h-72 place-items-center bg-gradient-to-br from-orange-900/40 via-dark-card to-dark">
-            <!-- ใช้ div เป็น visual layer ภายในการ์ด เพื่อให้ project ดูเหมือน quest card โดยไม่ต้องมีภาพจริงทุกโปรเจกต์ -->
+            <!-- ใช้ div เป็น visual layer ภายในการ์ด ให้ยังคงตัวตนแบบเกม แต่บอกชัดว่านี่คือผลงานจริง -->
             <div class="px-6 text-center">
-              <p class="font-mono text-xs uppercase tracking-[0.25em] text-primary">Real Build · Quest {{ project.id }}</p>
+              <p class="font-mono text-xs uppercase tracking-[0.25em] text-primary">{{ project.category }}</p>
               <p class="mt-3 font-display text-2xl font-bold text-white">{{ project.title }}</p>
+              <p class="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-neutral-500">Cleared Quest {{ project.id }}</p>
             </div>
           </div>
 
@@ -31,7 +32,7 @@
             <p class="mt-3 leading-7 text-neutral-400">{{ project.description }}</p>
 
             <p class="mt-5 rounded-lg border border-white/10 bg-white/[0.03] p-4 text-sm leading-7 text-neutral-300">
-              Built as a learning-focused Angular project to practice practical flows: customer actions, reward state, display panels, and route-friendly screens.
+              {{ project.highlight }}
             </p>
 
             <div class="mt-5 flex flex-wrap gap-2">
@@ -42,14 +43,14 @@
 
             <!-- ใช้ div เป็น action row wrapper เพื่อจัดปุ่มสองแบบให้อยู่บรรทัดเดียวกัน -->
             <div class="mt-6 flex gap-3">
-              <!-- ใช้ a เพราะ Live Demo/GitHub เป็น navigation ไป URL ของโปรเจกต์ -->
+              <!-- ใช้ a เพราะปุ่ม live site/GitHub เป็น navigation ไป URL ของโปรเจกต์ -->
               <a
                 class="rounded-lg border border-primary px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary/10"
                 [href]="project.liveUrl"
                 target="_blank"
                 rel="noreferrer"
               >
-                Live Demo
+                Open Live Site
               </a>
               <a
                 class="rounded-lg px-4 py-2 text-sm font-semibold text-neutral-300 transition hover:text-primary"
@@ -57,7 +58,7 @@
                 target="_blank"
                 rel="noreferrer"
               >
-                GitHub
+                View GitHub
               </a>
             </div>
           </div>

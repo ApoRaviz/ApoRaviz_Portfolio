@@ -28,6 +28,7 @@
 - [x] ลบ prompt/spec เก่าเพื่อไม่ให้สับสนกับ frontend baseline ปัจจุบัน
 - [x] เพิ่ม `ApoRaviz_Mooping` เป็น project card ใน portfolio
 - [x] เพิ่ม `ApoRaviz_Workspace_Docs` เป็น project card ใน portfolio
+- [x] ปรับ Quest section ให้ยังคงตัวตนแบบเกม แต่สื่อชัดขึ้นว่าเป็นผลงานจริง พร้อมแก้ live/GitHub link
 - [x] เพิ่ม GitHub Actions สำหรับ CI และ GitHub Pages deploy
 - [x] เอา external Google Fonts ออกจาก build path เพื่อลด dependency กับ network
 - [x] ปรับ build script ให้ใช้ command ที่รันได้บน Windows และปิด progress output

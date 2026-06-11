@@ -47,7 +47,7 @@
 ## Step 3 - Content Polish
 
 - [ ] 3.1 เพิ่ม project screenshot หรือ visual preview
-- [ ] 3.2 ปรับ project descriptions ให้เล่า value มากกว่า tech stack
+- [x] 3.2 ปรับ project descriptions ให้เล่า value มากกว่า tech stack
 - [ ] 3.3 เพิ่ม case study link ของ `ApoRaviz_Mooping` เมื่อ project กลับมาทำต่อ
 - [ ] 3.4 ตรวจ SEO title/description/open graph
 - [ ] 3.5 ตรวจ accessibility ของ nav, buttons, links และ form
@@ -56,7 +56,7 @@
 
 - [x] 4.1 เพิ่ม `ApoRaviz_Mooping` เป็น project card
 - [x] 4.2 เพิ่ม `ApoRaviz_Workspace_Docs` เป็น project card
-- [ ] 4.3 เชื่อม live URL และ GitHub URL จริงของทุก project
+- [x] 4.3 เชื่อม live URL และ GitHub URL จริงของทุก project ที่แสดงบนหน้าเว็บ
 - [ ] 4.4 วาง publish flow สำหรับโปรเจกต์ลูก
 - [ ] 4.5 เพิ่มโปรเจกต์ใหม่ผ่าน `PortfolioDataService` เท่านั้น
 
