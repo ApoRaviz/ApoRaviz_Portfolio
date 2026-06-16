@@ -83,9 +83,9 @@ export class PortfolioDataService {
     {
       id: 1,
       category: 'Main Quest',
-      title: 'MooPing Loyalty',
+      title: 'MooPing Reward',
       description:
-        'Angular loyalty web app for a pork skewer shop concept, with POS confirmation, saved rewards, display screen, and LINE OA mock flow.',
+        'Angular reward web app for a real Moo Ping shop concept, with POS confirmation, saved rewards, display screen, and LINE OA mock flow.',
       highlight:
         'Shows practical state management, multi-screen flow, customer reward logic, and a business idea that can grow into a real shop tool.',
       tech: ['Angular 22', 'Signals', 'Tailwind CSS', 'GitHub Pages'],

@@ -11,6 +11,38 @@ ApoRaviz_Workspace_Docs/git/
 
 ไฟล์นี้เก็บรายละเอียดเฉพาะ Portfolio เช่น script name, port ที่ใช้ตรวจ, base-href และ manual UI check ของโปรเจกต์นี้
 
+## AI Skill Modes
+
+ใช้กับ `ApoRaviz_Portfolio` เท่านั้น โปรเจกต์อื่นให้ทำงานปกติตามคำสั่งของงานนั้น
+
+```text
+portfolio เรียน: <งานที่อยากทำ>
+portfolio ตรวจ: <สิ่งที่วาง/แก้ไปแล้ว>
+portfolio จัดการ: <งานที่ให้ AI ทำให้จบ>
+```
+
+ความหมายสั้น ๆ:
+
+```text
+portfolio เรียน    = AI อ่านไฟล์ สอน บอกตำแหน่ง และให้โค้ดทีละก้อนเพื่อให้เรา copy เอง
+portfolio ตรวจ    = AI ตรวจสิ่งที่เราทำจากโหมดเรียน แล้วบอกจุดที่ควรแก้
+portfolio จัดการ  = AI แก้ไฟล์เองทั้งหมด พร้อมรัน test/build และตรวจ UI เมื่อจำเป็น
+```
+
+ถ้าอยู่ใน `ApoRaviz_Portfolio` แล้วไม่ได้ระบุโหมด ให้เริ่มจาก `portfolio เรียน` ก่อน
+
+ถ้ามีความรู้ใหม่ที่ใช้ซ้ำได้ ให้ย้ายหรือสรุปกลับไปที่ `ApoRaviz_Workspace_Docs` ตามบ้านของมัน:
+
+```text
+ศัพท์/API/แนวคิด Angular ใหม่       -> ApoRaviz_Workspace_Docs/angular/concepts/
+flow Angular ที่ควรจำ                -> ApoRaviz_Workspace_Docs/angular/teach/ หรือ angular/lessons/
+ตัวอย่างทดลองเล็ก ๆ                 -> ApoRaviz_Workspace_Docs/angular/labs/
+Tailwind pattern ที่ใช้กับ Angular   -> ApoRaviz_Workspace_Docs/angular/tailwind/
+command Angular ที่ใช้ซ้ำได้         -> ApoRaviz_Workspace_Docs/angular/commands.md
+Git command/workflow ที่ใช้ซ้ำได้    -> ApoRaviz_Workspace_Docs/git/commands.md
+case study จาก Portfolio             -> ApoRaviz_Workspace_Docs/projects/
+```
+
 Command ในไฟล์นี้ควรอ่านแบบ project note:
 
 ```text
