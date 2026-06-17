@@ -142,6 +142,36 @@
 - [ ] 12.4 แยก commit ตาม repo เมื่อมีการแก้ทั้ง Portfolio และ Workspace Docs
 - [ ] 12.5 อัปเดต `docs/progress.md` เมื่อ phase สำคัญเสร็จจริง
 
+## Step 13 - Bilingual TH/EN System
+
+- [ ] 13.1 ยึด English เป็นภาษาหลักของ public portfolio เพื่อสมัครงานและแชร์ให้คนต่างชาติอ่านได้
+- [ ] 13.2 เพิ่ม Thai เป็นตัวเลือก `TH / EN` เพื่อให้คนไทยอ่านเร็วขึ้น โดยไม่ทำให้หน้าแรกหนักหรือรก
+- [ ] 13.3 เริ่มจาก bilingual data object ก่อน เช่น `{ en: 'Frontend Developer', th: 'นักพัฒนาเว็บ Frontend' }`
+- [ ] 13.4 ใช้ data/service กลางสำหรับข้อความที่ต้องแปล ไม่กระจายข้อความซ้ำในหลาย component
+- [ ] 13.5 ทำ language state เป็น Angular signal หรือ service กลาง และจำค่าภาษาด้วย `localStorage`
+- [ ] 13.6 guard `localStorage`, `window`, และ browser-only API ด้วย SSR-safe pattern
+- [ ] 13.7 แปลเฉพาะ key sections ก่อน: Hero, About, Enterprise Experience, Projects, Resume CTA, Contact
+- [ ] 13.8 ยังไม่ติดตั้ง i18n library จนกว่าจะมีเหตุผลชัด เช่น content เยอะ, routing หลายภาษา, หรือ translation workflow ซับซ้อน
+- [ ] 13.9 ก่อนติดตั้ง package ใด ๆ ให้ AI สอนก่อนว่า package นั้นแก้ปัญหาอะไร ใช้คำสั่งอะไร เพิ่มไฟล์อะไร และมี trade-off อะไร
+- [ ] 13.10 ถ้าเกิดบทเรียน reusable เรื่อง Angular i18n/localization ให้ย้ายไปเก็บใน `ApoRaviz_Workspace_Docs`
+
+## Step 14 - Personal Data And Public Security
+
+- [ ] 14.1 ทำ data classification ก่อน publish: `Public`, `Redacted`, `Private`
+- [ ] 14.2 `Public` คือข้อมูลที่พร้อมให้คนทั่วไปเห็น เช่น ชื่อที่ใช้สมัครงาน, role, public GitHub, portfolio URL, project summary
+- [ ] 14.3 `Redacted` คือข้อมูลที่เล่าได้แต่ต้องปิดรายละเอียด เช่น WMS/TMS/ERP, company project, workflow, result, screenshot mockup
+- [ ] 14.4 `Private` คือข้อมูลห้ามขึ้นเว็บ/GitHub เช่น เลขบัตร, ที่อยู่บ้าน, เงินเดือน, contract, source code บริษัท, customer data, order data, internal endpoint, credential
+- [ ] 14.5 ตรวจ `public/resume.pdf` และ `public/Resume.png` ว่าไม่มีข้อมูลส่วนตัวเกินจำเป็น และไม่มี metadata ที่ไม่ควรเผยแพร่
+- [ ] 14.6 ใช้อีเมล/ช่องทางติดต่อที่ตั้งใจให้ public เท่านั้น ถ้าเบอร์โทรอยู่ใน resume ให้ตัดสินใจอีกครั้งว่าพร้อมให้ search engine index หรือไม่
+- [ ] 14.7 ไม่ใส่ screenshot จากระบบบริษัทจริง ถ้าต้องมีภาพให้ทำ mock UI หรือใช้ข้อมูลจำลอง
+- [ ] 14.8 ไม่ใส่ schema, table name ภายใน, API path ภายใน, hostname, IP, VPN, warehouse code, customer name, barcode, tracking number, หรือ order number จริง
+- [ ] 14.9 ตรวจ GitHub ก่อน deploy ว่าไม่มี `.env`, token, secret, private key, service account, หรือไฟล์ internal
+- [ ] 14.10 ถ้ามี external links ที่เปิดแท็บใหม่ ให้ใช้ `rel="noopener noreferrer"`
+- [ ] 14.11 ถ้ามี contact form ในอนาคต ต้องมี validation, spam protection, rate limit, error handling, และ data retention plan ก่อนใช้งานจริง
+- [ ] 14.12 ถ้ามี analytics/tracking ในอนาคต ต้องระบุว่ามีการเก็บข้อมูลอะไร และจำเป็นจริงไหม
+- [ ] 14.13 ถ้าทำ private/admin/SSO ห้ามเก็บ secret ใน frontend และต้องแยก config ที่ public ได้ออกจาก secret ที่ต้องอยู่ backend เท่านั้น
+- [ ] 14.14 ถ้าเกิดบทเรียน reusable เรื่อง frontend security/privacy ให้ย้ายไปเก็บใน `ApoRaviz_Workspace_Docs`
+
 ## Definition Of Done
 
 ```text

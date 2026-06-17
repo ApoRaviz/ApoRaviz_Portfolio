@@ -301,12 +301,69 @@ Result:
 - [ ] 16.4 เก็บบทเรียน SSO/Auth ที่ใช้ซ้ำได้ไว้ใน `ApoRaviz_Workspace_Docs`
 - [ ] 16.5 ยืนยันว่า SSO ไม่ทำให้หน้า public portfolio ช้าหรือเข้าถึงยากขึ้น
 
+### 17. Bilingual TH/EN Learning Track
+
+Result:
+
+```text
+Portfolio มีแผนรองรับปุ่ม TH / EN โดยเข้าใจทั้งเหตุผล วิธีทำ และสิ่งที่ต้องติดตั้งก่อนลงมือจริง
+```
+
+- [ ] 17.1 AI สอนว่า Portfolio ควรเป็น `English-first` แต่มี `Thai support` เพื่ออะไร
+- [ ] 17.2 AI สอนความต่างระหว่างแปลแบบ data object ง่าย ๆ กับใช้ library i18n เต็มรูปแบบ
+- [ ] 17.3 AI อ่าน content/data ปัจจุบัน แล้วชี้ว่าข้อความไหนควรย้ายเข้า bilingual data model
+- [ ] 17.4 ออกแบบ type สำหรับข้อความสองภาษา เช่น `LocalizedText = { en: string; th: string }`
+- [ ] 17.5 ออกแบบ `LanguageService` หรือ language signal กลางสำหรับเลือกภาษา
+- [ ] 17.6 AI สอน SSR-safe ก่อนใช้ `localStorage`, `window`, หรือ browser-only API
+- [ ] 17.7 เพิ่มปุ่ม `TH / EN` แบบ accessible โดยใช้ `<button>` เพราะเป็น action เปลี่ยน state
+- [ ] 17.8 แปล section สำคัญทีละส่วน: Hero, About, Enterprise Experience, Projects, Resume, Contact
+- [ ] 17.9 ถ้าจะติดตั้ง package ใด ๆ ให้ AI อธิบายก่อน:
+  - package ชื่ออะไร
+  - แก้ปัญหาอะไร
+  - คำสั่งติดตั้งคืออะไร
+  - จะเพิ่มไฟล์หรือ config อะไร
+  - ข้อดี/ข้อเสียเมื่อเทียบกับไม่ติดตั้ง
+- [ ] 17.10 ถ้าเรียน Angular i18n/localization เป็นความรู้ใช้ซ้ำได้ ให้บันทึกเพิ่มใน `ApoRaviz_Workspace_Docs`
+
+### 18. Personal Data And Security Learning Track
+
+Result:
+
+```text
+ก่อน publish Portfolio รู้ชัดว่าอะไรเปิดเผยได้ อะไรต้องปิดรายละเอียด และอะไรห้ามขึ้นเว็บหรือ GitHub
+```
+
+- [ ] 18.1 AI สอนหลัก `Public`, `Redacted`, `Private` สำหรับ Portfolio
+- [ ] 18.2 ตรวจ `resume.pdf`, `Resume.png`, OG image, และรูปทั้งหมดใน `public/`
+- [ ] 18.3 ตรวจว่ามีข้อมูลส่วนตัวเกินจำเป็นไหม เช่น ที่อยู่บ้าน เลขบัตร เงินเดือน วันเกิดเต็ม หรือเบอร์ที่ไม่อยากให้ search engine เห็น
+- [ ] 18.4 ตรวจ PDF/image metadata ถ้ามีข้อมูลไม่ควรเผยแพร่ให้ export ใหม่
+- [ ] 18.5 AI สอนวิธีเล่า WMS/TMS/ERP แบบปลอดภัย: ไม่บอกชื่อบริษัท ลูกค้า endpoint schema order number barcode หรือข้อมูลจริงจากระบบ
+- [ ] 18.6 ถ้าต้องใช้ screenshot ให้ทำ mock data หรือ mock UI เท่านั้น
+- [ ] 18.7 ตรวจ GitHub ว่าไม่มี `.env`, secret, token, key, credential, private note, หรือไฟล์บริษัท
+- [ ] 18.8 ตรวจ external links และ target blank security เช่น `rel="noopener noreferrer"`
+- [ ] 18.9 ถ้าจะมี contact form ให้ AI สอนก่อนเรื่อง validation, spam protection, rate limit, และ data retention
+- [ ] 18.10 ถ้าจะมี analytics/tracking ให้ AI สอนก่อนว่าเก็บข้อมูลอะไร จำเป็นไหม และกระทบ privacy อย่างไร
+- [ ] 18.11 ถ้าจะมี admin/SSO ให้ AI สอนก่อนว่า secret ต้องอยู่ backend ไม่ใช่ frontend
+- [ ] 18.12 ถ้าเป็นบทเรียน frontend security/privacy ที่ใช้ซ้ำได้ ให้บันทึกเพิ่มใน `ApoRaviz_Workspace_Docs`
+
 ## Current Pointer - Portfolio 2026
 
 ถ้าต้องการเริ่มรอบวางระบบ Portfolio ต่อ ให้เริ่มที่:
 
 ```text
 11.1 AI อธิบายภาพรวม Portfolio ปี 2026 จากแผนที่วางไว้
+```
+
+ถ้าต้องการเริ่มเรื่องปุ่มภาษา `TH / EN` โดยตรง ให้เริ่มที่:
+
+```text
+17.1 AI สอนว่า Portfolio ควรเป็น English-first แต่มี Thai support เพื่ออะไร
+```
+
+ถ้าต้องการเริ่มเรื่องความปลอดภัยของข้อมูลก่อน publish ให้เริ่มที่:
+
+```text
+18.1 AI สอนหลัก Public, Redacted, Private สำหรับ Portfolio
 ```
 
 ถ้าต้องการกลับไปจบงาน resume/social preview เดิม ให้ใช้ `Current Pointer` ด้านบนที่เริ่มจาก `7.1`

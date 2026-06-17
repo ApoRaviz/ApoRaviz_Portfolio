@@ -110,7 +110,28 @@ Portfolio ไม่ต้องใหญ่ที่สุด
 - [ ] วางโครง case study summary สำหรับ `Confidential Enterprise Work`
 - [ ] ให้ case study ใน Portfolio เป็นสรุปผลงาน ไม่ใช่บทเรียนกลาง
 
-### Priority 4 - Quality Foundation
+### Priority 4 - Bilingual TH/EN Experience
+
+- [ ] วางแนวทาง `English-first` สำหรับ hiring/global audience และ `Thai support` สำหรับคนไทยที่อยากอ่านเร็ว
+- [ ] เตรียม data model ให้รองรับข้อความแบบ `{ en, th }` ก่อนเพิ่ม UI toggle
+- [ ] เพิ่มปุ่มเลือกภาษา `TH / EN` แบบเล็ก กระชับ และไม่รบกวน flow สมัครงาน
+- [ ] เก็บค่าภาษาที่เลือกไว้ใน `localStorage` โดยต้อง guard browser API ให้ปลอดภัยกับ SSR
+- [ ] เริ่มแปลเฉพาะ section สำคัญก่อน: Hero, About, Experience, Projects, Resume, Contact
+- [ ] ถ้าต้องติดตั้ง library เช่น Angular i18n หรือ transloco ให้ AI สอนก่อนว่า package ทำอะไร ทำไมต้องใช้ และมีทางเลือกไม่ติดตั้งไหม
+
+### Priority 5 - Personal Data And Security
+
+- [ ] แยกข้อมูลทุกอย่างเป็น 3 กลุ่ม: `Public`, `Redacted`, `Private`
+- [ ] ตรวจ `resume.pdf`, `Resume.png`, และรูปอื่นใน `public/` ว่าไม่มีที่อยู่บ้าน, เลขบัตร, เงินเดือน, internal URL, real customer data, barcode, order number, หรือข้อมูลบริษัท
+- [ ] ตรวจ metadata ของ PDF/image ก่อน publish ถ้ามีข้อมูลส่วนตัวหรือ path เครื่องให้ export ใหม่
+- [ ] เล่า WMS/TMS/ERP แบบไม่ระบุชื่อบริษัท ลูกค้า warehouse location database schema หรือ screenshot จริงจากระบบบริษัท
+- [ ] ถ้าต้องโชว์ผลลัพธ์ ให้ใช้ข้อมูลจำลอง mock data หรือคำอธิบายเชิง outcome เช่น `reduced manual work`, `improved picking flow`
+- [ ] ตรวจ GitHub repo ว่าไม่มี `.env`, secret, token, API key, service account, private notes, หรือไฟล์จากบริษัท
+- [ ] ตรวจ external links ให้ใช้ `rel="noopener noreferrer"` เมื่อเปิดแท็บใหม่
+- [ ] ยังไม่เพิ่ม contact form/backend จนกว่าจะมีแผน validation, spam protection, rate limit, และ data retention
+- [ ] ถ้าจะเพิ่ม analytics/tracking ให้ AI สอนก่อนว่าเก็บข้อมูลอะไร และกระทบ privacy อย่างไร
+
+### Priority 6 - Quality Foundation
 
 - [ ] Accessibility pass: semantic HTML, focus state, alt text, button/link purpose
 - [ ] Performance pass: image size, lazy loading, Core Web Vitals mindset
@@ -118,7 +139,7 @@ Portfolio ไม่ต้องใหญ่ที่สุด
 - [ ] 404/fallback route สำหรับ GitHub Pages ถ้าจำเป็น
 - [ ] เพิ่ม test เฉพาะส่วนที่มี logic สำคัญ เช่น data service, link mapping, SSR guard
 
-### Priority 5 - Optional Private/Admin Area
+### Priority 7 - Optional Private/Admin Area
 
 - [ ] ยังไม่เปิด SSO ให้ public portfolio
 - [ ] ใช้ SSO เฉพาะเมื่อมี admin/private route จริง เช่น `/admin`, draft projects, private notes
