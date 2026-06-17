@@ -213,6 +213,104 @@ repo สะอาด และความรู้ที่เรียนว�
 7.1 AI อ่าน public/aporaviz-logo.png, src/index.html, และ current LINE preview
 ```
 
+## Portfolio 2026 Planning Addendum
+
+ใช้ส่วนนี้เมื่ออยากเรียนและค่อย ๆ ทำ Portfolio ต่อจากแผนระยะยาวใน `docs/next-actions.md` และ `docs/implementation-plan.md`
+
+### 11. Research And Direction Lock
+
+Result:
+
+```text
+เข้าใจว่า Portfolio ปี 2026 ควรเป็นบ้านหลักของเรา มีหลักฐานงานจริง อ่านง่าย แชร์ง่าย และไม่เปิดเผยข้อมูลบริษัท
+```
+
+- [ ] 11.1 AI อธิบายภาพรวม Portfolio ปี 2026 จากแผนที่วางไว้
+- [ ] 11.2 AI เทียบ `docs/progress.md` กับแผนใหม่ เพื่อแยกสิ่งที่ทำเสร็จแล้วกับสิ่งที่ควรทำต่อ
+- [ ] 11.3 AI สอนหน้าที่ของไฟล์ `next-actions.md`, `implementation-plan.md`, `progress.md`, และ `learning-resume.md`
+- [ ] 11.4 เลือก priority แรกของรอบถัดไป: OG image, enterprise proof, case study, quality, หรือ private/admin area
+
+### 12. OG Image Learning Track
+
+Result:
+
+```text
+Portfolio มีภาพ preview สำหรับ LINE/social ที่ดูตั้งใจและสื่อว่าเป็น ApoRaviz Portfolio จริง
+```
+
+- [ ] 12.1 AI อ่าน `public/aporaviz-logo.png`, `src/index.html`, และ meta ปัจจุบัน
+- [ ] 12.2 AI สอนว่า Open Graph image คืออะไร และทำไมขนาดประมาณ `1200x630` ถึงเหมาะกับ social preview
+- [ ] 12.3 ออกแบบ `public/portfolio-og.png` โดยใช้สีเดิมของ Portfolio
+- [ ] 12.4 แก้ `og:image` และ `twitter:image` ให้ชี้ไปที่ `portfolio-og.png`
+- [ ] 12.5 Build และตรวจ preview หลัง deploy
+
+### 13. Enterprise Proof Learning Track
+
+Result:
+
+```text
+อธิบายประสบการณ์ WMS/TMS/ERP หลายปีได้ชัดเจน โดยไม่เปิดเผย code, company data, หรือข้อมูลภายในบริษัท
+```
+
+- [ ] 13.1 AI อ่านข้อมูล project/profile/resume ที่เกี่ยวข้องใน Portfolio
+- [ ] 13.2 AI สอนวิธีเขียนงาน confidential enterprise work แบบไม่เสี่ยง
+- [ ] 13.3 เพิ่ม section หรือ card สำหรับ `Enterprise Systems Experience`
+- [ ] 13.4 เขียน project summary ด้วยรูปแบบ `Problem -> Role -> Tech -> Result`
+- [ ] 13.5 ตรวจ wording ให้ดู professional และไม่ overclaim
+
+### 14. Case Study Learning Track
+
+Result:
+
+```text
+แต่ละ project ไม่ใช่แค่ list technology แต่เล่าวิธีคิดและผลลัพธ์ที่คนอ่านเข้าใจได้เร็ว
+```
+
+- [ ] 14.1 วาง format case study: `Problem -> Constraint -> My Role -> Approach -> Result -> Link`
+- [ ] 14.2 แตก case study สำหรับ `MooPing Reward`
+- [ ] 14.3 แตก case study สำหรับ `Split Order TXT Tool`
+- [ ] 14.4 แตก case study สำหรับ `ApoRaviz Workspace Docs`
+- [ ] 14.5 แตก case study สำหรับ `Confidential WMS/TMS/ERP`
+- [ ] 14.6 ถ้ามีบทเรียน Angular/Node/Nest/PostgreSQL ที่ใช้ซ้ำได้ ให้ย้ายไปเก็บใน `ApoRaviz_Workspace_Docs`
+
+### 15. Quality Learning Track
+
+Result:
+
+```text
+Portfolio พร้อมใช้งานจริงมากขึ้น ทั้ง accessibility, performance, security, routing, และ test พื้นฐาน
+```
+
+- [ ] 15.1 AI สอน checklist accessibility ที่ควรมีใน Portfolio
+- [ ] 15.2 AI สอน performance/Core Web Vitals แบบที่เกี่ยวกับ Angular app จริง
+- [ ] 15.3 AI ตรวจ security พื้นฐาน เช่น external links, unsafe DOM, และข้อมูลที่ไม่ควร public
+- [ ] 15.4 เพิ่มหรือทบทวน fallback route / 404 experience
+- [ ] 15.5 เพิ่ม test ที่คุ้มค่า เช่น data mapping, link mapping, และ SSR-safe guard
+
+### 16. Private/Admin/SSO Decision Track
+
+Result:
+
+```text
+รู้ชัดว่า public portfolio ไม่ควรบังคับ SSO และจะใช้ SSO เฉพาะเมื่อมี private/admin area ที่จำเป็นจริง
+```
+
+- [ ] 16.1 AI อธิบายความต่างระหว่าง public portfolio กับ private/admin area
+- [ ] 16.2 ตัดสินใจว่าต้องมี admin route จริงไหม
+- [ ] 16.3 ถ้าต้องมี ให้แตกงาน auth config, guard, callback, token handling, และ error state
+- [ ] 16.4 เก็บบทเรียน SSO/Auth ที่ใช้ซ้ำได้ไว้ใน `ApoRaviz_Workspace_Docs`
+- [ ] 16.5 ยืนยันว่า SSO ไม่ทำให้หน้า public portfolio ช้าหรือเข้าถึงยากขึ้น
+
+## Current Pointer - Portfolio 2026
+
+ถ้าต้องการเริ่มรอบวางระบบ Portfolio ต่อ ให้เริ่มที่:
+
+```text
+11.1 AI อธิบายภาพรวม Portfolio ปี 2026 จากแผนที่วางไว้
+```
+
+ถ้าต้องการกลับไปจบงาน resume/social preview เดิม ให้ใช้ `Current Pointer` ด้านบนที่เริ่มจาก `7.1`
+
 ## Quick Start For New Chat
 
 ถ้าเปลี่ยนแชท ให้บอก AI ว่า:

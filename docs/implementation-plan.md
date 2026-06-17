@@ -81,6 +81,67 @@
 - [ ] 5.3 เพิ่ม Portfolio case study ใน `ApoRaviz_Workspace_Docs/projects/portfolio/`
 - [ ] 5.4 เพิ่ม Git concepts ที่เจอระหว่าง commit/push ใน `ApoRaviz_Workspace_Docs`
 
+## Step 6 - Portfolio 2026 Content System
+
+- [ ] 6.1 นิยาม content model กลางของ Portfolio: profile, resume, links, projects, enterprise work, case studies
+- [ ] 6.2 ให้ข้อมูลที่แสดงบนหน้าเว็บแก้ผ่าน `PortfolioDataService` หรือ data structure กลางก่อน ไม่กระจาย hardcode ใน component HTML
+- [ ] 6.3 แยกข้อมูลที่เป็น `public showcase` ออกจากข้อมูลที่เป็น `private/admin` หรือ draft
+- [ ] 6.4 เพิ่ม field สำหรับ project card แบบ `problem`, `role`, `tech`, `result`, `links`, `status`
+- [ ] 6.5 เพิ่มสถานะ project เช่น `Live`, `In Progress`, `Internal`, `Confidential`, `GitHub-only`
+- [ ] 6.6 กำหนดว่า resume PDF/PNG เป็น source of truth ของข้อมูลอาชีพ ส่วนหน้าเว็บเล่าแบบสั้นและอ่านเร็วกว่า
+
+## Step 7 - Proof Of Work And Enterprise Evidence
+
+- [ ] 7.1 เพิ่ม section หรือ evidence card สำหรับ `Enterprise Systems Experience`
+- [ ] 7.2 เล่า WMS/TMS/ERP แบบไม่เปิดเผย code บริษัทหรือข้อมูลภายใน
+- [ ] 7.3 แยก `Confidential WMS/TMS/ERP` ออกจาก public demo project เพื่อไม่ให้คนเข้าใจว่าต้องมี GitHub/demo
+- [ ] 7.4 ปรับ project card ทุกอันให้เล่า value มากกว่า tech stack
+- [ ] 7.5 เพิ่ม screenshot/preview เฉพาะโปรเจกต์ที่โชว์ได้จริง
+- [ ] 7.6 เพิ่ม `Split Order TXT Tool` เมื่อพร้อมเล่าแบบ GitHub-only หรือ internal tool โดยไม่ใช้ label ที่ทำให้คนคาดหวัง live demo
+
+## Step 8 - Case Study System
+
+- [ ] 8.1 วาง format case study สั้นสำหรับ Portfolio: `Problem -> Constraint -> My Role -> Approach -> Result -> Link`
+- [ ] 8.2 ทำ case study summary สำหรับ `MooPing Reward`
+- [ ] 8.3 ทำ case study summary สำหรับ `Split Order TXT Tool`
+- [ ] 8.4 ทำ case study summary สำหรับ `ApoRaviz Workspace Docs`
+- [ ] 8.5 ทำ case study summary สำหรับ `Confidential Enterprise Work`
+- [ ] 8.6 ถ้า case study เริ่มกลายเป็นบทเรียน Angular/Node/Backend ให้ย้ายหรือสรุปกลับไป `ApoRaviz_Workspace_Docs`
+
+## Step 9 - Share, SEO, And Hiring Readiness
+
+- [ ] 9.1 ทำ `public/portfolio-og.png` ขนาด 1200x630 ด้วยสีหลักเดิม
+- [ ] 9.2 อัปเดต `og:image` และ `twitter:image`
+- [ ] 9.3 ตรวจ social preview ใน LINE หลัง deploy
+- [ ] 9.4 ทำ ATS/plain resume version แยกจาก resume Canva/PDF สวย
+- [ ] 9.5 ตรวจ `Download Resume`, `Preview Resume`, GitHub, email, phone และ portfolio URL
+- [ ] 9.6 ตรวจ copy หน้าแรกให้ตอบได้เร็วว่า ApoRaviz คือใคร ทำอะไร และมีหลักฐานอะไร
+
+## Step 10 - Quality, Accessibility, Performance, Security
+
+- [ ] 10.1 Accessibility pass: semantic HTML, heading order, focus state, alt text, button/link purpose
+- [ ] 10.2 Performance pass: image size, lazy loading, no unnecessary library, Core Web Vitals mindset
+- [ ] 10.3 Security pass: no secret in frontend, avoid unsafe DOM/HTML binding, keep external links intentional
+- [ ] 10.4 SSR safety pass: browser APIs guarded with `isPlatformBrowser()`
+- [ ] 10.5 เพิ่ม 404/fallback route หรือ GitHub Pages fallback ถ้าจำเป็น
+- [ ] 10.6 เพิ่ม tests สำหรับ data/link mapping, service logic, form behavior, SSR guard เมื่อเริ่มมี logic สำคัญ
+
+## Step 11 - Optional Private/Admin/SSO
+
+- [ ] 11.1 ยังไม่บังคับ SSO กับหน้า public portfolio
+- [ ] 11.2 ใช้ SSO เฉพาะถ้ามี admin/private route จริง เช่น `/admin`, draft projects, private notes
+- [ ] 11.3 ถ้าทำ SSO ให้แยก auth config, route guard, callback flow, token/session handling ให้ชัด
+- [ ] 11.4 ถ้าบทเรียน SSO ใช้ซ้ำได้ ให้จดกลับไป `ApoRaviz_Workspace_Docs`
+- [ ] 11.5 ตรวจว่า private/admin feature ไม่ทำให้เว็บ public ช้า ซับซ้อน หรือสมัครงานยากขึ้น
+
+## Step 12 - Automation And Long-term Maintenance
+
+- [ ] 12.1 เพิ่ม pre-release checklist ใน docs: build, test, link check, mobile check, resume check, OG check
+- [ ] 12.2 พิจารณา automated screenshot check สำหรับหน้า homepage/resume area เมื่อ UI นิ่ง
+- [ ] 12.3 พิจารณา link check สำหรับ resume, GitHub, live demo, Workspace Docs
+- [ ] 12.4 แยก commit ตาม repo เมื่อมีการแก้ทั้ง Portfolio และ Workspace Docs
+- [ ] 12.5 อัปเดต `docs/progress.md` เมื่อ phase สำคัญเสร็จจริง
+
 ## Definition Of Done
 
 ```text
