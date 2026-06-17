@@ -72,10 +72,26 @@ export class PortfolioDataService {
   // Skills ใช้ badge เท่านั้น ไม่มี progress bar หรือค่าพลังตามที่ผู้ใช้ต้องการ
   // การเก็บเป็นกลุ่มช่วยให้เพิ่ม skill category ใหม่ได้ง่าย เช่น Mobile, Cloud, DevOps
   readonly skillGroups = signal<SkillGroup[]>([
-    { category: 'Frontend', skills: ['HTML', 'CSS', 'JavaScript', 'Angular', 'Ionic', 'Tailwind CSS'] },
-    { category: 'Backend', skills: ['C#', '.NET Core', 'MVC', 'Node.js', 'REST API', 'ASP.NET'] },
-    { category: 'Database / Reports', skills: ['SQL Server', 'MongoDB', 'MySQL', 'SSRS', 'Crystal Report'] },
-    { category: 'Tools / Workflow', skills: ['GitHub', 'GitHub Actions', 'Jira', 'Figma', 'IIS Server', 'PrimeNG'] },
+    {
+      category: 'Frontend',
+      skills: ['Angular', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Ionic', 'PrimeNG', 'Signals'],
+    },
+    {
+      category: 'Backend',
+      skills: ['C#', 'ASP.NET Core', '.NET Core', 'Node.js', 'REST API', 'API Integration', 'SFTP/API'],
+    },
+    {
+      category: 'Database / Reports',
+      skills: ['SQL Server', 'MySQL', 'MongoDB', 'Stored Procedures', 'SSRS', 'Crystal Reports'],
+    },
+    {
+      category: 'DevOps / Tools',
+      skills: ['Git', 'GitHub', 'GitHub Actions', 'IIS Server', 'Jira', 'VS Code', 'Postman', 'Figma'],
+    },
+    {
+      category: 'Practices',
+      skills: ['Business Analysis', 'System Design', 'Auth', 'Keycloak', 'CI/CD', 'Documentation', 'AI Workflow'],
+    },
   ]);
 
   // projects เป็นข้อมูลของ project cards ทั้งหมด แยกจาก HTML เพื่อให้แก้ content โดยไม่แก้ layout
@@ -204,28 +220,28 @@ export class PortfolioDataService {
       role: 'Senior Programmer',
       company: 'Unbox.IT',
       description:
-        'Working with WMS interfaces, SFTP/API data exchange, Keycloak authentication, WMS platform improvements, and CI/CD pipelines with GitHub Actions and self-hosted runners.',
+        'Develop and improve WMS interface features, integration workflows, enterprise web app modules, SFTP/API data exchange, Keycloak authentication, and CI/CD pipelines with GitHub Actions.',
     },
     {
       period: 'Jun 2023–Nov 2023',
       role: 'Systems Analyst / Senior Programmer',
       company: 'Techsoft Holding',
       description:
-        'Collected user requirements, prepared business and SIT documents, assessed and designed systems, supported UAT, and helped junior developers troubleshoot issues.',
+        'Collected requirements, analyzed business processes, prepared business documents, SIT documents, and UAT support materials, then coordinated system design with users and developers.',
     },
     {
       period: '2019–2023',
       role: 'Senior Programmer',
       company: 'Yamato Unyu (Thailand) Co., Ltd.',
       description:
-        'Built and maintained TMS, WMS, back office, management dashboard, reminder, and customer survey web applications for transport and warehouse workflows.',
+        'Built and maintained TMS, WMS, back-office, dashboard, and customer survey web applications while improving transport and warehouse workflow visibility.',
     },
     {
       period: '2015–2019',
       role: 'Programmer',
       company: 'Panjawattana Plastic Public Company Limited',
       description:
-        'Supported ERP on Syteline, created warehouse handheld scanning tools with ASP.NET and C#, built Crystal/SSRS reports, and worked with SQL queries and stored procedures.',
+        'Started professional WMS and warehouse system experience through ERP and scanning workflows, creating handheld scanning tools with ASP.NET/C# and Crystal Reports/SSRS reports.',
     },
   ]);
 

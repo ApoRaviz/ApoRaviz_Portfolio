@@ -30,6 +30,21 @@ Gamer-minded developer profile
 - ชอบตัวละครผู้หญิงเท่ ๆ ใส่เกราะ ถือขวาน
 - กำลังเติบโตและพัฒนาฝีมือ ไม่ต้องขายตัวเองว่าเป็นผู้เชี่ยวชาญ
 
+## Content Balance
+
+เว็บนี้มี 2 โหมดที่ต้องอยู่ด้วยกันให้พอดี:
+
+- `Build Journey` ใช้ข้อมูลตามหน้างานจริง เช่น company, job title, period, WMS/TMS/ERP, reports, integration และ workflow ที่เคยทำ
+- Hero, About, Loadout และ copy ทั่วไปใช้โทน friendly, playful, learner, gamer-minded และเป็นกันเอง
+
+หลักคิด:
+
+```text
+ประวัติงานต้องจริงและชัด ส่วนบุคลิกหน้าเว็บต้องอบอุ่น สนุก และไม่โอ้อวด
+```
+
+ดังนั้นตำแหน่งจริงอย่าง `Senior Programmer` ใส่ใน Journey ได้ แต่ไม่จำเป็นต้องใช้คำว่า `Senior`, `expert`, หรือ `specialist` เป็นตัวตนหลักบน hero/profile
+
 ## Words To Avoid
 
 ไม่ควรใช้คำเหล่านี้ใน copy หลักของเว็บ:
@@ -57,6 +72,7 @@ Gamer-minded developer profile
 - I enjoy games, code, and helping people around me.
 - Learning, building, and improving one project at a time.
 - Friendly builder of web apps and useful systems.
+- A practical developer with real enterprise experience, still learning and building one step at a time.
 
 ไม่ควรใช้ประโยคแบบ:
 

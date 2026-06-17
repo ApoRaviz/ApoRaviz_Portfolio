@@ -57,7 +57,7 @@ caution = ต้องระวังอะไร
 ตอนเรียนที่มี checklist แยก:
 
 ```text
-portfolio เรียน: resume seo opengraph -> docs/learning-resume-seo-opengraph.md
+portfolio เรียน: resume -> docs/learning-resume.md
 ```
 
 รายละเอียด step, checkbox, และสถานะ `[ ]` / `[x]` ให้เก็บในไฟล์ตอนเรียน ไม่เก็บยาวใน `commands.md`
