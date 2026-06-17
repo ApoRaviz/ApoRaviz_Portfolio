@@ -52,6 +52,16 @@ verify  = รู้ได้อย่างไรว่าผ่าน
 caution = ต้องระวังอะไร
 ```
 
+## Learning Episodes
+
+ตอนเรียนที่มี checklist แยก:
+
+```text
+portfolio เรียน: resume seo opengraph -> docs/learning-resume-seo-opengraph.md
+```
+
+รายละเอียด step, checkbox, และสถานะ `[ ]` / `[x]` ให้เก็บในไฟล์ตอนเรียน ไม่เก็บยาวใน `commands.md`
+
 ## Setup
 
 ```bash

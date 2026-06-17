@@ -17,11 +17,11 @@ export class App {
 
   constructor() {
     // Title/Meta ทำงานได้ทั้ง SSR และ browser จึงตั้งค่า SEO ที่ root component ได้เลย
-    this.title.setTitle('ApoRaviz | Gamer-Minded Developer');
+    this.title.setTitle('ApoRaviz | Tanonchai Promsiri | Senior Full Stack Developer');
     this.meta.updateTag({
       name: 'description',
       content:
-        'A personal portfolio of Tanonchai Promsiri, a gamer-minded developer who builds web apps, bots, and useful automation tools.',
+        'Portfolio of ApoRaviz, the developer alias of Tanonchai Promsiri, a Senior Full Stack Developer focused on Angular, enterprise web apps, WMS/TMS systems, dashboards, reports, and practical AI-assisted workflows.',
     });
   }
 }

@@ -9,7 +9,8 @@
         <span class="text-primary">About</span> ApoRaviz
       </h2>
       <p class="mt-5 max-w-2xl leading-8 text-neutral-400">
-        A practical developer profile for Angular work, future AI learning, and teams that value clear communication.
+        A practical developer profile for Angular work, future AI learning, and teams that value
+        clear communication.
       </p>
       <!-- ใช้ div เป็นเส้นตกแต่งใต้หัวข้อ ไม่ใช่เนื้อหาที่ต้องมี semantic -->
       <div class="mt-4 h-1 w-20 rounded-full bg-primary shadow-glow"></div>
@@ -22,7 +23,9 @@
         <!-- ใช้ div เป็น profile summary card เพื่อรวมข้อมูลจริงจาก service ให้เห็นชัดในหน้า Profile -->
         <div class="rounded-xl border border-primary/20 bg-white/[0.03] p-5">
           <p class="font-mono text-xs uppercase tracking-[0.2em] text-primary">Career Direction</p>
-          <h3 class="mt-2 font-display text-2xl font-semibold text-white">{{ data.profile().name }}</h3>
+          <h3 class="mt-2 font-display text-2xl font-semibold text-white">
+            {{ data.profile().name }}
+          </h3>
           <p class="mt-2 text-base leading-7 text-neutral-400">{{ data.profile().role }}</p>
 
           <!-- ใช้ div เป็น contact chip wrapper เพื่อแสดงเฉพาะช่องทางจริงที่ไม่ใช่ demo -->
@@ -40,13 +43,16 @@
         </div>
 
         <p>
-          I'm Tanonchai Promsiri, a programmer who wants to focus more deeply on Angular and practical frontend work for real business screens.
+          I'm Tanonchai Promsiri, a programmer who wants to focus more deeply on Angular and
+          practical frontend work for real business screens.
         </p>
         <p>
-          I enjoy building web apps, dashboards, and useful internal tools, and I want to keep learning how AI can make future workflows smarter.
+          I enjoy building web apps, dashboards, and useful internal tools, and I want to keep
+          learning how AI can make future workflows smarter.
         </p>
         <p>
-          I am ready to work with modern teams, including younger developers, share what I know, learn what I do not, and keep improving project by project.
+          I am ready to work with modern teams, including younger developers, share what I know,
+          learn what I do not, and keep improving project by project.
         </p>
 
         <!-- ใช้ div เป็น compact requirement panel เพื่อสรุปเป้าหมายงานแบบอ่านเร็วสำหรับ recruiter -->
@@ -61,7 +67,7 @@
 
         <!-- ใช้ div เป็น wrapper ของ resume actions เพื่อให้ปุ่มห่อบรรทัดบนมือถือโดยไม่ชนกัน -->
         <div class="flex flex-wrap gap-3">
-          <!-- ใช้ a เพราะ Download Resume เป็น resource/navigation action ที่ควรเปิดหรือดาวน์โหลด URL ได้ -->
+          <!-- ใช้ a เพราะ Download Resume เป็น resource/navigation action ที่ให้คนรับไฟล์ PDF ไปใช้ต่อได้ -->
           <a
             [href]="data.profile().resumeUrl"
             download="Tanonchai-Promsiri-Resume.pdf"
@@ -69,14 +75,14 @@
           >
             Download Resume
           </a>
-          <!-- ใช้ a เพราะ View Resume เปิดหน้า resume HTML สำหรับอ่าน/พิมพ์/Save as PDF ได้จริง -->
+          <!-- ใช้ a เพราะ Preview Resume เปิดภาพตัวอย่าง resume ที่มีอยู่จริงใน public โดยไม่ต้องสร้างหน้า HTML เพิ่ม -->
           <a
             [href]="data.profile().resumePageUrl"
             target="_blank"
             rel="noreferrer"
             class="inline-flex rounded-lg border border-white/10 px-5 py-3 font-semibold text-neutral-200 transition hover:border-primary/50 hover:bg-white/[0.04]"
           >
-            View Resume
+            Preview Resume
           </a>
         </div>
       </article>
@@ -89,7 +95,12 @@
             class="reveal rounded-xl border border-dark-border bg-dark-card p-6 transition duration-300 hover:border-primary/50 hover:shadow-glow"
             [style.--i]="i"
           >
-            <p class="inline-flex rounded-lg border border-primary/30 bg-primary/10 px-3 py-1 font-mono text-sm text-primary" aria-hidden="true">{{ feature.icon }}</p>
+            <p
+              class="inline-flex rounded-lg border border-primary/30 bg-primary/10 px-3 py-1 font-mono text-sm text-primary"
+              aria-hidden="true"
+            >
+              {{ feature.icon }}
+            </p>
             <h3 class="mt-4 font-display text-xl font-semibold text-white">{{ feature.title }}</h3>
             <p class="mt-3 leading-7 text-neutral-400">{{ feature.desc }}</p>
           </article>

@@ -39,7 +39,7 @@ export class PortfolioDataService {
     github: 'github.com/ApoRaviz',
     facebook: '',
     resumeUrl: 'resume.pdf',
-    resumePageUrl: 'resume.html',
+    resumePageUrl: 'resume.png',
   });
 
   // roles ใช้กับ typewriter effect ใน Hero แยกออกมาเพื่อเพิ่ม/ลด role ได้โดยไม่แตะ component logic
