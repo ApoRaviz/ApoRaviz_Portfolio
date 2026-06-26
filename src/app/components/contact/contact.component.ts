@@ -2,10 +2,11 @@ import { Component, AfterViewInit, OnDestroy, inject, signal } from '@angular/co
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PortfolioDataService } from '../../services/portfolio-data.service';
 import { ThemeService } from '../../services/theme.service';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-contact',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, IconComponent],
   templateUrl: './contact.component.html',
 })
 export class ContactComponent implements AfterViewInit, OnDestroy {

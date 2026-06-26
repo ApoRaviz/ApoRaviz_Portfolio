@@ -14,7 +14,9 @@
       @for (service of data.services(); track service.title) {
         <!-- ใช้ article เพราะแต่ละ service เป็นรายการบริการที่มีหัวข้อและคำอธิบายครบในตัวเอง -->
         <article class="reveal rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition hover:border-primary/60 hover:shadow-glow">
-          <p class="inline-flex rounded-lg border border-primary/30 bg-primary/10 px-3 py-1 font-mono text-sm text-primary" aria-hidden="true">{{ service.icon }}</p>
+          <p class="inline-flex rounded-lg border border-primary/30 bg-primary/10 p-2 text-primary" aria-hidden="true">
+            <app-icon [name]="service.icon" sizeClass="h-6 w-6" />
+          </p>
           <h3 class="mt-5 font-display text-xl font-semibold text-white">{{ service.title }}</h3>
           <p class="mt-3 leading-7 text-neutral-400">{{ service.description }}</p>
         </article>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aporaviz.github.io/ApoRaviz_Portfolio/sitemap.xml

@@ -45,6 +45,41 @@ export class PortfolioDataService {
   // roles ใช้กับ typewriter effect ใน Hero แยกออกมาเพื่อเพิ่ม/ลด role ได้โดยไม่แตะ component logic
   readonly roles = signal(['Angular Developer', 'Frontend Builder', 'AI-Curious Learner']);
 
+  // hero รวม copy ทั้งหมดของ Hero section ไว้ที่เดียว เพื่อแก้ข้อความได้จาก service โดยไม่ต้องเข้าไปแก้ HTML
+  readonly hero = signal({
+    availability: 'Open to Angular opportunities',
+    kicker: 'Player Intro',
+    intro:
+      'I am looking for Angular work where I can build useful web screens, learn with modern teams, and grow toward AI-powered tools in the future.',
+    tags: ['Gamer', 'Angular', 'AI Curious', 'Team Learner'],
+    directionKicker: 'Current Direction',
+    directionTitle: 'Angular first, AI ready',
+    directionText:
+      'Seeking frontend work where Angular, TypeScript, clean UI, and a learning mindset can create useful tools for real teams.',
+    stack: 'Angular · TypeScript · Web Apps · AI Learning · Team Growth',
+  });
+
+  // about รวม copy ของ About section: คำนำ, ย่อหน้าแนะนำตัว และ list สิ่งที่กำลังมองหา
+  readonly about = signal({
+    lead:
+      'A practical developer profile for Angular work, future AI learning, and teams that value clear communication.',
+    bio: [
+      "I'm Tanonchai Promsiri, a programmer who wants to focus more deeply on Angular and practical frontend work for real business screens.",
+      'I enjoy building web apps, dashboards, and useful internal tools, and I want to keep learning how AI can make future workflows smarter.',
+      'I am ready to work with modern teams, including younger developers, share what I know, learn what I do not, and keep improving project by project.',
+    ],
+    lookingFor: [
+      'Angular / frontend developer work with real product screens.',
+      'A team that values readable code, patient communication, and steady learning.',
+      'Opportunities to grow toward AI-assisted tools and smarter automation.',
+    ],
+  });
+
+  // contactIntro คือข้อความนำใน Contact section แยกออกมาให้แก้ทีเดียวเหมือน copy อื่น
+  readonly contactIntro = signal(
+    'Looking for Angular work, frontend projects, or future AI-powered web tools. Send a message and we can talk through the next step.',
+  );
+
   // features คือการ์ดจุดเด่นใน About section เก็บเป็น data เพื่อให้ template ใช้ @for render ซ้ำได้
   readonly features = signal<FeatureCard[]>([
     {
