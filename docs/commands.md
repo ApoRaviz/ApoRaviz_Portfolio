@@ -35,12 +35,12 @@ portfolio จัดการ  = AI แก้ไฟล์เองทั้งห
 
 ```text
 ศัพท์/API/แนวคิด Angular ใหม่       -> ApoRaviz_Workspace_Docs/angular/concepts/
-flow Angular ที่ควรจำ                -> ApoRaviz_Workspace_Docs/angular/teach/ หรือ angular/lessons/
+flow Angular ที่ควรจำ                -> ApoRaviz_Workspace_Docs/angular/teach/
 ตัวอย่างทดลองเล็ก ๆ                 -> ApoRaviz_Workspace_Docs/angular/labs/
 Tailwind pattern ที่ใช้กับ Angular   -> ApoRaviz_Workspace_Docs/angular/tailwind/
 command Angular ที่ใช้ซ้ำได้         -> ApoRaviz_Workspace_Docs/angular/commands.md
 Git command/workflow ที่ใช้ซ้ำได้    -> ApoRaviz_Workspace_Docs/git/commands.md
-case study จาก Portfolio             -> ApoRaviz_Workspace_Docs/projects/
+บทเรียน reusable จาก Portfolio       -> ซึมเข้าหน้า topic ที่เกี่ยวข้องใน ApoRaviz_Workspace_Docs เป็นตัวอย่าง
 ```
 
 Command ในไฟล์นี้ควรอ่านแบบ project note:
@@ -65,11 +65,12 @@ portfolio เรียน: resume -> docs/learning-resume.md
 ## Setup
 
 ```bash
-nvm use 24
+# macOS: nvm use   |  Windows: nvm use <version จาก .nvmrc>
+nvm use
 npm install
 ```
 
-ใช้ Node 24 ตามที่โปรเจกต์ล็อกไว้ แล้วติดตั้ง dependencies จาก `package-lock.json`
+ใช้ Node ตาม `.nvmrc` ของ repo (= baseline ใน `ApoRaviz_Workspace_Docs/baseline.md`) แล้วติดตั้ง dependencies จาก `package-lock.json`
 
 ## Dev Server
 
@@ -83,10 +84,11 @@ Default URL:
 http://localhost:4200/
 ```
 
-ถ้าต้องบังคับ Node 24 และระบุ port:
+ถ้าต้องเลือก Node version และระบุ port (machine-agnostic — เลือก Node ผ่าน `nvm use` ก่อน):
 
 ```bash
-PATH=/Users/aporaviz/.nvm/versions/node/v24.16.0/bin:$PATH ./node_modules/.bin/ng serve --host 127.0.0.1 --port 4201
+# macOS: nvm use   |  Windows: nvm use <version จาก .nvmrc>
+npm run start -- --host 127.0.0.1 --port 4201
 ```
 
 ใช้ port สำรองเมื่อ `4200` ถูกใช้งานอยู่
@@ -98,10 +100,10 @@ npm run test
 npm run test:ci
 ```
 
-หรือรันตรงด้วย Node 24:
+หรือรันตรง (เลือก Node ผ่าน `nvm use` ก่อน):
 
 ```bash
-PATH=/Users/aporaviz/.nvm/versions/node/v24.16.0/bin:$PATH ./node_modules/.bin/ng test --watch=false --progress=false
+npm run test -- --watch=false --progress=false
 ```
 
 `test:ci` ใช้รันครั้งเดียวแล้วจบ เหมาะกับการตรวจงานก่อน commit/push

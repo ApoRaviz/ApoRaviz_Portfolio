@@ -1,6 +1,6 @@
 ---
 name: angular-portfolio-mentor
-description: Use only for ApoRaviz_Portfolio work. Supports short command modes portfolio เรียน for AI-as-mentor copy/paste teaching without editing files, portfolio ตรวจ for reviewing user-made learning changes, and portfolio จัดการ for AI-managed implementation plus tests/build. Applies Angular latest stable, Node 24 LTS, Tailwind CSS v4, SSR-safe browser APIs, standalone components, signals, Thai teaching comments, and routes reusable Angular/Tailwind/Git learning back into ApoRaviz_Workspace_Docs.
+description: Use only for ApoRaviz_Portfolio work. Supports short command modes portfolio เรียน for AI-as-mentor copy/paste teaching without editing files, portfolio ตรวจ for reviewing user-made learning changes, and portfolio จัดการ for AI-managed implementation plus tests/build. Applies the versions in _docs/baseline.md (Angular/Node/TypeScript/Tailwind), SSR-safe browser APIs, standalone components, signals, Thai teaching comments, and folds reusable Angular/Tailwind/Git learning back into ApoRaviz_Workspace_Docs topic pages.
 ---
 
 # Angular Portfolio Mentor
@@ -69,16 +69,15 @@ Workflow:
 
 1. Read the current files before editing.
 2. Make scoped edits with `apply_patch`.
-3. Run `npm.cmd run test:ci` when logic, services, tests, forms, routing, or state changed.
-4. Run `npm.cmd run build` before finishing.
+3. Run `npm run test:ci` when logic, services, tests, forms, routing, or state changed.
+4. Run `npm run build` before finishing.
 5. If UI changed significantly, start or use the dev server and verify with the browser.
 6. Summarize changed files, verification results, and any follow-up.
 
 ## Project Defaults
 
-- Use Node `24` LTS for all npm, ng, and build commands.
-- Use Angular latest stable from `_docs/angular/commands.md`; current baseline is Angular `22.x` with TypeScript `6.0.x`.
-- Use Tailwind CSS v4 utilities for styling.
+- Use the Node/Angular/TypeScript/Tailwind versions from `_docs/baseline.md` (single source). Select Node machine-agnostically: macOS `nvm use`, Windows `nvm use <version>`.
+- Use Tailwind CSS utilities for styling.
 - Use Angular signals for component/service state where practical.
 - Use `inject()` for dependency injection.
 - Use Angular control flow syntax: `@if`, `@for`, `@switch`.
@@ -121,10 +120,10 @@ When using a `div` in HTML, add a nearby Thai comment if the reason is not obvio
 4. Put reusable portfolio data in `PortfolioDataService`.
 5. Put global scroll/theme state in `ThemeService`.
 6. Build each section as a standalone component.
-7. In `portfolio จัดการ`, after edits, run build with Node 24:
+7. In `portfolio จัดการ`, after edits, run build (select Node via `nvm use` first):
 
-```powershell
-npm.cmd run build
+```bash
+npm run build
 ```
 
 8. If UI changed significantly, run the dev server and verify in the browser.
@@ -137,12 +136,12 @@ Put knowledge in the right home:
 
 ```text
 New Angular term/API/concept                    -> ApoRaviz_Workspace_Docs/angular/concepts/
-Reusable Angular flow/process                   -> ApoRaviz_Workspace_Docs/angular/teach/ or angular/lessons/
+Reusable Angular flow/process                   -> ApoRaviz_Workspace_Docs/angular/teach/
 Small Angular exercise or tiny example          -> ApoRaviz_Workspace_Docs/angular/labs/
 Tailwind pattern used with Angular              -> ApoRaviz_Workspace_Docs/angular/tailwind/
 Reusable Angular command                        -> ApoRaviz_Workspace_Docs/angular/commands.md
 Reusable Git command/workflow                   -> ApoRaviz_Workspace_Docs/git/commands.md
-Reusable project case-study lesson              -> ApoRaviz_Workspace_Docs/projects/
+Reusable lesson from Portfolio work             -> fold into the related ApoRaviz_Workspace_Docs topic page as an example (no per-project case-study folder)
 Portfolio-specific content/URLs/brand decision  -> ApoRaviz_Portfolio/docs/
 Portfolio UI/resume/showcase content            -> ApoRaviz_Portfolio source/data
 ```

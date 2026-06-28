@@ -78,7 +78,7 @@
 
 - [x] 5.1 เพิ่ม `docs/learning-resume.md` สำหรับโหมดเรียน resume/SEO/Open Graph
 - [x] 5.2 เพิ่มบทเรียน Angular config files ใน `_docs/angular`
-- [ ] 5.3 เพิ่ม Portfolio case study ใน `ApoRaviz_Workspace_Docs/projects/portfolio/`
+- [ ] 5.3 บทเรียน reusable จาก Portfolio ให้ซึมเข้าหน้า topic ใน `ApoRaviz_Workspace_Docs` (ไม่ใช้ `projects/` แล้ว); case study สำหรับโชว์เก็บใน Portfolio เอง
 - [ ] 5.4 เพิ่ม Git concepts ที่เจอระหว่าง commit/push ใน `ApoRaviz_Workspace_Docs`
 
 ## Step 6 - Portfolio 2026 Content System

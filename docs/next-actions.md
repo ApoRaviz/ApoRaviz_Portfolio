@@ -60,7 +60,7 @@
 
 - [ ] เพิ่ม Git concepts ใน `ApoRaviz_Workspace_Docs`
 - [ ] เพิ่ม VitePress concepts ใน `ApoRaviz_Workspace_Docs`
-- [ ] เพิ่ม Portfolio case study ใน `ApoRaviz_Workspace_Docs/projects/portfolio/`
+- [ ] บทเรียน reusable จาก Portfolio ให้ซึมเข้าหน้า topic ใน `ApoRaviz_Workspace_Docs` (ไม่ใช้ `projects/` แล้ว)
 - [ ] วาง publish flow สำหรับโปรเจกต์ลูก
 - [ ] เพิ่ม unit tests สำหรับ service/form/SSR guards
 
