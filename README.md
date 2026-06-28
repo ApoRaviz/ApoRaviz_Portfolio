@@ -25,10 +25,12 @@
 ## Development
 
 ```bash
-nvm use 24
+nvm use
 npm install
 npm run start
 ```
+
+Node version อ่านจาก `.nvmrc` ของ repo และอิง baseline กลางใน `../_docs/baseline.md`
 
 Open:
 
