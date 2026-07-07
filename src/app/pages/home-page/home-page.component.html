@@ -1,8 +1,167 @@
-<app-hero />
-<app-about />
-<app-skills />
-<app-projects />
-<app-services-section />
-<app-experience />
-<app-testimonials />
-<app-contact />
+<!-- ===== ApoRaviz Book — container: chrome ที่ข้ามทั้งเล่ม + scroller ที่ประกอบบทเป็น component ===== -->
+<div class="relative h-screen w-full overflow-hidden bg-dark font-body text-ink">
+  <!-- แสงบรรยากาศส้มมุมจอ -->
+  <div
+    class="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(1000px_600px_at_82%_-8%,rgba(232,106,28,0.16),transparent_62%),radial-gradient(760px_560px_at_6%_108%,rgba(184,72,14,0.12),transparent_60%)]"
+  ></div>
+
+  <!-- overlay เอฟเฟกต์เปิดหน้าหนังสือ (container คุม transform/opacity) -->
+  <div
+    #pageturn
+    class="pointer-events-none absolute inset-0 z-[80] flex items-center justify-center border-l border-primary/25 bg-[linear-gradient(115deg,#1c150e,#0f0b07_60%)] opacity-0 shadow-[inset_0_0_160px_rgba(0,0,0,0.7),-30px_0_60px_rgba(0,0,0,0.5)] [backface-visibility:hidden] [will-change:transform]"
+  >
+    <span #pageturnLabel class="font-mono text-sm uppercase tracking-[6px] text-primary"></span>
+  </div>
+
+  <!-- ===== top bar ===== -->
+  <nav
+    class="absolute inset-x-0 top-0 z-[60] flex items-center justify-between gap-4 border-b border-white/[0.06] bg-[linear-gradient(180deg,rgba(12,11,10,0.92),rgba(12,11,10,0.25))] px-[min(5vw,46px)] py-[18px] backdrop-blur-[14px]"
+  >
+    <button
+      type="button"
+      (click)="nav.go(0)"
+      class="flex cursor-pointer items-center gap-[11px] border-none bg-transparent p-0"
+    >
+      <img
+        [src]="data.profile().logoUrl"
+        alt="ApoRaviz"
+        class="h-[34px] w-[34px] rounded-lg border border-primary/35 object-cover shadow-[0_0_16px_rgba(232,106,28,0.4)]"
+      />
+      <span class="font-display text-[19px] font-medium tracking-[0.3px] text-ink">ApoRaviz</span>
+    </button>
+
+    <div class="hidden items-center gap-[2px] md:flex">
+      @for (chapter of nav.chapters(); track chapter.id; let i = $index) {
+        <button
+          type="button"
+          (click)="nav.go(i)"
+          class="cursor-pointer rounded-lg border-none bg-transparent px-[11px] py-2 font-mono text-xs tracking-[0.5px] transition-colors"
+          [class.text-primary]="nav.active() === i"
+          [class.text-ink-mute]="nav.active() !== i"
+        >
+          {{ chapter.label }}
+        </button>
+      }
+    </div>
+
+    <div class="flex items-center gap-3">
+      <div class="hidden items-center gap-2 md:flex">
+        <span
+          class="h-[7px] w-[7px] rounded-full bg-primary shadow-[0_0_9px_#E86A1C] [animation:bkpulse_2.2s_ease-in-out_infinite]"
+        ></span>
+        <span class="whitespace-nowrap font-mono text-[11px] tracking-[0.5px] text-primary-light">AVAILABLE</span>
+      </div>
+      <a
+        [href]="data.profile().resumeUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="whitespace-nowrap rounded-[9px] bg-primary px-4 py-[9px] font-body text-[13px] font-semibold text-dark no-underline shadow-[0_6px_18px_rgba(232,106,28,0.3)]"
+      >
+        Resume
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== spine rail (ซ้าย, เดสก์ท็อป) ===== -->
+  <div class="absolute left-5 top-1/2 z-[55] hidden -translate-y-1/2 flex-col gap-[2px] md:flex">
+    @for (chapter of nav.chapters(); track chapter.id; let i = $index) {
+      <button
+        type="button"
+        (click)="nav.go(i)"
+        [title]="chapter.label"
+        class="flex cursor-pointer items-center gap-3 border-none bg-transparent py-[7px]"
+      >
+        <span
+          class="block h-[2px] rounded-[2px] transition-all duration-300"
+          [class]="
+            nav.active() === i
+              ? 'w-[34px] bg-primary shadow-[0_0_10px_rgba(232,106,28,0.6)]'
+              : 'w-5 bg-white/20'
+          "
+        ></span>
+        <span
+          class="whitespace-nowrap font-mono text-[11px] tracking-[1px] transition-colors"
+          [class.text-ink]="nav.active() === i"
+          [class.text-ink-faint]="nav.active() !== i"
+        >
+          {{ chapter.num }}
+        </span>
+      </button>
+    }
+  </div>
+
+  <!-- ===== folio (ล่าง, เดสก์ท็อป) ===== -->
+  <div
+    class="absolute bottom-5 left-1/2 z-[58] hidden -translate-x-1/2 items-center gap-4 rounded-full border border-white/[0.08] bg-[rgba(12,11,10,0.7)] px-4 py-2 backdrop-blur-[10px] md:flex"
+  >
+    <button
+      type="button"
+      (click)="nav.turn(-1)"
+      aria-label="Previous chapter"
+      class="cursor-pointer border-none bg-transparent px-[2px] text-base text-ink-mute transition-colors hover:text-primary"
+    >
+      ‹
+    </button>
+    <span class="font-mono text-[11px] tracking-[2px] text-ink-mute">
+      PAGE <span class="text-primary">{{ nav.folioNum() }}</span> / {{ nav.totalLabel() }}
+    </span>
+    <button
+      type="button"
+      (click)="nav.turn(1)"
+      aria-label="Next chapter"
+      class="cursor-pointer border-none bg-transparent px-[2px] text-base text-ink-mute transition-colors hover:text-primary"
+    >
+      ›
+    </button>
+  </div>
+
+  <!-- ===== bottom nav (มือถือ) ===== -->
+  <div
+    class="absolute inset-x-0 bottom-0 z-[59] flex items-stretch justify-around gap-[2px] border-t border-white/[0.08] bg-[rgba(12,11,10,0.94)] px-[6px] pb-[calc(8px+env(safe-area-inset-bottom))] pt-2 backdrop-blur-[16px] md:hidden"
+  >
+    @for (chapter of nav.chapters(); track chapter.id; let i = $index) {
+      <button
+        type="button"
+        (click)="nav.go(i)"
+        class="flex flex-1 cursor-pointer flex-col items-center gap-[3px] border-none bg-transparent px-[2px] py-1"
+      >
+        <span
+          class="font-mono text-xs transition-colors"
+          [class.text-primary]="nav.active() === i"
+          [class.text-ink-faint]="nav.active() !== i"
+        >
+          {{ chapter.num }}
+        </span>
+        <span
+          class="font-mono text-[9px] tracking-[0.4px] transition-colors"
+          [class.text-ink]="nav.active() === i"
+          [class.text-ink-faint]="nav.active() !== i"
+        >
+          {{ chapter.label }}
+        </span>
+      </button>
+    }
+  </div>
+
+  <!-- ===== scroller + บท (แต่ละบทเป็น component เดิม; quests/services/voices โผล่เมื่อมีเนื้อหา) ===== -->
+  <div
+    #scroller
+    data-scroller
+    class="book-scroller relative z-[1] h-screen overflow-y-auto scroll-smooth [scroll-snap-type:y_mandatory] max-md:[scroll-snap-type:none]"
+  >
+    <app-hero />
+    <app-about />
+    <app-skills />
+    @if (data.quests().length) {
+      <app-projects />
+    }
+    <app-experience />
+    @if (data.services().length) {
+      <app-services-section />
+    }
+    @if (data.visibleTestimonials().length) {
+      <app-testimonials />
+    }
+    <app-contact />
+  </div>
+</div>

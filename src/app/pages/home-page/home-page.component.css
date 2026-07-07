@@ -1,0 +1,9 @@
+/* ซ่อน scrollbar ของ scroller หลัก (design ต้องการหน้าสะอาดเหมือนหนังสือ) */
+.book-scroller {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.book-scroller::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}

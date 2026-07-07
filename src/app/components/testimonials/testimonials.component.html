@@ -1,36 +1,44 @@
-<!-- ใช้ section เพราะ Testimonials เป็นหมวดหลักที่ช่วยยืนยันความน่าเชื่อถือ -->
-@if (data.visibleTestimonials().length > 0) {
-<section id="testimonials" class="bg-[#0d0d0d] py-24" aria-labelledby="testimonials-title">
-  <div class="mx-auto max-w-7xl px-5 sm:px-8">
-    <header class="reveal text-center">
-      <p class="font-mono text-sm uppercase tracking-[0.25em] text-primary">Party Notes</p>
-      <h2 id="testimonials-title" class="mt-3 font-display text-4xl font-bold text-white sm:text-5xl">
-        <span class="text-primary">Notes</span> From The Party
-      </h2>
-      <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-primary shadow-glow"></div>
-    </header>
+<!-- บท 06 · Voices (host เป็น section แล้วใน .ts) -->
+<div class="mx-auto w-full max-w-[1160px]">
+  <div appReveal class="mb-4 flex items-baseline gap-[14px]">
+    <span class="font-mono text-xs uppercase tracking-[4px] text-primary">
+      Chapter {{ nav.numberOf('voices') }}
+    </span>
+    <span class="h-px flex-1 bg-[linear-gradient(90deg,rgba(232,106,28,0.4),transparent)]"></span>
+    <span class="font-mono text-[11px] text-ink-faint">Notes in the Margin</span>
+  </div>
+  <h2
+    appReveal="60"
+    class="mb-8 font-display text-[clamp(34px,5.5vw,60px)] font-normal tracking-[-1px] text-ink"
+  >
+    Words from <span class="italic text-primary-light">the party</span>
+  </h2>
 
-    <div class="mt-12 grid gap-6 lg:grid-cols-3">
-      @for (testimonial of data.visibleTestimonials(); track testimonial.name) {
-        <!-- ใช้ article เพราะ testimonial หนึ่งใบมีเนื้อหารีวิวและผู้เขียนครบในตัวเอง -->
-        <article class="reveal rounded-2xl border border-dark-border bg-dark-card p-8 transition hover:border-primary/40 hover:shadow-glow">
-          <p class="font-display text-5xl text-primary" aria-hidden="true">"</p>
-          <p class="mt-4 italic leading-8 text-neutral-300">{{ testimonial.review }}</p>
-          <p class="mt-5 font-mono text-sm text-primary">★★★★★</p>
-
-          <!-- ใช้ div เป็น author row layout เพื่อจัด avatar + text -->
-          <div class="mt-6 flex items-center gap-4">
-            <div class="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-primary to-primary-light font-mono font-bold text-white">
-              {{ testimonial.avatar }}
-            </div>
-            <div>
-              <h3 class="font-display text-lg font-semibold text-white">{{ testimonial.name }}</h3>
-              <p class="text-sm text-neutral-500">{{ testimonial.position }} · {{ testimonial.company }}</p>
+  <div class="grid gap-6 md:grid-cols-3">
+    @for (voice of data.visibleTestimonials(); track voice.name) {
+      <div
+        appTilt
+        appReveal
+        class="rounded-[20px] border border-white/[0.09] bg-[linear-gradient(165deg,#17130e,#100d0a)] p-[26px] transition-[transform,border-color] duration-300"
+      >
+        <p class="font-display text-5xl leading-none text-primary" aria-hidden="true">“</p>
+        <p class="mt-3 font-display text-[17px] italic leading-[1.6] text-ink-soft">
+          {{ voice.review }}
+        </p>
+        <div class="mt-6 flex items-center gap-[14px]">
+          <span
+            class="grid h-11 w-11 flex-none place-items-center rounded-full border border-primary/28 bg-primary/10 font-mono text-sm text-primary"
+          >
+            {{ voice.avatar }}
+          </span>
+          <div>
+            <div class="font-display text-base font-medium text-ink">{{ voice.name }}</div>
+            <div class="font-mono text-[11px] text-ink-faint">
+              {{ voice.position }} · {{ voice.company }}
             </div>
           </div>
-        </article>
-      }
-    </div>
+        </div>
+      </div>
+    }
   </div>
-</section>
-}
+</div>

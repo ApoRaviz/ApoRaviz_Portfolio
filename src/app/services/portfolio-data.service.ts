@@ -1,13 +1,18 @@
 import { computed, Injectable, signal } from '@angular/core';
 import {
+  BookContact,
   ContactInfo,
   Experience,
   FeatureCard,
+  JourneyEntry,
+  LoadoutGroup,
   NavLink,
   Project,
+  Quest,
   Service,
   SkillGroup,
   Testimonial,
+  Trait,
 } from '../models/portfolio.models';
 
 @Injectable({
@@ -320,4 +325,157 @@ export class PortfolioDataService {
   ]);
 
   readonly visibleContactInfo = computed(() => this.contactInfo().filter((item) => !item.isDemo));
+
+  // ===== Book redesign view-models =====
+  // ชั้นนี้ไม่เก็บ content ใหม่ที่ซ้ำกับด้านบน แต่ "แปลงรูป" data เดิมให้เข้ากับ layout แบบหนังสือ
+  // (computed) + เพิ่มเฉพาะ copy เชิงบรรณาธิการที่ layout ใหม่ต้องใช้จริง ๆ (signal)
+
+  // cover = ข้อความหน้าปกเล่ม (บทนำ)
+  readonly cover = signal({
+    eyebrow: 'The Daily Book of a Developer',
+    alias: 'ApoRaviz',
+    quote: 'Life is a book you open a little more each day —',
+    quoteEmphasis: 'this is mine.',
+    roleLine: 'Angular Developer · AI Product Builder · Quest-driven Learner',
+  });
+
+  // profileCopy = ย่อหน้าแนะนำตัวในบท Profile (drop cap อยู่ที่ตัวอักษรแรกผ่าน CSS ::first-letter)
+  readonly profileCopy = signal({
+    chapterTag: 'Dramatis Persona',
+    heading: 'The character',
+    headingEmphasis: 'behind the screen',
+    bio: "I'm Tanonchai Promsiri — a programmer of nine years who turned messy business requirements into working warehouse, logistics and back-office systems. Now I'm writing a new chapter: going deeper on Angular, design systems, and building real products with AI as a partner.",
+    sub: "I enjoy building web apps, dashboards and internal tools — and I keep learning how AI can make tomorrow's workflows smarter.",
+  });
+
+  // traits = การ์ด Margin Notes แปลงจาก features เดิม (คง content เดิม เพิ่มแค่ป้าย NOTE)
+  readonly traits = computed<Trait[]>(() =>
+    this.features().map((feature, index) => ({
+      tag: `NOTE · 0${index + 1}`,
+      title: feature.title,
+      desc: feature.desc,
+    })),
+  );
+
+  // loadout = ตาราง gear บท Loadout: layout ใหม่ต้องการ blurb ต่อหมวด + note ต่อชิ้น จึงเก็บชุดนี้แยก
+  readonly loadout = signal<LoadoutGroup[]>([
+    {
+      icon: 'FE',
+      title: 'Frontend',
+      blurb: 'Where I spend most of my time — building real screens.',
+      items: [
+        { n: 'Angular', note: 'Primary framework · components, routing, SSR' },
+        { n: 'TypeScript', note: 'Typed, maintainable code' },
+        { n: 'Signals', note: 'Reactive state · Angular 22' },
+        { n: 'Tailwind CSS', note: 'Fast, consistent UI' },
+        { n: 'PrimeNG · Ionic', note: 'Component libraries' },
+        { n: 'HTML5 · CSS3', note: 'Semantics & layout' },
+      ],
+    },
+    {
+      icon: 'BE',
+      title: 'Backend',
+      blurb: 'Enough to make the frontend talk to real systems.',
+      items: [
+        { n: 'C# · .NET Core', note: 'ASP.NET Core web APIs' },
+        { n: 'Node.js', note: 'Lightweight services & tooling' },
+        { n: 'REST API', note: 'Design & integration' },
+        { n: 'SFTP / API', note: 'Enterprise data exchange' },
+        { n: 'Keycloak', note: 'Authentication' },
+      ],
+    },
+    {
+      icon: 'DB',
+      title: 'Data & Reports',
+      blurb: 'From queries to the reports the business actually reads.',
+      items: [
+        { n: 'SQL Server', note: 'Primary database' },
+        { n: 'MySQL · MongoDB', note: 'Relational & document' },
+        { n: 'Stored Procedures', note: 'Server-side logic' },
+        { n: 'SSRS', note: 'Reporting services' },
+        { n: 'Crystal Reports', note: 'Formatted business reports' },
+      ],
+    },
+    {
+      icon: 'OP',
+      title: 'DevOps & Tools',
+      blurb: 'The workshop I keep the builds running in.',
+      items: [
+        { n: 'Git · GitHub', note: 'Version control' },
+        { n: 'GitHub Actions', note: 'CI/CD pipelines' },
+        { n: 'IIS Server', note: 'Deployment' },
+        { n: 'Jira', note: 'Project tracking' },
+        { n: 'VS Code · Postman', note: 'Daily drivers' },
+        { n: 'Figma', note: 'Design handoff' },
+      ],
+    },
+    {
+      icon: 'PR',
+      title: 'Practices',
+      blurb: 'How I think, not just what I type.',
+      items: [
+        { n: 'Business Analysis', note: 'Requirements → specs' },
+        { n: 'System Design', note: 'Structure before code' },
+        { n: 'CI/CD', note: 'Ship safely, often' },
+        { n: 'Documentation', note: 'Knowledge that lasts' },
+        { n: 'AI Workflow', note: 'AI as a build partner' },
+      ],
+    },
+  ]);
+
+  // builds = chips "Useful builds" ใต้ Loadout — ดึงชื่อมาจาก services เดิมเพื่อไม่ให้ข้อมูลซ้ำซ้อน
+  readonly builds = computed<string[]>(() => this.services().map((service) => service.title));
+
+  // quests = การ์ดโปรเจกต์ในบท Quests แปลงจาก visibleProjects (โชว์เฉพาะของจริง เหมือน layout เดิม)
+  readonly quests = computed<Quest[]>(() =>
+    this.visibleProjects().map((project, index) => ({
+      name: project.title,
+      status: `Cleared Quest ${index + 1}`,
+      type: project.category,
+      desc: project.description,
+      tech: project.tech,
+      img: project.imageUrl ?? '',
+      live: project.liveUrl,
+      code: project.githubUrl,
+    })),
+  );
+
+  // journey = timeline บท Journey แปลงจาก experiences เดิม
+  readonly journey = computed<JourneyEntry[]>(() =>
+    this.experiences().map((experience) => ({
+      role: experience.role,
+      org: experience.company,
+      time: experience.period,
+      desc: experience.description,
+    })),
+  );
+
+  // contactCopy = ข้อความปิดเล่ม (Epilogue) ในบท Contact
+  readonly contactCopy = signal({
+    eyebrow: 'Epilogue',
+    title: 'Write the next page',
+    titleEmphasis: 'with me',
+    lead: 'I turn ideas into products with AI-assisted design and development. Open to Angular roles, freelance and collaboration.',
+    colophon:
+      'Set in Newsreader & Space Grotesk · Bound with Angular · © 2026 Tanonchai Promsiri',
+  });
+
+  // glyph ตัวอักษรใช้แทน icon ของแต่ละช่องทาง เพื่อคุมโทน mono ของ layout หนังสือ
+  private readonly contactGlyphs: Record<string, string> = {
+    Email: '✉',
+    Phone: '☏',
+    GitHub: '⌥',
+    LINE: '✦',
+    Facebook: 'f',
+  };
+
+  // bookContacts = การ์ดช่องทางติดต่อในบท Contact แปลงจาก visibleContactInfo เดิม
+  readonly bookContacts = computed<BookContact[]>(() =>
+    this.visibleContactInfo().map((info) => ({
+      icon: this.contactGlyphs[info.label] ?? '•',
+      label: info.label,
+      value: info.value,
+      href: info.url,
+    })),
+  );
 }

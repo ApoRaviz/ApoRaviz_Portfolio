@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { RouterTestingHarness } from '@angular/router/testing';
 import { App } from './app';
 import { routes } from './app.routes';
 
@@ -17,11 +18,10 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render the portfolio owner name', async () => {
-    const fixture = TestBed.createComponent(App);
-    fixture.detectChanges();
-    await fixture.whenStable();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.textContent).toContain('Tanonchai Promsiri');
+  // App เหลือแค่ router-outlet — ชื่อเจ้าของอยู่ในหน้า Book (lazy) จึงต้อง navigate เข้า route '' ก่อน
+  it('should render the portfolio owner name on the home route', async () => {
+    const harness = await RouterTestingHarness.create('/');
+    await harness.fixture.whenStable();
+    expect(harness.routeNativeElement?.textContent).toContain('Tanonchai Promsiri');
   });
 });

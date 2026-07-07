@@ -1,0 +1,10 @@
+/* สถานะ active ของหมวดใน Loadout inspector (bind ด้วย [class.cat-active])
+   ใช้ !important เพื่อชนะ utility พื้นหลัง/เส้นขอบของปุ่มที่เป็นค่า default */
+.cat-active {
+  border-color: rgba(232, 106, 28, 0.5) !important;
+  background: linear-gradient(165deg, #211a12, #140f0a) !important;
+}
+.cat-active .caticon {
+  background: #e86a1c !important;
+  color: #0c0b0a !important;
+}

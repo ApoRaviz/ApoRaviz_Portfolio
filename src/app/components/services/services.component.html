@@ -1,26 +1,37 @@
-<!-- ใช้ section เพราะ Services เป็นหมวดหลัก และ selector ตั้งเป็น app-services-section เพื่อไม่ชนกับชื่อ service class -->
-<section id="services" class="bg-[#0d0d0d] py-24" aria-labelledby="services-title">
-  <div class="mx-auto max-w-7xl px-5 sm:px-8">
-    <header class="reveal text-center">
-      <p class="font-mono text-sm uppercase tracking-[0.25em] text-primary">Can Help With</p>
-      <h2 id="services-title" class="mt-3 font-display text-4xl font-bold text-white sm:text-5xl">
-        <span class="text-primary">Useful</span> Builds
-      </h2>
-      <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-primary shadow-glow"></div>
-    </header>
-
-    <!-- ใช้ div เป็น grid wrapper สำหรับ responsive layout ของ service cards -->
-    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      @for (service of data.services(); track service.title) {
-        <!-- ใช้ article เพราะแต่ละ service เป็นรายการบริการที่มีหัวข้อและคำอธิบายครบในตัวเอง -->
-        <article class="reveal rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition hover:border-primary/60 hover:shadow-glow">
-          <p class="inline-flex rounded-lg border border-primary/30 bg-primary/10 p-2 text-primary" aria-hidden="true">
-            <app-icon [name]="service.icon" sizeClass="h-6 w-6" />
-          </p>
-          <h3 class="mt-5 font-display text-xl font-semibold text-white">{{ service.title }}</h3>
-          <p class="mt-3 leading-7 text-neutral-400">{{ service.description }}</p>
-        </article>
-      }
-    </div>
+<!-- บท 05 · Services / Commissions (host เป็น section แล้วใน .ts) -->
+<div class="mx-auto w-full max-w-[1160px]">
+  <div appReveal class="mb-4 flex items-baseline gap-[14px]">
+    <span class="font-mono text-xs uppercase tracking-[4px] text-primary">
+      Chapter {{ nav.numberOf('services') }}
+    </span>
+    <span class="h-px flex-1 bg-[linear-gradient(90deg,rgba(232,106,28,0.4),transparent)]"></span>
+    <span class="font-mono text-[11px] text-ink-faint">Commissions</span>
   </div>
-</section>
+  <h2
+    appReveal="60"
+    class="mb-[10px] font-display text-[clamp(34px,5.5vw,60px)] font-normal tracking-[-1px] text-ink"
+  >
+    What I can <span class="italic text-primary-light">build for you</span>
+  </h2>
+  <p appReveal="100" class="mb-[30px] max-w-[560px] text-[15px] text-ink-mute">
+    Practical builds I take on — from a single landing page to full internal tools.
+  </p>
+
+  <div class="grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
+    @for (service of data.services(); track service.title) {
+      <div
+        appTilt
+        appReveal
+        class="rounded-[16px] border border-white/[0.08] bg-[linear-gradient(165deg,#17130e,#100d0a)] p-[20px] transition-[transform,border-color] duration-300"
+      >
+        <span
+          class="inline-flex h-9 items-center justify-center rounded-[9px] border border-primary/25 bg-primary/10 px-[10px] font-mono text-[11px] text-primary"
+        >
+          {{ service.icon }}
+        </span>
+        <h3 class="mt-4 font-display text-lg font-medium text-ink">{{ service.title }}</h3>
+        <p class="mt-2 text-[13px] leading-[1.6] text-ink-mute">{{ service.description }}</p>
+      </div>
+    }
+  </div>
+</div>

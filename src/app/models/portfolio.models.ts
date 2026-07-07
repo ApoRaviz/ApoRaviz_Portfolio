@@ -57,3 +57,54 @@ export interface ContactInfo {
   url: string;
   isDemo?: boolean;
 }
+
+// ===== Book redesign ("The Daily Book of a Developer") =====
+// interface เหล่านี้เป็น view-model เฉพาะ layout แบบหนังสือ ส่วนใหญ่ map มาจาก data เดิมด้านบน
+
+// Trait = การ์ด "Margin Notes" ในบท Profile (map มาจาก FeatureCard)
+export interface Trait {
+  tag: string;
+  title: string;
+  desc: string;
+}
+
+// LoadoutItem/LoadoutGroup = ตาราง gear ในบท Loadout ที่มีคำอธิบายรายชิ้น
+export interface LoadoutItem {
+  n: string;
+  note: string;
+}
+
+export interface LoadoutGroup {
+  icon: string;
+  title: string;
+  blurb: string;
+  items: LoadoutItem[];
+}
+
+// Quest = การ์ดโปรเจกต์ในบท Quests (map มาจาก Project)
+export interface Quest {
+  name: string;
+  status: string;
+  type: string;
+  desc: string;
+  tech: string[];
+  img: string;
+  live: string;
+  code: string;
+}
+
+// JourneyEntry = ช่วงประสบการณ์ใน timeline บท Journey (map มาจาก Experience)
+export interface JourneyEntry {
+  role: string;
+  org: string;
+  time: string;
+  desc: string;
+}
+
+// BookContact = การ์ดช่องทางติดต่อในบท Contact (map มาจาก ContactInfo + glyph)
+export interface BookContact {
+  icon: string;
+  label: string;
+  value: string;
+  href: string;
+}

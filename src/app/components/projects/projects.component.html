@@ -1,79 +1,76 @@
-<!-- ใช้ section เพราะ Projects เป็นหมวดหลักของหน้าและเป็น target ของปุ่ม View Projects -->
-<section id="projects" class="bg-dark py-24" aria-labelledby="projects-title">
-  <div class="mx-auto max-w-7xl px-5 sm:px-8">
-    <header class="reveal text-center">
-      <p class="font-mono text-sm uppercase tracking-[0.25em] text-primary">Quest Board</p>
-      <h2 id="projects-title" class="mt-3 font-display text-4xl font-bold text-white sm:text-5xl">
-        <span class="text-primary">Quests</span> I Cleared
-      </h2>
-      <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-primary shadow-glow"></div>
-      <p class="mx-auto mt-5 max-w-2xl leading-8 text-neutral-400">
-        A game-flavored project board for real builds: each cleared quest has a live page, source link, and a note about what it proves.
-      </p>
-    </header>
-
-    <!-- ใช้ div เป็น responsive grid wrapper; ความหมายของแต่ละชิ้นอยู่ที่ article ด้านใน -->
-    <div class="mx-auto mt-12 grid max-w-5xl gap-6">
-      @for (project of data.visibleProjects(); track project.id) {
-        <!-- ใช้ article เพราะ project card เป็นงานหนึ่งชิ้นที่แยกอ่าน/แชร์ได้ -->
-        <article class="reveal overflow-hidden rounded-xl border border-dark-border bg-dark-card transition duration-300 hover:border-primary/70 hover:shadow-glow md:grid md:grid-cols-[.9fr_1.1fr]">
-          <!-- ใช้ div เป็น visual wrapper เพื่อสลับระหว่าง screenshot จริงกับ placeholder ของ future quest -->
-          <div class="relative grid min-h-72 place-items-center overflow-hidden bg-gradient-to-br from-orange-900/40 via-dark-card to-dark">
-            @if (project.imageUrl) {
-              <img
-                class="absolute inset-0 h-full w-full object-cover opacity-80"
-                [src]="project.imageUrl"
-                [alt]="project.title + ' screenshot'"
-                loading="lazy"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/35 to-transparent"></div>
-            }
-
-            <!-- ใช้ div เป็น visual layer ภายในการ์ด ให้ยังคงตัวตนแบบเกม แต่บอกชัดว่านี่คือผลงานจริง -->
-            <div class="relative px-6 text-center">
-              <p class="font-mono text-xs uppercase tracking-[0.25em] text-primary drop-shadow">{{ project.category }}</p>
-              <p class="mt-3 font-display text-2xl font-bold text-white drop-shadow">{{ project.title }}</p>
-              <p class="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 drop-shadow">Cleared Quest {{ project.id }}</p>
-            </div>
-          </div>
-
-          <div class="p-6 sm:p-8">
-            <h3 class="font-display text-2xl font-semibold text-white">{{ project.title }}</h3>
-            <p class="mt-3 leading-7 text-neutral-400">{{ project.description }}</p>
-
-            <p class="mt-5 rounded-lg border border-white/10 bg-white/[0.03] p-4 text-sm leading-7 text-neutral-300">
-              {{ project.highlight }}
-            </p>
-
-            <div class="mt-5 flex flex-wrap gap-2">
-              @for (tech of project.tech; track tech) {
-                <span class="rounded border border-dark-border bg-dark px-2 py-1 font-mono text-xs text-neutral-300">{{ tech }}</span>
-              }
-            </div>
-
-            <!-- ใช้ div เป็น action row wrapper เพื่อจัดปุ่มสองแบบให้อยู่บรรทัดเดียวกัน -->
-            <div class="mt-6 flex gap-3">
-              <!-- ใช้ a เพราะปุ่ม live site/GitHub เป็น navigation ไป URL ของโปรเจกต์ -->
-              <a
-                class="rounded-lg border border-primary px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary/10"
-                [href]="project.liveUrl"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Open Live Site
-              </a>
-              <a
-                class="rounded-lg px-4 py-2 text-sm font-semibold text-neutral-300 transition hover:text-primary"
-                [href]="project.githubUrl"
-                target="_blank"
-                rel="noreferrer"
-              >
-                View GitHub
-              </a>
-            </div>
-          </div>
-        </article>
-      }
-    </div>
+<!-- บท 03 · Quests (host เป็น section แล้วใน .ts) -->
+<div class="mx-auto w-full max-w-[1160px]">
+  <div appReveal class="mb-4 flex items-baseline gap-[14px]">
+    <span class="font-mono text-xs uppercase tracking-[4px] text-primary">
+      Chapter {{ nav.numberOf('quests') }}
+    </span>
+    <span class="h-px flex-1 bg-[linear-gradient(90deg,rgba(232,106,28,0.4),transparent)]"></span>
+    <span class="font-mono text-[11px] text-ink-faint">Cleared Quests</span>
   </div>
-</section>
+  <h2
+    appReveal="60"
+    class="mb-8 font-display text-[clamp(34px,5.5vw,60px)] font-normal tracking-[-1px] text-ink"
+  >
+    Quests I <span class="italic text-primary-light">cleared</span>
+  </h2>
+
+  <div class="grid gap-6 md:grid-cols-2">
+    @for (quest of data.quests(); track quest.name) {
+      <div
+        appTilt
+        appReveal
+        class="flex flex-col overflow-hidden rounded-[20px] border border-white/[0.09] bg-[linear-gradient(165deg,#17130e,#100d0a)] shadow-[0_24px_60px_rgba(0,0,0,0.45)] transition-[transform,border-color] duration-300"
+      >
+        <div class="relative h-[198px] overflow-hidden border-b border-white/[0.07]">
+          @if (quest.img) {
+            <img [src]="quest.img" [alt]="quest.name" class="h-full w-full object-cover object-top" />
+          }
+          <div
+            class="absolute inset-0 bg-[linear-gradient(180deg,transparent_55%,rgba(16,13,10,0.85))]"
+          ></div>
+          <span
+            class="absolute left-[14px] top-[14px] rounded-full border border-primary/40 bg-[rgba(12,11,10,0.8)] px-[11px] py-[5px] font-mono text-[11px] tracking-[0.5px] text-primary-light"
+          >
+            ✓ {{ quest.status }}
+          </span>
+          <span
+            class="absolute right-[14px] top-[14px] rounded-full border border-white/[0.14] bg-[rgba(12,11,10,0.8)] px-[11px] py-[5px] font-mono text-[11px] text-ink-soft"
+          >
+            {{ quest.type }}
+          </span>
+        </div>
+        <div class="flex flex-1 flex-col p-[22px]">
+          <div class="mb-2 font-display text-[22px] font-medium text-ink">{{ quest.name }}</div>
+          <p class="mb-4 flex-1 text-sm leading-[1.6] text-ink-mute">{{ quest.desc }}</p>
+          <div class="mb-[18px] flex flex-wrap gap-[7px]">
+            @for (tech of quest.tech; track tech) {
+              <span
+                class="rounded-[7px] border border-primary/[0.22] bg-primary/10 px-[10px] py-1 font-mono text-[11px] text-primary-light"
+              >
+                {{ tech }}
+              </span>
+            }
+          </div>
+          <div class="flex gap-[10px]">
+            <a
+              [href]="quest.live"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-[10px] bg-primary px-4 py-[10px] font-body text-[13px] font-semibold text-dark no-underline"
+            >
+              Open Live ↗
+            </a>
+            <a
+              [href]="quest.code"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-[10px] border border-primary/40 px-4 py-[10px] font-body text-[13px] font-semibold text-primary-light no-underline"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

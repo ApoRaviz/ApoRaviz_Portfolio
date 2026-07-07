@@ -1,12 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { FooterComponent } from './components/footer/footer.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [NavbarComponent, RouterOutlet, FooterComponent],
+  // navbar/footer เดิมถูกแทนที่ด้วย chrome ในตัวของหน้า Book จึงเหลือแค่ router-outlet
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

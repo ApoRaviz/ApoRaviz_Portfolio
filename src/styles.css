@@ -1,18 +1,24 @@
 /* Tailwind v4 ใช้ @import เดียวเพื่อโหลด utility, reset, และ theme layer */
 @import "tailwindcss";
 
-/* @theme ทำให้เราใช้ class แบบ bg-dark, text-primary, shadow-glow ได้ใน Tailwind v4 */
+/* @theme ทำให้เราใช้ class แบบ bg-dark, text-primary, text-ink, font-display ได้ใน Tailwind v4
+   redesign "ApoRaviz Book" คง identity ส้ม/ดำเดิม แต่ปรับเป็นโทน "อุ่น" ตาม design:
+   ส้ม #E86A1C + ส้มอ่อน #F59E5B, พื้นหนังสือ #0C0B0A, หมึก #F3EEE6 และฟอนต์แบบหนังสือ */
 @theme {
-  --color-primary: #ff6b00;
-  --color-primary-light: #ff8c00;
-  --color-dark: #0a0a0a;
-  --color-dark-card: #111111;
-  --color-dark-border: #1a1a1a;
-  --font-display: "Trebuchet MS", "Aptos Display", "Segoe UI", sans-serif;
-  --font-body: "Aptos", "Segoe UI", Arial, sans-serif;
-  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-  --shadow-glow: 0 0 20px rgba(255, 107, 0, 0.4);
-  --shadow-glow-lg: 0 0 40px rgba(255, 107, 0, 0.3);
+  --color-primary: #e86a1c;
+  --color-primary-light: #f59e5b;
+  --color-dark: #0c0b0a;
+  --color-dark-card: #17130e;
+  --color-dark-border: #211a12;
+  --color-ink: #f3eee6;
+  --color-ink-soft: #c9c0b4;
+  --color-ink-mute: #9a9187;
+  --color-ink-faint: #8b8279;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "Space Grotesk", "Segoe UI", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  --shadow-glow: 0 0 20px rgba(232, 106, 28, 0.4);
+  --shadow-glow-lg: 0 0 40px rgba(232, 106, 28, 0.3);
 }
 
 /* html/body เป็น global foundation ของทั้งเว็บ จึงอยู่ใน styles.css แทน component ใด component หนึ่ง */
@@ -22,14 +28,58 @@ html {
 
 body {
   margin: 0;
-  background: #0a0a0a;
-  color: #e5e5e5;
-  font-family: "Aptos", "Segoe UI", Arial, sans-serif;
+  background: #0c0b0a;
+  color: #f3eee6;
+  font-family: "Space Grotesk", "Segoe UI", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
 }
 
-/* section[id] มี scroll-margin เพื่อให้ anchor/scrollIntoView ไม่พาหัว section ไปซ่อนใต้ navbar sticky */
-section[id] {
-  scroll-margin-top: 88px;
+/* selection ตาม design เพื่อคงบรรยากาศหนังสือ (ส้มอุ่น) */
+::selection {
+  background: rgba(232, 106, 28, 0.32);
+  color: #fff;
+}
+
+/* keyframes ของ redesign: จุดสถานะเต้น (bkpulse), โลโก้ลอย (bkfloat), วงหมุน (bkspin), ลูกศรกระดก (bkbob) */
+@keyframes bkpulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.65);
+  }
+}
+
+@keyframes bkfloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes bkspin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bkbob {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
 }
 
 /* ลด motion สำหรับผู้ใช้ที่ตั้งค่า prefers-reduced-motion เพื่อให้เว็บอ่านสบายและไม่เวียนหัว */

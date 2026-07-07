@@ -1,110 +1,90 @@
-<!-- ใช้ section เพราะ Contact เป็นหมวดหลักและเป็น target ของ CTA Contact Me -->
-<section id="contact" class="bg-dark py-24" aria-labelledby="contact-title">
-  <div class="mx-auto max-w-7xl px-5 sm:px-8">
-    <header class="reveal text-center">
-      <p class="font-mono text-sm uppercase tracking-[0.25em] text-primary">Send A Message</p>
-      <h2 id="contact-title" class="mt-3 font-display text-4xl font-bold text-white sm:text-5xl">
-        <span class="text-primary">Contact</span> Me
-      </h2>
-      <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-primary shadow-glow"></div>
-    </header>
+<!-- บท 07 · Contact / Epilogue (host เป็น section แล้วใน .ts) -->
+<div class="mx-auto w-full max-w-[1040px]">
+  <div appReveal class="mb-4 text-center font-mono text-xs uppercase tracking-[4px] text-primary">
+    {{ data.contactCopy().eyebrow }} · Chapter {{ nav.numberOf('contact') }}
+  </div>
+  <h2
+    appReveal="60"
+    class="mb-3 text-center font-display text-[clamp(38px,6vw,68px)] font-normal tracking-[-1.2px] text-ink"
+  >
+    {{ data.contactCopy().title }}
+    <span class="italic text-primary-light">{{ data.contactCopy().titleEmphasis }}</span>
+  </h2>
+  <p
+    appReveal="110"
+    class="mx-auto mb-9 max-w-[560px] text-center font-display text-lg leading-[1.6] text-ink-soft"
+  >
+    {{ data.contactCopy().lead }}
+  </p>
 
-    <!-- ใช้ div เป็น layout grid แบ่ง form กับ contact info -->
-    <div class="mt-12 grid gap-8 lg:grid-cols-[1.1fr_.9fr]">
-      <!-- ใช้ form เพราะส่วนนี้รับข้อมูลผู้ใช้และ submit ได้จริง ทำให้ browser/screen reader เข้าใจความสัมพันธ์ของ field -->
-      <form class="reveal rounded-2xl border border-dark-border bg-dark-card p-6 sm:p-8" [formGroup]="form" (ngSubmit)="submit()">
-        <!-- ใช้ div เป็น field wrapper เพื่อจัด label/input/error เป็นกลุ่มเดียวกัน -->
-        <div>
-          <label class="mb-2 block font-mono text-sm text-neutral-300" for="name">Name</label>
-          <input
-            id="name"
-            type="text"
-            formControlName="name"
-            class="w-full rounded-xl border border-dark-border bg-dark px-4 py-3 text-white transition focus:border-primary focus:outline-none focus:shadow-glow"
-            placeholder="Your name"
-          />
-          @if (hasError('name', 'required')) {
-            <p class="mt-2 text-sm text-red-400">Name is required.</p>
-          }
-          @if (hasError('name', 'minlength')) {
-            <p class="mt-2 text-sm text-red-400">Name must be at least 2 characters.</p>
-          }
-        </div>
-
-        <div class="mt-5">
-          <label class="mb-2 block font-mono text-sm text-neutral-300" for="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            formControlName="email"
-            class="w-full rounded-xl border border-dark-border bg-dark px-4 py-3 text-white transition focus:border-primary focus:outline-none focus:shadow-glow"
-            placeholder="your@email.com"
-          />
-          @if (hasError('email', 'required')) {
-            <p class="mt-2 text-sm text-red-400">Email is required.</p>
-          }
-          @if (hasError('email', 'email')) {
-            <p class="mt-2 text-sm text-red-400">Please enter a valid email.</p>
-          }
-        </div>
-
-        <div class="mt-5">
-          <label class="mb-2 block font-mono text-sm text-neutral-300" for="message">Message</label>
-          <textarea
-            id="message"
-            rows="6"
-            formControlName="message"
-            class="w-full resize-none rounded-xl border border-dark-border bg-dark px-4 py-3 text-white transition focus:border-primary focus:outline-none focus:shadow-glow"
-            placeholder="Tell me about your project"
-          ></textarea>
-          @if (hasError('message', 'required')) {
-            <p class="mt-2 text-sm text-red-400">Message is required.</p>
-          }
-          @if (hasError('message', 'minlength')) {
-            <p class="mt-2 text-sm text-red-400">Message must be at least 10 characters.</p>
-          }
-        </div>
-
-        <!-- ใช้ button type submit เพราะปุ่มนี้ส่ง form ตาม semantic HTML -->
-        <button
-          type="submit"
-          class="mt-6 w-full rounded-xl bg-primary px-5 py-3 font-semibold text-white shadow-glow transition hover:bg-primary-light disabled:cursor-not-allowed disabled:opacity-60"
-          [disabled]="submitting()"
+  <div class="grid items-stretch gap-6 md:grid-cols-[0.9fr_1.1fr]">
+    <div appReveal="160" class="flex flex-col gap-3">
+      @for (channel of data.bookContacts(); track channel.label) {
+        <a
+          [href]="channel.href"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-[14px] rounded-[14px] border border-white/10 bg-[linear-gradient(165deg,#17130e,#100d0a)] p-[16px_18px] no-underline transition-colors hover:border-primary/40"
         >
-          {{ submitting() ? 'Sending...' : 'Send Message' }}
-        </button>
-      </form>
-
-      <!-- ใช้ aside เพราะ contact info เป็นข้อมูลเสริมด้านข้างของ form -->
-      <aside class="reveal rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm sm:p-8">
-        <h3 class="font-display text-2xl font-semibold text-white">Contact Channels</h3>
-        <p class="mt-4 leading-8 text-neutral-400">
-          {{ data.contactIntro() }}
-        </p>
-
-        <!-- ใช้ div เป็น vertical list wrapper ของ contact methods -->
-        <div class="mt-8 space-y-4">
-          @for (item of data.visibleContactInfo(); track item.label) {
-            <!-- ใช้ a เพราะแต่ละ item เป็นช่องทางติดต่อที่นำไปยัง URL ได้ -->
-            <a class="flex items-center gap-4 rounded-xl border border-dark-border bg-dark-card p-4 transition hover:border-primary/50 hover:text-primary" [href]="item.url">
-              <span class="grid h-10 w-14 place-items-center rounded-lg bg-primary/10 text-primary">
-                <app-icon [name]="item.icon" sizeClass="h-5 w-5" />
-              </span>
-              <span>
-                <span class="block text-sm text-neutral-500">{{ item.label }}</span>
-                <span class="font-medium text-neutral-200">{{ item.value }}</span>
-              </span>
-            </a>
-          }
-        </div>
-      </aside>
+          <span
+            class="flex h-[42px] w-[42px] flex-none items-center justify-center rounded-[11px] border border-primary/28 bg-primary/10 font-mono text-[15px] text-primary"
+          >
+            {{ channel.icon }}
+          </span>
+          <div>
+            <div class="font-mono text-[11px] uppercase tracking-[1px] text-ink-faint">
+              {{ channel.label }}
+            </div>
+            <div class="text-[15px] font-medium text-ink">{{ channel.value }}</div>
+          </div>
+        </a>
+      }
     </div>
+
+    <form
+      appReveal="210"
+      (submit)="submit($event)"
+      class="flex flex-col gap-[14px] rounded-[18px] border border-white/10 bg-[linear-gradient(165deg,#17130e,#100d0a)] p-[24px]"
+    >
+      <div class="grid grid-cols-2 gap-3 max-md:grid-cols-1">
+        <input
+          name="name"
+          placeholder="Your name"
+          aria-label="Your name"
+          required
+          class="rounded-[10px] border border-white/[0.12] bg-white/[0.03] px-[14px] py-3 text-sm text-ink placeholder:text-ink-faint"
+        />
+        <input
+          name="email"
+          type="email"
+          placeholder="Your email"
+          aria-label="Your email"
+          required
+          class="rounded-[10px] border border-white/[0.12] bg-white/[0.03] px-[14px] py-3 text-sm text-ink placeholder:text-ink-faint"
+        />
+      </div>
+      <textarea
+        name="msg"
+        placeholder="What would you like to build?"
+        aria-label="Your message"
+        rows="4"
+        required
+        class="resize-y rounded-[10px] border border-white/[0.12] bg-white/[0.03] px-[14px] py-3 text-sm text-ink placeholder:text-ink-faint"
+      ></textarea>
+      <button
+        type="submit"
+        class="cursor-pointer rounded-[11px] border-none bg-primary py-[14px] font-body text-[15px] font-semibold text-dark shadow-[0_8px_24px_rgba(232,106,28,0.35)]"
+      >
+        Send Message →
+      </button>
+    </form>
   </div>
 
-  @if (sent()) {
-    <!-- ใช้ div เป็น toast overlay เพราะเป็น feedback ชั่วคราว ไม่ใช่ section หลัก -->
-    <div class="fixed right-5 top-24 z-[60] rounded-xl border border-green-500/30 bg-green-500/10 px-5 py-3 text-green-200 shadow-2xl backdrop-blur">
-      Message sent successfully!
-    </div>
-  }
-</section>
+  <div
+    appReveal="260"
+    class="mt-10 text-center font-mono text-[11px] leading-[1.8] tracking-[0.5px] text-ink-faint"
+  >
+    — Colophon —<br />
+    {{ data.contactCopy().colophon }}
+  </div>
+</div>

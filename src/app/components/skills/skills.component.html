@@ -1,37 +1,80 @@
-<!-- ใช้ section เพราะ Skills เป็นหมวดหลักและมี id สำหรับ nav/scroll spy -->
-<section id="skills" class="bg-[#0d0d0d] py-24" aria-labelledby="skills-title">
-  <!-- ใช้ div เป็น container สำหรับจัดความกว้างของเนื้อหา -->
-  <div class="mx-auto max-w-7xl px-5 sm:px-8">
-    <header class="reveal text-center">
-      <p class="font-mono text-sm uppercase tracking-[0.25em] text-primary">Loadout</p>
-      <h2 id="skills-title" class="mt-3 font-display text-4xl font-bold text-white sm:text-5xl">
-        <span class="text-primary">Tool</span> Loadout
-      </h2>
-      <div class="mx-auto mt-4 h-1 w-20 rounded-full bg-primary shadow-glow"></div>
-      <p class="mx-auto mt-5 max-w-2xl text-neutral-400">
-        Tools I use for web screens, backends, bots, and automations. No power bars here, just the gear I keep using and learning.
-      </p>
-    </header>
+<!-- บท 02 · Loadout (host เป็น section แล้วใน .ts) -->
+<div class="mx-auto w-full max-w-[1160px]">
+  <div appReveal class="mb-4 flex items-baseline gap-[14px]">
+    <span class="font-mono text-xs uppercase tracking-[4px] text-primary">
+      Chapter {{ nav.numberOf('loadout') }}
+    </span>
+    <span class="h-px flex-1 bg-[linear-gradient(90deg,rgba(232,106,28,0.4),transparent)]"></span>
+    <span class="font-mono text-[11px] text-ink-faint">Tools of the Trade</span>
+  </div>
+  <h2
+    appReveal="60"
+    class="mb-[10px] font-display text-[clamp(34px,5.5vw,60px)] font-normal tracking-[-1px] text-ink"
+  >
+    The <span class="italic text-primary-light">loadout</span>
+  </h2>
+  <p appReveal="100" class="mb-[30px] max-w-[560px] text-[15px] text-ink-mute">
+    Hover a category to inspect the gear I keep using and learning.
+  </p>
 
-    <!-- ใช้ div เป็น grid wrapper เพื่อจัดกลุ่ม skill categories -->
-    <div class="mt-12 grid gap-6 lg:grid-cols-2">
-      @for (group of data.skillGroups(); track group.category; let groupIndex = $index) {
-        <!-- ใช้ article เพราะแต่ละ category เป็นกลุ่มข้อมูลที่มีหัวข้อและอ่านแยกได้ -->
-        <article class="reveal rounded-xl border border-dark-border bg-dark-card p-6">
-          <h3 class="font-display text-2xl font-semibold text-white">{{ group.category }}</h3>
-          <!-- ใช้ div เป็น flex wrapper ของ badges เพราะ badges เป็น visual list ไม่จำเป็นต้องเป็น nav -->
-          <div class="mt-5 flex flex-wrap gap-3">
-            @for (skill of group.skills; track skill; let skillIndex = $index) {
-              <span
-                class="rounded-full border border-primary/30 bg-dark px-4 py-1.5 font-mono text-sm text-primary/90 transition hover:scale-105 hover:border-primary hover:bg-primary/10 hover:shadow-glow"
-                [style.--i]="groupIndex + skillIndex"
-              >
-                {{ skill }}
-              </span>
-            }
+  <div class="grid items-stretch gap-[26px] md:grid-cols-[0.85fr_1.15fr]">
+    <div appReveal="140" class="flex flex-col gap-2">
+      @for (group of data.loadout(); track group.title; let i = $index) {
+        <button
+          type="button"
+          (mouseenter)="activeCat.set(i)"
+          (focus)="activeCat.set(i)"
+          (click)="activeCat.set(i)"
+          [class.cat-active]="activeCat() === i"
+          class="flex cursor-pointer items-center gap-[14px] rounded-[14px] border border-white/[0.08] bg-[linear-gradient(165deg,#17130e,#100d0a)] p-[16px_18px] text-left transition-all duration-200"
+        >
+          <span
+            class="caticon flex h-9 w-9 flex-none items-center justify-center rounded-[9px] border border-primary/25 bg-primary/10 font-mono text-xs text-primary transition-all duration-200"
+          >
+            {{ group.icon }}
+          </span>
+          <div>
+            <div class="font-body text-base font-semibold text-ink">{{ group.title }}</div>
+            <div class="font-mono text-[11px] text-ink-faint">{{ group.items.length }} items</div>
           </div>
-        </article>
+        </button>
       }
     </div>
+
+    <div
+      appReveal="200"
+      class="relative min-h-[340px] overflow-hidden rounded-[18px] border border-primary/[0.16] bg-[linear-gradient(165deg,#17130e,#0e0b08)] p-[26px_28px]"
+    >
+      <div
+        class="pointer-events-none absolute right-0 top-0 h-[180px] w-[180px] bg-[radial-gradient(circle_at_top_right,rgba(232,106,28,0.14),transparent_70%)]"
+      ></div>
+      <!-- แสดงเฉพาะหมวดที่เลือก (@let) -->
+      @let group = data.loadout()[activeCat()];
+      <div class="mb-[6px] font-mono text-[11px] uppercase tracking-[2px] text-primary">
+        {{ group.title }}
+      </div>
+      <p class="mb-[22px] font-display text-lg italic text-ink-soft">{{ group.blurb }}</p>
+      <div class="flex flex-col">
+        @for (item of group.items; track item.n) {
+          <div class="flex items-baseline justify-between gap-4 border-t border-white/[0.06] py-[11px]">
+            <span class="whitespace-nowrap font-body text-[15px] font-semibold text-ink">
+              {{ item.n }}
+            </span>
+            <span class="text-right text-[13px] text-ink-mute">{{ item.note }}</span>
+          </div>
+        }
+      </div>
+    </div>
   </div>
-</section>
+
+  <div appReveal="260" class="mt-[18px] flex flex-wrap items-center gap-[11px]">
+    <span class="font-mono text-[11px] uppercase tracking-[2px] text-primary">Useful builds ·</span>
+    @for (build of data.builds(); track build) {
+      <span
+        class="rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-[5px] text-[13px] text-ink-soft"
+      >
+        {{ build }}
+      </span>
+    }
+  </div>
+</div>
