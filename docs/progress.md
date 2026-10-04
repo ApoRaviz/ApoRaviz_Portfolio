@@ -1,5 +1,16 @@
 # Portfolio Progress
 
+## 4 ตุลาคม 2026 — exuxui-design
+
+- ปรับ ApoRaviz Book จากโครงเดิม: หน้าปกสองคอลัมน์พร้อมสารบัญ โลโก้ไม่ถูกครอป และปรับการ์ด/ตัวอักษร/ช่องไฟ
+- มือถือใช้ตัวเลือกบทพร้อมปุ่มก่อนหน้า–ถัดไป; เพิ่ม aria-current, focus ring และ label ฟอร์มที่มองเห็นได้
+- แก้ keyboard shortcut แย่งปุ่มลูกศรในช่องกรอก และปรับสถานะบทให้ทำงานกับบทยาวบนมือถือ
+- ตรวจผ่าน: test:ci 6/6, production build + prerender, browser checks 5 ขนาดหน้าจอ และ independent code review
+- แผนและผลตรวจ: [exuxui-design](superpowers/plans/2026-10-04-exuxui-design.md)
+- เก็บภาพก่อน/หลังและหน้าตัวเทียบไว้ใน `tmp/visual-review/` (local artifact, git-ignored)
+- คงงานบน branch `exuxui-design` สำหรับลองเทียบกับ `main`
+
+
 ไฟล์นี้เก็บสถานะล่าสุดของ `ApoRaviz_Portfolio`
 
 อ่านคู่กับ:

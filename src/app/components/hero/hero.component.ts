@@ -18,10 +18,11 @@ import { RevealDirective } from '../../directives/reveal.directive';
   selector: 'app-hero',
   imports: [RevealDirective],
   templateUrl: './hero.component.html',
+  styleUrl: './hero.component.css',
   host: {
     'data-section': '',
     class:
-      'relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-[min(5vw,46px)] pb-[90px] pt-[110px] text-center [scroll-snap-align:start]',
+      'book-cover relative flex min-h-dvh flex-col justify-center overflow-hidden px-6 pb-[100px] pt-[140px] md:px-12 lg:pl-[112px] lg:pr-[58px] [scroll-snap-align:start]',
   },
 })
 export class HeroComponent {

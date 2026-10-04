@@ -1,6 +1,6 @@
 <!-- บท 01 · Profile (host เป็น section แล้วใน .ts) -->
-<div class="mx-auto w-full max-w-[1160px]">
-  <div appReveal class="mb-4 flex items-baseline gap-[14px]">
+<div class="chapter-content mx-auto w-full max-w-[1160px]">
+  <div appReveal class="chapter-meta mb-4 flex items-baseline gap-[14px]">
     <span class="font-mono text-xs uppercase tracking-[4px] text-primary">
       Chapter {{ nav.numberOf('profile') }}
     </span>
@@ -9,7 +9,7 @@
   </div>
   <h2
     appReveal="60"
-    class="mb-[34px] font-display text-[clamp(34px,5.5vw,60px)] font-normal tracking-[-1px] text-ink"
+    class="chapter-heading mb-[34px] font-display text-[clamp(34px,5.5vw,60px)] font-normal tracking-[-1px] text-ink"
   >
     {{ data.profileCopy().heading }}
     <span class="italic text-primary-light">{{ data.profileCopy().headingEmphasis }}</span>
@@ -53,13 +53,13 @@
         @for (trait of data.traits(); track trait.title) {
           <div
             appTilt
-            class="rounded-[15px] border border-primary/[0.12] bg-[linear-gradient(165deg,#17130e,#100d0a)] p-[18px] transition-[transform,border-color] duration-300"
+            class="rounded-lg border border-primary/[0.12] book-panel p-5 transition-[transform,border-color] duration-300"
           >
             <span class="font-mono text-[10px] tracking-[1px] text-primary">{{ trait.tag }}</span>
             <div class="my-[7px] mb-[5px] font-display text-lg font-medium text-ink">
               {{ trait.title }}
             </div>
-            <div class="text-[13px] leading-[1.5] text-ink-mute">{{ trait.desc }}</div>
+            <div class="text-sm leading-[1.7] text-ink-mute">{{ trait.desc }}</div>
           </div>
         }
       </div>

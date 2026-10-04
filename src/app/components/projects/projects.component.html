@@ -1,6 +1,6 @@
 <!-- บท 03 · Quests (host เป็น section แล้วใน .ts) -->
-<div class="mx-auto w-full max-w-[1160px]">
-  <div appReveal class="mb-4 flex items-baseline gap-[14px]">
+<div class="chapter-content mx-auto w-full max-w-[1160px]">
+  <div appReveal class="chapter-meta mb-4 flex items-baseline gap-[14px]">
     <span class="font-mono text-xs uppercase tracking-[4px] text-primary">
       Chapter {{ nav.numberOf('quests') }}
     </span>
@@ -9,7 +9,7 @@
   </div>
   <h2
     appReveal="60"
-    class="mb-8 font-display text-[clamp(34px,5.5vw,60px)] font-normal tracking-[-1px] text-ink"
+    class="chapter-heading mb-8 font-display text-[clamp(34px,5.5vw,60px)] font-normal tracking-[-1px] text-ink"
   >
     Quests I <span class="italic text-primary-light">cleared</span>
   </h2>
@@ -19,11 +19,16 @@
       <div
         appTilt
         appReveal
-        class="flex flex-col overflow-hidden rounded-[20px] border border-white/[0.09] bg-[linear-gradient(165deg,#17130e,#100d0a)] shadow-[0_24px_60px_rgba(0,0,0,0.45)] transition-[transform,border-color] duration-300"
+        class="flex flex-col overflow-hidden rounded-[20px] border border-white/[0.09] book-panel transition-[transform,border-color] duration-300"
       >
-        <div class="relative h-[198px] overflow-hidden border-b border-white/[0.07]">
+        <div class="relative aspect-[16/9] overflow-hidden border-b border-white/[0.07]">
           @if (quest.img) {
-            <img [src]="quest.img" [alt]="quest.name" class="h-full w-full object-cover object-top" />
+            <img
+              loading="lazy"
+              [src]="quest.img"
+              [alt]="quest.name"
+              class="h-full w-full object-cover object-top"
+            />
           }
           <div
             class="absolute inset-0 bg-[linear-gradient(180deg,transparent_55%,rgba(16,13,10,0.85))]"
@@ -39,8 +44,8 @@
             {{ quest.type }}
           </span>
         </div>
-        <div class="flex flex-1 flex-col p-[22px]">
-          <div class="mb-2 font-display text-[22px] font-medium text-ink">{{ quest.name }}</div>
+        <div class="flex flex-1 flex-col p-6 md:p-7">
+          <h3 class="mb-3 font-display text-[28px] leading-tight text-ink">{{ quest.name }}</h3>
           <p class="mb-4 flex-1 text-sm leading-[1.6] text-ink-mute">{{ quest.desc }}</p>
           <div class="mb-[18px] flex flex-wrap gap-[7px]">
             @for (tech of quest.tech; track tech) {
@@ -51,12 +56,12 @@
               </span>
             }
           </div>
-          <div class="flex gap-[10px]">
+          <div class="flex flex-wrap gap-3 border-t border-dark-border pt-5">
             <a
               [href]="quest.live"
               target="_blank"
               rel="noopener noreferrer"
-              class="rounded-[10px] bg-primary px-4 py-[10px] font-body text-[13px] font-semibold text-dark no-underline"
+              class="book-button book-button-primary"
             >
               Open Live ↗
             </a>
@@ -64,7 +69,7 @@
               [href]="quest.code"
               target="_blank"
               rel="noopener noreferrer"
-              class="rounded-[10px] border border-primary/40 px-4 py-[10px] font-body text-[13px] font-semibold text-primary-light no-underline"
+              class="book-button book-button-secondary"
             >
               GitHub
             </a>

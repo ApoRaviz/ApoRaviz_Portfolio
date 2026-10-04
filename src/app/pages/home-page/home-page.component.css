@@ -1,9 +1,165 @@
-/* ซ่อน scrollbar ของ scroller หลัก (design ต้องการหน้าสะอาดเหมือนหนังสือ) */
+﻿.book-shell,
 .book-scroller {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  height: 100dvh;
 }
-.book-scroller::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+.book-scroller {
+  scroll-behavior: smooth;
+  scroll-padding-block: 96px;
+  scrollbar-width: thin;
+  scrollbar-color: #574330 transparent;
+}
+.book-ambient {
+  background: radial-gradient(ellipse at 90% 20%, #e86a1c09, transparent 55%);
+}
+.book-header {
+  height: 84px;
+  padding: 0 clamp(22px, 4vw, 64px);
+  border-bottom: 1px solid var(--color-dark-border);
+  background: #10100ef2;
+  backdrop-filter: blur(16px);
+}
+.brand-button {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  cursor: pointer;
+}
+.brand-button img {
+  width: 118px;
+  height: 48px;
+  object-fit: contain;
+}
+.chapter-link {
+  min-height: 44px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--color-ink-mute);
+  transition:
+    color 0.2s,
+    background 0.2s;
+  cursor: pointer;
+}
+.chapter-link:hover,
+.chapter-link[aria-current] {
+  color: var(--color-primary-light);
+  background: #e86a1c0d;
+}
+.chapter-link[aria-current] {
+  box-shadow: inset 0 -2px var(--color-primary);
+}
+.resume-link {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid #e86a1c55;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primary-light);
+  transition: background 0.2s;
+}
+.resume-link:hover {
+  background: #e86a1c15;
+}
+.rail-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  width: 64px;
+  color: var(--color-ink-faint);
+  font: 11px var(--font-mono);
+  cursor: pointer;
+}
+.rail-mark {
+  width: 12px;
+  height: 1px;
+  background: #ffffff30;
+  transition: width 0.2s;
+}
+.rail-link[aria-current] {
+  color: var(--color-primary-light);
+}
+.rail-link[aria-current] .rail-mark {
+  width: 24px;
+  background: var(--color-primary);
+}
+.desktop-folio {
+  padding: 0 4px;
+  border: 1px solid var(--color-dark-border);
+  border-radius: 8px;
+  background: #10100ef2;
+}
+.desktop-folio button,
+.mobile-folio button {
+  width: 44px;
+  height: 44px;
+  color: var(--color-ink-soft);
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.desktop-folio button:hover:not(:disabled),
+.mobile-folio button:hover:not(:disabled) {
+  color: var(--color-primary-light);
+}
+.mobile-folio {
+  border-top: 1px solid var(--color-dark-border);
+  background: #10100efa;
+  padding: 8px 16px max(8px, env(safe-area-inset-bottom));
+}
+.mobile-folio select {
+  width: 100%;
+  min-height: 36px;
+  color: var(--color-ink);
+  background: transparent;
+  font-size: 14px;
+  cursor: pointer;
+}
+.mobile-folio option {
+  background: var(--color-dark);
+}
+.page-turn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(115deg, #241c13, #10100e 70%);
+  border-left: 1px solid #e86a1c40;
+  opacity: 0;
+  backface-visibility: hidden;
+}
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  z-index: 100;
+  padding: 12px 20px;
+  background: var(--color-primary);
+  color: var(--color-dark);
+}
+.skip-link:focus {
+  top: 12px;
+}
+@media (max-width: 1023px) {
+  .book-scroller {
+    scroll-snap-type: none;
+  }
+  .book-header {
+    height: 76px;
+  }
+}
+@media (max-height: 600px) {
+  .chapter-rail {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .book-scroller {
+    scroll-behavior: auto;
+  }
 }

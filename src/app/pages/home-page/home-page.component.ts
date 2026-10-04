@@ -67,25 +67,43 @@ export class HomePageComponent {
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     // section host ของแต่ละบทมี data-section — เก็บไว้เพื่อ observe บท active และเลื่อนหา
-    this.sections = Array.from(this.host.nativeElement.querySelectorAll<HTMLElement>('[data-section]'));
+    this.sections = Array.from(
+      this.host.nativeElement.querySelectorAll<HTMLElement>('[data-section]'),
+    );
 
-    if (typeof IntersectionObserver !== 'undefined') {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const i = this.sections.indexOf(entry.target as HTMLElement);
-              if (i >= 0) this.nav.active.set(i);
-            }
-          });
-        },
-        { root: scroller, threshold: 0.55 },
-      );
-      this.sections.forEach((section) => observer.observe(section));
-      this.cleanups.push(() => observer.disconnect());
+    if (scroller) {
+      // ใช้ตำแหน่งอ่านแทนสัดส่วนพื้นที่: บทยาวบนมือถืออาจไม่เคยเห็นถึง 55% ของทั้งบท
+      const updateChapter = () => {
+        const readingPosition = scroller.scrollTop + scroller.clientHeight * 0.3;
+        let active = 0;
+        this.sections.forEach((section, index) => {
+          if (section.offsetTop <= readingPosition) active = index;
+        });
+        this.nav.active.set(active);
+      };
+      scroller.addEventListener('scroll', updateChapter, { passive: true });
+      window.addEventListener('resize', updateChapter);
+      this.cleanups.push(() => {
+        scroller.removeEventListener('scroll', updateChapter);
+        window.removeEventListener('resize', updateChapter);
+      });
+      updateChapter();
     }
 
     const onKey = (event: KeyboardEvent) => {
+      const target = event.target;
+      if (
+        event.defaultPrevented ||
+        event.altKey ||
+        event.ctrlKey ||
+        event.metaKey ||
+        event.shiftKey ||
+        (target instanceof HTMLElement &&
+          target.closest(
+            'input, textarea, select, [contenteditable]:not([contenteditable="false"])',
+          ))
+      )
+        return;
       if (['ArrowDown', 'ArrowRight', 'PageDown'].includes(event.key)) {
         event.preventDefault();
         this.nav.turn(1);
@@ -107,6 +125,7 @@ export class HomePageComponent {
     if (!el || !scroller) return;
 
     const direction = target > this.nav.active() ? 1 : -1;
+    this.nav.active.set(target);
     const doScroll = () =>
       scroller.scrollTo({ top: el.offsetTop, behavior: this.reduce ? 'auto' : 'smooth' });
 
@@ -126,18 +145,18 @@ export class HomePageComponent {
     overlay.style.transform = `perspective(1700px) rotateY(${start}deg)`;
     overlay.style.opacity = '1';
     void overlay.offsetWidth; // force reflow เพื่อให้ transition เริ่มจาก start จริง
-    overlay.style.transition = 'transform .5s cubic-bezier(.42,0,.28,1)';
+    overlay.style.transition = 'transform .2s cubic-bezier(.42,0,.28,1)';
     overlay.style.transform = 'perspective(1700px) rotateY(0deg)';
 
     const t1 = setTimeout(() => {
       doScroll();
-      overlay.style.transition = 'transform .52s cubic-bezier(.5,0,.32,1)';
+      overlay.style.transition = 'transform .24s cubic-bezier(.5,0,.32,1)';
       overlay.style.transform = `perspective(1700px) rotateY(${end}deg)`;
       const t2 = setTimeout(() => {
         overlay.style.opacity = '0';
-      }, 470);
+      }, 240);
       this.cleanups.push(() => clearTimeout(t2));
-    }, 320);
+    }, 160);
     this.cleanups.push(() => clearTimeout(t1));
   }
 }

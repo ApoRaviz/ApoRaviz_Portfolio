@@ -1,73 +1,81 @@
-<!-- บท 00 · Cover — เนื้อหาปก (host เป็น section แล้วใน .ts) -->
-<canvas #heroCanvas class="absolute inset-0 z-0 h-full w-full opacity-90"></canvas>
-<div
-  class="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(600px_400px_at_50%_42%,rgba(232,106,28,0.10),transparent_65%)]"
-></div>
-
-<div class="relative z-[2] max-w-[820px]">
-  <div
-    appReveal
-    class="relative mx-auto mb-[26px] h-[88px] w-[88px] [animation:bkfloat_5.5s_ease-in-out_infinite]"
-  >
-    <div
-      class="absolute -inset-[10px] rounded-full border border-dashed border-primary/45 [animation:bkspin_20s_linear_infinite]"
-    ></div>
-    <img
-      [src]="data.profile().logoUrl"
-      alt="ApoRaviz seal"
-      class="h-[88px] w-[88px] rounded-full border border-primary/40 object-cover shadow-[0_0_44px_rgba(232,106,28,0.45)]"
-    />
-  </div>
-  <div appReveal="60" class="mb-5 font-mono text-xs uppercase tracking-[5px] text-primary">
-    {{ data.cover().eyebrow }}
-  </div>
-  <h1
-    appReveal="120"
-    class="mb-4 font-display text-[clamp(40px,7.5vw,92px)] font-normal leading-[0.98] tracking-[-1.5px] text-ink"
-  >
-    {{ data.profile().name }}
-  </h1>
-  <div appReveal="170" class="mb-[26px] flex items-center justify-center gap-[14px]">
-    <span class="h-px w-8 bg-primary/50"></span>
-    <span class="font-mono text-[11px] uppercase tracking-[3px] text-ink-faint">known as</span>
-    <span class="font-display text-[clamp(24px,4vw,42px)] italic leading-none text-primary">
-      {{ data.cover().alias }}
-    </span>
-    <span class="h-px w-8 bg-primary/50"></span>
-  </div>
-  <p
-    appReveal="220"
-    class="mx-auto mb-3 max-w-[560px] font-display text-[clamp(17px,2.2vw,21px)] leading-[1.6] text-ink-soft"
-  >
-    “{{ data.cover().quote }}
-    <span class="italic text-primary-light">{{ data.cover().quoteEmphasis }}</span>”
-  </p>
-  <p appReveal="270" class="mb-[34px] font-mono text-[13px] tracking-[1px] text-ink-faint">
-    {{ data.cover().roleLine }}
-  </p>
-  <div appReveal="320" class="flex flex-wrap justify-center gap-3">
-    <button
-      type="button"
-      (click)="nav.go(nav.indexOf('profile'))"
-      class="cursor-pointer rounded-[11px] border-none bg-primary px-[26px] py-[14px] font-body text-[15px] font-semibold text-dark shadow-[0_10px_28px_rgba(232,106,28,0.4)] transition-transform hover:-translate-y-0.5"
-    >
-      Open the Book →
-    </button>
-    @if (nav.indexOf('quests') >= 0) {
+﻿<canvas
+  #heroCanvas
+  aria-hidden="true"
+  class="pointer-events-none absolute inset-0 h-full w-full opacity-30"
+></canvas>
+<div class="cover-layout relative z-[2] mx-auto w-full max-w-[1160px]">
+  <div class="cover-copy">
+    <div appReveal class="cover-eyebrow">
+      <span aria-hidden="true"></span>{{ data.cover().eyebrow }}
+    </div>
+    <h1 appReveal="60">{{ data.profile().name }}</h1>
+    <p appReveal="100" class="cover-alias">
+      A few pages from <em>{{ data.cover().alias }}.</em>
+    </p>
+    <p appReveal="140" class="cover-role">{{ data.cover().roleLine }}</p>
+    <blockquote appReveal="180" class="cover-quote">
+      {{ data.cover().quote }} <em>{{ data.cover().quoteEmphasis }}</em>
+    </blockquote>
+    <div appReveal="220" class="flex flex-wrap items-center gap-3">
       <button
         type="button"
-        (click)="nav.go(nav.indexOf('quests'))"
-        class="cursor-pointer rounded-[11px] border border-primary/40 bg-primary/[0.06] px-[26px] py-[14px] font-body text-[15px] font-semibold text-primary-light transition-colors hover:bg-primary/10"
+        (click)="nav.go(nav.indexOf('profile'))"
+        class="book-button book-button-primary"
       >
-        Read the Quests
+        Open the book <span aria-hidden="true">↗</span>
       </button>
-    }
+      @if (nav.indexOf('quests') >= 0) {
+        <button
+          type="button"
+          (click)="nav.go(nav.indexOf('quests'))"
+          class="book-button book-button-secondary"
+        >
+          Explore my work <span aria-hidden="true">→</span>
+        </button>
+      }
+    </div>
+    <div appReveal="260" class="cover-tags">
+      @for (tag of data.hero().tags; track tag) {
+        <span>{{ tag }}</span>
+      }
+    </div>
   </div>
+  <aside appReveal="180" class="cover-book" aria-label="Book contents">
+    <div class="book-imprint"><span>PERSONAL FIELD NOTES</span><span>VOL. 01</span></div>
+    <div class="book-seal" aria-hidden="true">
+      <svg viewBox="0 0 180 180" fill="none">
+        <circle cx="90" cy="90" r="73" />
+        <circle cx="90" cy="90" r="61" stroke-dasharray="2 7" />
+        <path
+          d="M90 5v24m0 122v24M5 90h24m122 0h24M38 38l10 10m84 84 10 10m0-104-10 10m-84 84-10 10"
+        />
+      </svg>
+      <span>{{ data.profile().initials }}</span>
+    </div>
+    <p class="book-title">A work <em>in progress.</em></p>
+    <p class="book-subtitle">Building. Learning. Turning the page.</p>
+    <div class="book-contents">
+      <div class="contents-label">
+        INSIDE THE BOOK <span>{{ nav.totalLabel() }} CHAPTERS</span>
+      </div>
+      @for (chapter of nav.chapters(); track chapter.id; let i = $index) {
+        @if (i > 0) {
+          <button type="button" (click)="nav.go(i)">
+            <span class="contents-number">{{ chapter.num }}</span
+            ><span>{{ chapter.label }}</span
+            ><span class="contents-rule" aria-hidden="true"></span><span aria-hidden="true">↗</span>
+          </button>
+        }
+      }
+    </div>
+    <span class="book-bookmark" aria-hidden="true"></span>
+  </aside>
 </div>
-
 <div
-  class="absolute bottom-[52px] left-1/2 z-[2] flex -translate-x-1/2 flex-col items-center gap-[7px] font-mono text-[10px] tracking-[2px] text-ink-faint"
+  class="cover-footer relative z-[2] mx-auto flex w-full max-w-[1160px] items-center justify-between gap-4"
 >
-  TURN THE PAGE
-  <span class="[animation:bkbob_1.8s_ease-in-out_infinite]">↓</span>
+  <span>A DEVELOPER'S BOOK · ALWAYS IN PROGRESS</span>
+  <button type="button" (click)="nav.go(nav.indexOf('profile'))">
+    TURN THE PAGE <span aria-hidden="true">↓</span>
+  </button>
 </div>

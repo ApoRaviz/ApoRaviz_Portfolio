@@ -31,7 +31,7 @@
           >
             {{ channel.icon }}
           </span>
-          <div>
+          <div class="min-w-0">
             <div class="font-mono text-[11px] uppercase tracking-[1px] text-ink-faint">
               {{ channel.label }}
             </div>
@@ -44,39 +44,48 @@
     <form
       appReveal="210"
       (submit)="submit($event)"
-      class="flex flex-col gap-[14px] rounded-[18px] border border-white/10 bg-[linear-gradient(165deg,#17130e,#100d0a)] p-[24px]"
+      class="book-panel flex min-w-0 flex-col gap-5 rounded-xl border p-6 md:p-8"
     >
       <div class="grid grid-cols-2 gap-3 max-md:grid-cols-1">
-        <input
-          name="name"
-          placeholder="Your name"
-          aria-label="Your name"
-          required
-          class="rounded-[10px] border border-white/[0.12] bg-white/[0.03] px-[14px] py-3 text-sm text-ink placeholder:text-ink-faint"
-        />
-        <input
-          name="email"
-          type="email"
-          placeholder="Your email"
-          aria-label="Your email"
-          required
-          class="rounded-[10px] border border-white/[0.12] bg-white/[0.03] px-[14px] py-3 text-sm text-ink placeholder:text-ink-faint"
-        />
+        <label class="flex min-w-0 flex-col gap-2 text-sm text-ink-soft">
+          Your name
+          <input
+            name="name"
+            autocomplete="name"
+            placeholder="Your name"
+            aria-label="Your name"
+            required
+            class="w-full rounded-md border border-dark-border bg-dark px-4 py-3 text-base text-ink placeholder:text-ink-faint"
+          />
+        </label>
+        <label class="flex min-w-0 flex-col gap-2 text-sm text-ink-soft">
+          Your email
+          <input
+            name="email"
+            type="email"
+            autocomplete="email"
+            placeholder="Your email"
+            aria-label="Your email"
+            required
+            class="w-full rounded-md border border-dark-border bg-dark px-4 py-3 text-base text-ink placeholder:text-ink-faint"
+          />
+        </label>
       </div>
-      <textarea
-        name="msg"
-        placeholder="What would you like to build?"
-        aria-label="Your message"
-        rows="4"
-        required
-        class="resize-y rounded-[10px] border border-white/[0.12] bg-white/[0.03] px-[14px] py-3 text-sm text-ink placeholder:text-ink-faint"
-      ></textarea>
-      <button
-        type="submit"
-        class="cursor-pointer rounded-[11px] border-none bg-primary py-[14px] font-body text-[15px] font-semibold text-dark shadow-[0_8px_24px_rgba(232,106,28,0.35)]"
-      >
-        Send Message →
-      </button>
+      <label class="flex flex-col gap-2 text-sm text-ink-soft">
+        Your message
+        <textarea
+          name="msg"
+          placeholder="What would you like to build?"
+          aria-label="Your message"
+          rows="4"
+          required
+          class="w-full resize-y rounded-md border border-dark-border bg-dark px-4 py-3 text-base text-ink placeholder:text-ink-faint"
+        ></textarea>
+      </label>
+      <button type="submit" class="book-button book-button-primary">Send Message →</button>
+      <p class="text-center text-xs text-ink-mute">
+        Opens your email app with a draft. Send it when you're ready.
+      </p>
     </form>
   </div>
 

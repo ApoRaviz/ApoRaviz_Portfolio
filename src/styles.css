@@ -1,22 +1,22 @@
 /* Tailwind v4 ใช้ @import เดียวเพื่อโหลด utility, reset, และ theme layer */
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* @theme ทำให้เราใช้ class แบบ bg-dark, text-primary, text-ink, font-display ได้ใน Tailwind v4
    redesign "ApoRaviz Book" คง identity ส้ม/ดำเดิม แต่ปรับเป็นโทน "อุ่น" ตาม design:
-   ส้ม #E86A1C + ส้มอ่อน #F59E5B, พื้นหนังสือ #0C0B0A, หมึก #F3EEE6 และฟอนต์แบบหนังสือ */
+   ส้ม #E86A1C + ส้มอ่อน #F59E5B, พื้นหนังสือ #10100E, หมึก #F3EEE6 และฟอนต์แบบหนังสือ */
 @theme {
   --color-primary: #e86a1c;
   --color-primary-light: #f59e5b;
-  --color-dark: #0c0b0a;
-  --color-dark-card: #17130e;
-  --color-dark-border: #211a12;
+  --color-dark: #10100e;
+  --color-dark-card: #191814;
+  --color-dark-border: #302b24;
   --color-ink: #f3eee6;
   --color-ink-soft: #c9c0b4;
-  --color-ink-mute: #9a9187;
-  --color-ink-faint: #8b8279;
-  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
-  --font-body: "Space Grotesk", "Segoe UI", Arial, sans-serif;
-  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  --color-ink-mute: #b1a79a;
+  --color-ink-faint: #a19687;
+  --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-body: 'Space Grotesk', 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
   --shadow-glow: 0 0 20px rgba(232, 106, 28, 0.4);
   --shadow-glow-lg: 0 0 40px rgba(232, 106, 28, 0.3);
 }
@@ -28,9 +28,9 @@ html {
 
 body {
   margin: 0;
-  background: #0c0b0a;
+  background: var(--color-dark);
   color: #f3eee6;
-  font-family: "Space Grotesk", "Segoe UI", Arial, sans-serif;
+  font-family: 'Space Grotesk', 'Segoe UI', Arial, sans-serif;
   font-size: 16px;
   line-height: 1.65;
 }
@@ -84,6 +84,10 @@ body {
 
 /* ลด motion สำหรับผู้ใช้ที่ตั้งค่า prefers-reduced-motion เพื่อให้เว็บอ่านสบายและไม่เวียนหัว */
 @media (prefers-reduced-motion: reduce) {
+  html,
+  [data-scroller] {
+    scroll-behavior: auto !important;
+  }
   *,
   *::before,
   *::after {
@@ -131,4 +135,79 @@ body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* Shared book details; each chapter still owns its layout. */
+:where(button, a, input, textarea, select):focus-visible {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 4px;
+}
+:where(button, a, input, textarea, select) {
+  touch-action: manipulation;
+}
+.book-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-height: 48px;
+  padding: 12px 20px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.book-button-primary {
+  color: var(--color-dark);
+  background: var(--color-primary);
+}
+.book-button-primary:hover {
+  background: var(--color-primary-light);
+}
+.book-button-secondary {
+  color: var(--color-ink-soft);
+  border-color: var(--color-dark-border);
+}
+.book-button-secondary:hover {
+  color: var(--color-primary-light);
+  border-color: var(--color-primary);
+}
+.chapter-content {
+  padding-top: 8px;
+}
+.chapter-meta {
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--color-dark-border);
+}
+.chapter-heading {
+  margin-top: 24px;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+.book-panel {
+  border-color: var(--color-dark-border);
+  background: var(--color-dark-card);
+  box-shadow: 0 8px 24px #00000012;
+}
+[data-section] {
+  min-width: 0;
+  scroll-margin-top: 0;
+}
+[data-section] :where(p, h1, h2, h3, a) {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 1023px) {
+  [data-section]:not(.book-cover) {
+    padding: 112px 24px 116px;
+  }
+}
+@media (max-width: 767px) {
+  .book-cover {
+    padding-top: 120px;
+    padding-bottom: 116px;
+  }
 }
