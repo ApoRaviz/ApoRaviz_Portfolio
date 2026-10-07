@@ -137,20 +137,6 @@ export class PortfolioDataService {
   // projects เป็นข้อมูลของ project cards ทั้งหมด แยกจาก HTML เพื่อให้แก้ content โดยไม่แก้ layout
   readonly projects = signal<Project[]>([
     {
-      id: 1,
-      category: 'Main Quest',
-      title: 'MooPing Reward',
-      description:
-        'Angular reward web app for a real Moo Ping shop concept, with POS confirmation, saved rewards, display screen, and LINE OA mock flow.',
-      highlight:
-        'Shows practical state management, multi-screen flow, customer reward logic, and a business idea that can grow into a real shop tool.',
-      tech: ['Angular 22', 'Signals', 'Tailwind CSS', 'GitHub Pages'],
-      imageUrl: 'project-screenshots/mooping.png',
-      liveUrl: 'https://aporaviz.github.io/ApoRaviz_Mooping/',
-      githubUrl: 'https://github.com/ApoRaviz/ApoRaviz_Mooping',
-      featured: true,
-    },
-    {
       id: 2,
       category: 'Knowledge Base',
       title: 'ApoRaviz Workspace Docs',
