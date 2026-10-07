@@ -14,20 +14,20 @@
     Quests I <span class="italic text-primary-light">cleared</span>
   </h2>
 
-  <div class="grid gap-6 md:grid-cols-2">
+  <div class="grid gap-6">
     @for (quest of data.quests(); track quest.name) {
       <div
         appTilt
         appReveal
-        class="flex flex-col overflow-hidden rounded-[20px] border border-white/[0.09] book-panel transition-[transform,border-color] duration-300"
+        class="flex flex-col overflow-hidden rounded-[20px] border border-white/[0.09] book-panel transition-[transform,border-color] duration-300 lg:flex-row"
       >
-        <div class="relative aspect-[16/9] overflow-hidden border-b border-white/[0.07]">
+        <div class="relative aspect-[16/9] overflow-hidden border-b border-white/[0.07] lg:aspect-auto lg:w-[55%] lg:shrink-0 lg:border-b-0 lg:border-r">
           @if (quest.img) {
             <img
               loading="lazy"
               [src]="quest.img"
               [alt]="quest.name"
-              class="h-full w-full object-cover object-top"
+              class="h-full w-full object-cover object-top lg:absolute lg:inset-0"
             />
           }
           <div
@@ -44,9 +44,9 @@
             {{ quest.type }}
           </span>
         </div>
-        <div class="flex flex-1 flex-col p-6 md:p-7">
+        <div class="flex min-w-0 flex-1 flex-col p-6 md:p-8 lg:min-h-[400px] lg:justify-center lg:p-10">
           <h3 class="mb-3 font-display text-[28px] leading-tight text-ink">{{ quest.name }}</h3>
-          <p class="mb-4 flex-1 text-sm leading-[1.6] text-ink-mute">{{ quest.desc }}</p>
+          <p class="mb-6 text-sm leading-[1.8] text-ink-mute">{{ quest.desc }}</p>
           <div class="mb-[18px] flex flex-wrap gap-[7px]">
             @for (tech of quest.tech; track tech) {
               <span
